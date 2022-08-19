@@ -2,10 +2,15 @@ body {
   background-color: lightblue;
   display: flex;
   flex-direction: row-reverse;
+  gap: 30px;
   h1 {
     color: red;
+    text-align: center;
+    padding: 2rem;
+    background-color: initial;
     &:hover {
       color: green;
+      background-color: yellow;
     }
   }
 }
