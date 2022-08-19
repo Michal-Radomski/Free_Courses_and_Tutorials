@@ -9,9 +9,13 @@ body h1 {
   text-align: center;
   padding: 2rem;
   background-color: initial;
+  border: 2px solid magenta;
 }
 body h1:hover {
   color: green;
   background-color: yellow;
+}
+body h2 {
+  color: pink;
 }
 /*# sourceMappingURL=main.css.map */
