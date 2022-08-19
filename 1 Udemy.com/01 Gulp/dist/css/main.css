@@ -1,5 +1,7 @@
 body {
   background-color: lightblue;
+  display: flex;
+  flex-direction: row-reverse;
 }
 body h1 {
   color: red;
@@ -7,3 +9,4 @@ body h1 {
 body h1:hover {
   color: green;
 }
+/*# sourceMappingURL=main.css.map */

@@ -1,5 +1,7 @@
 const gulp = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
+const autoprefixer = require("gulp-autoprefixer");
+const sourcemaps = require("gulp-sourcemaps");
 
 // gulp.task("printName", async function () {
 //   console.log("My name is Michal");
@@ -13,10 +15,16 @@ const sass = require("gulp-sass")(require("sass"));
 // gulp.task("default", gulp.series(["printName", "printCountry"]));
 
 gulp.task("sass", async function () {
-  return gulp.src("./src/sass/**/*.scss").pipe(sass().on("error", sass.logError)).pipe(gulp.dest("./dist/css"));
+  return gulp
+    .src("./src/sass/**/*.scss")
+    .pipe(sass().on("error", sass.logError))
+    .pipe(sourcemaps.init())
+    .pipe(
+      autoprefixer({
+        cascade: false,
+        // browsers: ["last 2 versions"],
+      })
+    )
+    .pipe(sourcemaps.write("."))
+    .pipe(gulp.dest("./dist/css"));
 });
-
-// exports.buildStyles = buildStyles;
-// exports.watch = function () {
-//   gulp.watch("./sass/**/*.scss", ["sass"]);
-// };

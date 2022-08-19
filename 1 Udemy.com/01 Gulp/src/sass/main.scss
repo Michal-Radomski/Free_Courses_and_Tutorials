@@ -1,5 +1,7 @@
 body {
   background-color: lightblue;
+  display: flex;
+  flex-direction: row-reverse;
   h1 {
     color: red;
     &:hover {
