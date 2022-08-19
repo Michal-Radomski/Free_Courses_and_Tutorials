@@ -11,11 +11,14 @@ body {
     border: 2px solid magenta;
     &:hover {
       color: green;
-      background-color: yellow;
+      background-color: yellowgreen;
     }
   }
   h2 {
     color: darkmagenta;
     border: 2px solid black;
+    &:hover {
+      color: deepskyblue;
+    }
   }
 }
