@@ -1,9 +1,9 @@
 import path from "path";
 import webpack from "webpack";
-// import "webpack-dev-server";
+import "webpack-dev-server";
 
 const config: webpack.Configuration = {
-  entry: "./src/ts/index.ts",
+  entry: "./src/ts/index.tsx",
   module: {
     rules: [
       {
@@ -15,14 +15,13 @@ const config: webpack.Configuration = {
         //     presets: ["@babel/preset-env", "@babel/preset-typescript"],
         //   },
         // },
-
-        test: /\.(ts|js)?$/,
+        test: /\.(ts|js|tsx|jsx)?$/,
         exclude: /node_modules/,
         use: [
           {
             loader: "ts-loader",
             options: {
-              transpileOnly: true,
+              transpileOnly: false,
             },
           },
         ],
@@ -30,7 +29,7 @@ const config: webpack.Configuration = {
     ],
   },
   resolve: {
-    extensions: [".ts", ".js"],
+    extensions: [".ts", ".js", ".tsx", ".jsx"],
   },
   output: {
     path: path.resolve(__dirname, "dist"),

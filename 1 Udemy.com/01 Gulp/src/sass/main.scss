@@ -21,4 +21,20 @@ body {
       color: deepskyblue;
     }
   }
+  div#root {
+    padding: 3rem;
+    margin: 2rem;
+    border: 2px solid black;
+    h1 {
+      color: yellow;
+      background-color: yellowgreen;
+      border: none;
+      text-decoration: underline;
+      &:hover {
+        border: 4px dotted red;
+        background-color: none;
+        text-decoration: none;
+      }
+    }
+  }
 }

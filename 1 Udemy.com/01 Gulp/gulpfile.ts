@@ -2,7 +2,7 @@ import gulp from "gulp";
 const sass = require("gulp-sass")(require("sass"));
 const autoprefixer = require("gulp-autoprefixer");
 const sourcemaps = require("gulp-sourcemaps");
-const browserSync = require("browser-sync").create();
+// const browserSync = require("browser-sync").create();
 // const reload = browserSync.reload;
 const cleanCSS = require("gulp-clean-css");
 
@@ -58,24 +58,3 @@ function watchTask() {
 }
 
 exports.default = gulp.series(gulp.parallel(scssTask), watchTask);
-
-// gulp.task("serve", function () {
-//   // Serve files from the root of this project
-//   browserSync.init({
-//     server: {
-//       baseDir: "./dist",
-//       notify: false,
-//       open: false,
-//     },
-//   });
-//   gulp.watch("*.html").on("change", reload);
-// });
-
-// gulp.task(
-//   "default",
-//   gulp.parallel(["sass", "serve"]),
-
-//   async function () {
-//     gulp.watch("./src/sass/**/*.scss", ["sass"]);
-//   }
-// );
