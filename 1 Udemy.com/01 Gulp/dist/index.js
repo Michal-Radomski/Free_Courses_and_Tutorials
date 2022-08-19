@@ -6,28 +6,31 @@
  * or disable the default devtool with "devtool: false".
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
-/******/ (function() { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ({
-
-/***/ "./src/ts/index.ts":
-/*!*************************!*\
+/******/ (function () {
+  // webpackBootstrap
+  /******/ "use strict";
+  /******/ var __webpack_modules__ = {
+    /***/ "./src/ts/index.ts":
+      /*!*************************!*\
   !*** ./src/ts/index.ts ***!
   \*************************/
-/***/ (function() {
+      /***/ function () {
+        eval(
+          '\nconsole.log("test1");\nconsole.log("test2");\nconsole.log("test3");\nconsole.log("test4");\nconsole.log("test5");\n\n\n//# sourceURL=webpack://01-gulp/./src/ts/index.ts?'
+        );
 
-eval("\nconsole.log(\"test1\");\nconsole.log(\"test2\");\nconsole.log(\"test3\");\nconsole.log(\"test4\");\nconsole.log(\"test5\");\n\n\n//# sourceURL=webpack://01-gulp/./src/ts/index.ts?");
+        /***/
+      },
 
-/***/ })
-
-/******/ 	});
-/************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["./src/ts/index.ts"]();
-/******/ 	
-/******/ })()
-;
+    /******/
+  };
+  /************************************************************************/
+  /******/
+  /******/ // startup
+  /******/ // Load entry module and return exports
+  /******/ // This entry module can't be inlined because the eval devtool is used.
+  /******/ var __webpack_exports__ = {};
+  /******/ __webpack_modules__["./src/ts/index.ts"]();
+  /******/
+  /******/
+})();

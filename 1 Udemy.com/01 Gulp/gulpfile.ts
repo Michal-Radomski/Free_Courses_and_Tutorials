@@ -1,4 +1,4 @@
-const gulp = require("gulp");
+import gulp from "gulp";
 const sass = require("gulp-sass")(require("sass"));
 const autoprefixer = require("gulp-autoprefixer");
 const sourcemaps = require("gulp-sourcemaps");
