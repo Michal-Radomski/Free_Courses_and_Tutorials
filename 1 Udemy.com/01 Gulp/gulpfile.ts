@@ -3,7 +3,8 @@ const sass = require("gulp-sass")(require("sass"));
 const autoprefixer = require("gulp-autoprefixer");
 const sourcemaps = require("gulp-sourcemaps");
 const browserSync = require("browser-sync").create();
-const reload = browserSync.reload;
+// const reload = browserSync.reload;
+const cleanCSS = require("gulp-clean-css");
 
 // gulp.task("printName", async function () {
 //   console.log("My name is Michal");
@@ -42,6 +43,7 @@ function scssTask() {
         // browsers: ["last 2 versions"],
       })
     )
+    .pipe(cleanCSS())
     .pipe(sourcemaps.write("."))
     .pipe(gulp.dest("./dist/css"));
 }
