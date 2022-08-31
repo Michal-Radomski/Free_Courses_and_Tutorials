@@ -18,17 +18,22 @@ const crypto = require("crypto");
 const HMAC_KEY = process.env.HMAC_KEY || "cupcakes";
 const API_KEY = process.env.API_KEY || "12345";
 
-const sequelize = new Sequelize(process.env.DATABASE_URL as string, {
-  dialect: "postgres",
-  // dialectOptions: {
-  //   ssl: {
-  //     require: true,
-  //     rejectUnauthorized: false,
-  //   },
-  // },
-});
+const nodeEnv = process.env.NODE_ENV;
 
-const SensorData = sequelize.define("sensor-data", {
+const sequelize =
+  nodeEnv === "test"
+    ? new Sequelize("sqlite::memory:")
+    : new Sequelize(process.env.DATABASE_URL as string, {
+        dialect: "postgres",
+        // dialectOptions: {
+        //   ssl: {
+        //     require: true,
+        //     rejectUnauthorized: false,
+        //   },
+        // },
+      });
+
+const SensorData = sequelize.define("sensorData", {
   // Model attributes are defined here
   serial: {
     type: DataTypes.STRING,
@@ -119,3 +124,5 @@ app.listen({port: port}, async () => {
     console.error("Unable to connect to the database:", error);
   }
 });
+
+module.exports = app;
