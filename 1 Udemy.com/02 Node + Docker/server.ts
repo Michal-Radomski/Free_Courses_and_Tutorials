@@ -33,7 +33,7 @@ const sequelize =
         // },
       });
 
-const SensorData = sequelize.define("sensorData", {
+const SensorData = sequelize.define("sensor-data", {
   // Model attributes are defined here
   serial: {
     type: DataTypes.STRING,
@@ -96,13 +96,13 @@ app.post("/data", async (req: Request, res: Response) => {
   console.log({hmac});
   console.log({hmacExpected});
 
-  let hmacEqual = crypto.timingSafeEqual(Buffer.from(hmac as string), Buffer.from(hmacExpected));
-  console.log({hmacEqual});
+  // let hmacEqual = crypto.timingSafeEqual(Buffer.from(hmac as string), Buffer.from(hmacExpected));
+  // console.log({hmacEqual});
 
-  if (!hmacEqual) {
-    res.status(403).send("Bad HMAC");
-    return;
-  }
+  // if (!hmacEqual) {
+  //   res.status(403).send("Bad HMAC");
+  //   return;
+  // }
 
   const sensorData = await SensorData.create(data);
   console.log({sensorData});
