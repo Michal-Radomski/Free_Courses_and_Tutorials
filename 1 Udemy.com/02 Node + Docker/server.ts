@@ -6,11 +6,19 @@
 
 const express = require("express");
 import {Request, Response} from "express";
-
 const {Sequelize, DataTypes} = require("sequelize");
+const helmet = require("helmet");
+const compression = require("compression");
+import rateLimit from "express-rate-limit";
 
 const sequelize = new Sequelize(process.env.DATABASE_URL as string, {
   dialect: "postgres",
+  // dialectOptions: {
+  //   ssl: {
+  //     require: true,
+  //     rejectUnauthorized: false,
+  //   },
+  // },
 });
 
 const SensorData = sequelize.define("sensor-data", {
@@ -29,8 +37,16 @@ const SensorData = sequelize.define("sensor-data", {
   },
 });
 
+const limiter = rateLimit({
+  windowMs: 2 * 60 * 1000, // 2 minutes
+  max: 10, // Limit each IP to 10 requests per `window` (here, per 2 minutes)
+});
+
 const app = express();
+app.use(helmet());
+app.use(compression());
 app.use(express.json());
+app.use(limiter);
 
 const port = (process.env.PORT || 5000) as number;
 

@@ -7,3 +7,5 @@ COPY . .
 RUN npm install --production
 
 EXPOSE 5000
+
+# CMD [ "node", "server.js" ]
