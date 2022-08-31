@@ -6,8 +6,6 @@
 //* curl -d '{"name": "Salon2", "serial": "001", "temperature": 20.00}' -H "Content-Type: application/json" http://localhost:5000/data?key=12345
 //* curl -d '{"name": "Salon6", "serial": "001", "temperature": 20.00}' -H "Content-Type: application/json" -H "hmac: edecd53ef508cf7bc2a52cc3573c9f04ff14d0ec" http://localhost:5000/data?key=12345
 
-// hmac: edecd53ef508cf7bc2a52cc3573c9f04ff14d0ec
-
 const express = require("express");
 import {NextFunction, Request, Response} from "express";
 const {Sequelize, DataTypes} = require("sequelize");
@@ -17,7 +15,8 @@ import rateLimit from "express-rate-limit";
 
 const crypto = require("crypto");
 
-const HMAC_KEY = "cupcakes";
+const HMAC_KEY = process.env.HMAC_KEY || "cupcakes";
+const API_KEY = process.env.API_KEY || "12345";
 
 const sequelize = new Sequelize(process.env.DATABASE_URL as string, {
   dialect: "postgres",
@@ -66,7 +65,7 @@ const port = (process.env.PORT || 5000) as number;
 app.use((req: Request, res: Response, next: NextFunction) => {
   let key = req.query.key;
   console.log({key});
-  if (!key || key !== "12345") {
+  if (!key || key !== API_KEY) {
     res.status(403).send("Access denied");
     return;
   }
