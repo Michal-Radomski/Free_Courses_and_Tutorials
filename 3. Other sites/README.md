@@ -2,3 +2,6 @@
 
 1. MERN app -> according to
    [this tutorial](https://www.freecodecamp.org/news/create-a-react-frontend-a-node-express-backend-and-connect-them-together-c5798926047c).
+
+2. TS API -> according to
+   [this tutorial](https://tomanagle.medium.com/build-a-rest-api-with-node-js-typescript-mongodb-b6c898d70d61).

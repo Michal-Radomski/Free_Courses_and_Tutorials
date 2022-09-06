@@ -1,0 +1,12 @@
+{
+  "name": "02-ts-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.ts",
+  "scripts": {
+    "dev": "nodemon --config nodemon.json src/app.ts"
+  },
+  "keywords": [],
+  "author": "MichRad",
+  "license": "ISC"
+}
