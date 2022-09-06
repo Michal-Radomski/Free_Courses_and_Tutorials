@@ -1,14 +1,16 @@
 const express = require("express");
-import {Request, Response} from "express";
+var cors = require("cors");
+
+const router = require("./router");
 
 // App
 const app = express();
 
-// Test route
-app.get("/test", (req: Request, res: Response) => {
-  console.log("req.ip:", req.ip);
-  res.send("<h1 style='color:blue;text-align:center'>API is running</h1>");
-});
+// Middlewares
+app.use(cors());
+
+//Route middleware
+app.use("/api", router);
 
 // Port
 const port = (process.env.PORT || 5000) as number;
