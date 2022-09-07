@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/app.ts",
   "scripts": {
-    "dev": "nodemon --config nodemon.json src/app.ts"
+    "dev": "clear && nodemon --config nodemon.json src/app.ts"
   },
   "keywords": [],
   "author": "MichRad",
@@ -18,7 +18,7 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "mongoose": "^5.13.15",
-    "nanoid": "^4.0.0",
+    "nanoid": "^3.3.4",
     "pino": "^8.5.0",
     "pino-pretty": "^9.1.0",
     "yup": "^0.32.11"
