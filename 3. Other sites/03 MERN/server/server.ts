@@ -4,6 +4,7 @@ import {Request, Response} from "express";
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 // Import routes
 
@@ -11,15 +12,15 @@ const mongoose = require("mongoose");
 const app = express();
 
 // Mongo DB
-// mongoose
-//   .connect(process.env.DATABASE, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then((con: {connection: {host: string}}) => {
-//     console.log(`MongoDB Database connected with HOST: ${con.connection.host}`);
-//   })
-//   .catch((error: string) => console.log("Mongo DB Error => ", error));
+mongoose
+  .connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then((con: {connection: {host: string}}) => {
+    console.log(`MongoDB Database connected with HOST: ${con.connection.host}`);
+  })
+  .catch((error: string) => console.log("Mongo DB Error => ", error));
 
 // Middlewares
 app.use(cors());

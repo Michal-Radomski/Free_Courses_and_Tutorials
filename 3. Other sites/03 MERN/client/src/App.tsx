@@ -2,7 +2,6 @@ import React from "react";
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
 import "./App.scss";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import CreateComponent from "./components/CreateComponent";
 import EditComponent from "./components/EditComponent";
 import IndexComponent from "./components/IndexComponent";
