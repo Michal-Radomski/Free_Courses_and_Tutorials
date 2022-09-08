@@ -5,3 +5,5 @@
 
 2. TS API -> according to
    [this tutorial](https://tomanagle.medium.com/build-a-rest-api-with-node-js-typescript-mongodb-b6c898d70d61).
+
+3. MERN app -> according to [this tutorial](https://appdividend.com/2022/03/05/react-express).
