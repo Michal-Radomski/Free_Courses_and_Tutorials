@@ -11,7 +11,8 @@ interface ServerPort {
   save: () => Promise<ServerPort>;
 }
 
-// Routes
+//* Routes
+// Add
 ServerSchemaRouter.route("/add").post(function (req: Request, res: Response) {
   const serverPort = new ServerSchema(req.body);
   serverPort
@@ -24,7 +25,8 @@ ServerSchemaRouter.route("/add").post(function (req: Request, res: Response) {
     });
 });
 
-ServerSchemaRouter.route("/").get(function (_req: Request, res: Response) {
+// Get all
+ServerSchemaRouter.route("/getall").get(function (_req: Request, res: Response) {
   ServerSchema.find(function (error: string, serverPorts: ServerPort[]) {
     if (error) {
       console.log(error);
@@ -34,6 +36,7 @@ ServerSchemaRouter.route("/").get(function (_req: Request, res: Response) {
   });
 });
 
+// Get by id
 ServerSchemaRouter.route("/edit/:id").get(function (req: Request, res: Response) {
   const id = req.params.id;
   ServerSchema.findById(id, function (error: string, serverPort: ServerPort) {
@@ -44,6 +47,7 @@ ServerSchemaRouter.route("/edit/:id").get(function (req: Request, res: Response)
   });
 });
 
+// Update by id
 ServerSchemaRouter.route("/update/:id").post(function (req: Request, res: Response, next: NextFunction) {
   ServerSchema.findById(req.params.id, function (error: string, serverPort: ServerPort) {
     if (!serverPort) return next(new Error("Could not load Document" + error));
@@ -65,6 +69,7 @@ ServerSchemaRouter.route("/update/:id").post(function (req: Request, res: Respon
   });
 });
 
+// Delete by id
 ServerSchemaRouter.route("/delete/:id").get(function (req: Request, res: Response) {
   ServerSchema.findByIdAndRemove({_id: req.params.id}, function (error: string, serverPort: ServerPort) {
     if (error) {

@@ -5,10 +5,12 @@
   "overrides": {
     "autoprefixer": "10.4.5"
   },
+  "proxy": "http://localhost:5000/serverport",
   "dependencies": {
     "@types/node": "^16.11.58",
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
+    "axios": "^0.27.2",
     "dotenv": "^16.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

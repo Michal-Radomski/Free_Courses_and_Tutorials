@@ -9,3 +9,9 @@ interface State {
   name: string;
   port: string;
 }
+
+interface ServerPort {
+  _id: string;
+  name: string;
+  port: number;
+}
