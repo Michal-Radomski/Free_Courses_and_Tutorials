@@ -1,14 +1,14 @@
 const express = require("express");
 import {Request, Response} from "express";
-
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
 // Import routes
-
+const ServerPortRouter = require("./routes/ServerPortRouter");
 // App
+
 const app = express();
 
 // Mongo DB
@@ -27,11 +27,12 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Test route
-app.get("/test", (req: Request, res: Response) => {
+app.get("/", (req: Request, res: Response) => {
   console.log("req.ip:", req.ip);
   res.send("<h1 style='color:blue;text-align:center'>API is running</h1>");
 });
 //Route middleware
+app.use("/serverport", ServerPortRouter);
 
 // Port
 const port = (process.env.PORT || 5000) as number;
