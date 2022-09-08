@@ -6,7 +6,7 @@ import CreateComponent from "./components/CreateComponent";
 import EditComponent from "./components/EditComponent";
 import IndexComponent from "./components/IndexComponent";
 
-function App(): JSX.Element {
+const App = (): JSX.Element => {
   return (
     <React.Fragment>
       <Router>
@@ -32,15 +32,10 @@ function App(): JSX.Element {
                     Index
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link to={"/edit/:id"} className="nav-link">
-                    Edit
-                  </Link>
-                </li>
               </ul>
             </div>
           </nav>
-          <p style={{marginTop: 20}}>App Page</p>
+          <h2 style={{marginTop: 20, textAlign: "center"}}>MERN Port App</h2>
           <Switch>
             <Route exact={true} path="/create" component={CreateComponent} />
             <Route path="/edit/:id" component={EditComponent} />
@@ -50,6 +45,6 @@ function App(): JSX.Element {
       </Router>
     </React.Fragment>
   );
-}
+};
 
 export default App;

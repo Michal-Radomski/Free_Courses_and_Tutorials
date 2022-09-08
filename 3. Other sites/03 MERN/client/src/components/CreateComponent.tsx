@@ -1,8 +1,10 @@
 import React from "react";
 import axios from "axios";
+import {History} from "history";
+import {withRouter} from "react-router-dom";
 
-class CreateComponent extends React.Component<Props, State> {
-  constructor(props: Props) {
+class CreateComponent extends React.Component<{history: History}, State> {
+  constructor(props: any) {
     super(props);
 
     //* Unnecessary
@@ -37,17 +39,23 @@ class CreateComponent extends React.Component<Props, State> {
       port: this.state.port,
     };
     // await console.log({serverPort});
-    await axios.post("/add", serverPort).then((res) => console.log(res.data));
+    await axios.post("/add", serverPort).then((res) => {
+      alert("Port was added successfully: " + res.data.serverPort.name + " : " + res.data.serverPort.port);
+      // console.log(res.data);
+    });
     await this.setState({
       name: "",
       port: "",
     });
+    await setTimeout(() => {
+      this.props.history.push("/index");
+    }, 1000);
   };
 
   render() {
     return (
       <div style={{marginTop: 50}}>
-        <h3>Add New Server</h3>
+        <h3>Add New Server Port</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>Add Host Name: </label>
@@ -57,8 +65,9 @@ class CreateComponent extends React.Component<Props, State> {
             <label>Add Server Port: </label>
             <input type="text" value={this.state.port} className="form-control" onChange={this.onChangePort} />
           </div>
+          <br />
           <div className="form-group">
-            <input type="submit" value="Add Node server" className="btn btn-primary" />
+            <input type="submit" value="Add Port" className="btn btn-primary" />
           </div>
         </form>
       </div>
@@ -66,4 +75,4 @@ class CreateComponent extends React.Component<Props, State> {
   }
 }
 
-export default CreateComponent;
+export default withRouter(CreateComponent as any);

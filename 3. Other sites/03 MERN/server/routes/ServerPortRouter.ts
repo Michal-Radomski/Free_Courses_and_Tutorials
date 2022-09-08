@@ -70,7 +70,7 @@ ServerSchemaRouter.route("/update/:id").post(function (req: Request, res: Respon
 });
 
 // Delete by id
-ServerSchemaRouter.route("/delete/:id").get(function (req: Request, res: Response) {
+ServerSchemaRouter.route("/delete/:id").delete(function (req: Request, res: Response) {
   ServerSchema.findByIdAndRemove({_id: req.params.id}, function (error: string, serverPort: ServerPort) {
     if (error) {
       console.log({error});
