@@ -1,9 +1,66 @@
 import React from "react";
 
 import "./App.scss";
+import TodoItem from "./components/TodoItem";
+import AddTodo from "./components/AddTodo";
+import {getTodos, addTodo, updateTodo, deleteTodo} from "./Api";
 
-function App(): JSX.Element {
-  return <React.Fragment>MERN App</React.Fragment>;
-}
+const App: React.FC = (): JSX.Element => {
+  const [todos, setTodos] = React.useState<ITodo[]>([]);
+
+  React.useEffect(() => {
+    fetchTodos();
+  }, []);
+
+  const fetchTodos = (): void => {
+    getTodos()
+      .then(({data: {todos}}: ITodo[] | any) => setTodos(todos))
+      .catch((err: Error) => console.log(err));
+  };
+
+  const handleSaveTodo = (event: React.FormEvent, formData: ITodo): void => {
+    event.preventDefault();
+    addTodo(formData)
+      .then(({status, data}) => {
+        if (status !== 201) {
+          throw new Error("Error! Todo not saved");
+        }
+        setTodos(data.todos);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleUpdateTodo = (todo: ITodo): void => {
+    updateTodo(todo)
+      .then(({status, data}) => {
+        if (status !== 200) {
+          throw new Error("Error! Todo not updated");
+        }
+        setTodos(data.todos);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleDeleteTodo = (_id: string): void => {
+    deleteTodo(_id)
+      .then(({status, data}) => {
+        if (status !== 200) {
+          throw new Error("Error! Todo not deleted");
+        }
+        setTodos(data.todos);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  return (
+    <main className="App">
+      <h1>My Todos List</h1>
+      <AddTodo saveTodo={handleSaveTodo} />
+      {todos.map((todo: ITodo) => (
+        <TodoItem key={todo._id} updateTodo={handleUpdateTodo} deleteTodo={handleDeleteTodo} todo={todo} />
+      ))}
+    </main>
+  );
+};
 
 export default App;
