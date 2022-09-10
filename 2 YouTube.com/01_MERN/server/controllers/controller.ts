@@ -18,7 +18,7 @@ export const saveToDo = (req: Request, res: Response) => {
   const {text} = req.body;
 
   ToDoModel.create({text})
-    .then(() => res.set(201).send("Added Successfully..."))
+    .then(() => res.set(201).send("Added Successfully..." + text))
     .catch((err: string) => console.log({err}));
 };
 
