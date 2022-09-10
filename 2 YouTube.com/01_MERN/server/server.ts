@@ -5,6 +5,7 @@ require("dotenv").config();
 const bodyParser = require("body-parser");
 
 // Import routes
+const routes = require("./routes/routes");
 
 // The server
 const app: Express = express();
@@ -13,6 +14,7 @@ const app: Express = express();
 app.use(cors());
 app.use(bodyParser.json());
 //Route middleware
+app.use("/api", routes);
 
 // Mongo DB
 mongoose
