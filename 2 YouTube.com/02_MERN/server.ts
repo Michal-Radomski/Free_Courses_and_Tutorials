@@ -8,6 +8,8 @@ const passport = require("passport");
 const cors = require("cors");
 
 // Import routes
+const authRoute = require("./routes/auth");
+// const secretRoute = require("./routes/secrets");
 
 // The server
 const app: Express = express();
@@ -18,7 +20,6 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.use(cors());
-//Route middleware
 
 //Setup session
 app.use(
@@ -41,6 +42,10 @@ mongoose
     console.log(`MongoDB Database connected with HOST: ${con.connection.host}`);
   })
   .catch((error: string) => console.log("Mongo DB Error => ", error));
+
+//Route middleware
+app.use("/", authRoute);
+// app.use("/", secretRoute);
 
 // Test route
 // app.get("/test", (req: Request, res: Response) => {

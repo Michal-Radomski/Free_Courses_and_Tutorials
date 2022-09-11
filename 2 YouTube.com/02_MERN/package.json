@@ -2,9 +2,9 @@
   "name": "02_mern",
   "version": "1.0.0",
   "description": "MERN App",
-  "main": "index.ts",
+  "main": "server.ts",
   "scripts": {
-    "start": "clear && nodemon index.ts"
+    "start": "clear && nodemon server.ts"
   },
   "keywords": [],
   "author": "MichRad",
@@ -17,6 +17,7 @@
     "express": "^4.18.1",
     "express-session": "^1.17.3",
     "mongoose": "^6.6.0",
+    "mongoose-findorcreate": "^3.0.0",
     "nodemon": "^2.0.19",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
