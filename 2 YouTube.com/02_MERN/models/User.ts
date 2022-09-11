@@ -21,12 +21,6 @@ const userSchema = new mongoose.Schema({
     trim: true,
     min: 8,
   },
-  googleId: {
-    type: String,
-  },
-  facebookId: {
-    type: String,
-  },
 });
 
 //Add passportLocalMongoose Plugin to hash and salt user password

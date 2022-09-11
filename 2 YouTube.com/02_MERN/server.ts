@@ -1,8 +1,8 @@
-import express, {Express, Request, Response} from "express";
+import express, {Express} from "express";
 import mongoose from "mongoose";
 require("dotenv").config();
 const bodyParser = require("body-parser");
-const ejs = require("ejs");
+// const ejs = require("ejs"); //* Not nesesery to import
 const session = require("express-session");
 const passport = require("passport");
 const cors = require("cors");
