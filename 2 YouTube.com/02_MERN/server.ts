@@ -9,7 +9,7 @@ const cors = require("cors");
 
 // Import routes
 const authRoute = require("./routes/auth");
-// const secretRoute = require("./routes/secrets");
+const secretRoute = require("./routes/secrets");
 
 // The server
 const app: Express = express();
@@ -45,33 +45,13 @@ mongoose
 
 //Route middleware
 app.use("/", authRoute);
-// app.use("/", secretRoute);
+app.use("/", secretRoute);
 
 // Test route
 // app.get("/test", (req: Request, res: Response) => {
 //   console.log("req.ip:", req.ip);
 //   res.send("<h1 style='color:blue;text-align:center'>API is running</h1>");
 // });
-app.get("/", (req: Request, res: Response) => {
-  console.log("req.ip:", req.ip);
-  res.render("home");
-});
-app.get("/register", (req: Request, res: Response) => {
-  console.log("req.ip:", req.ip);
-  res.render("register");
-});
-app.get("/login", (req: Request, res: Response) => {
-  console.log("req.ip:", req.ip);
-  res.render("login");
-});
-app.get("/secrets", (req: Request, res: Response) => {
-  console.log("req.ip:", req.ip);
-  res.render("secrets");
-});
-app.get("/submit", (req: Request, res: Response) => {
-  console.log("req.ip:", req.ip);
-  res.render("submit");
-});
 
 // Port
 const port = (process.env.PORT || 5000) as number;
