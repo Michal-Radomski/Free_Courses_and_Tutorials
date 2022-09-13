@@ -10,3 +10,5 @@
 
 4. MERN app -> according to
    [this tutorial](https://www.freecodecamp.org/news/how-to-build-a-todo-app-with-react-typescript-nodejs-and-mongodb).
+
+5. MERN app -> according to [this tutorial](https://blog.logrocket.com/mern-stack-tutorial/).
