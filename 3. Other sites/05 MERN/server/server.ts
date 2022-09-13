@@ -2,7 +2,10 @@ import express, { Express, Request, Response } from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 const bodyParser = require("body-parser");
-require("dotenv").config();
+const config = require("config");
+
+const mongoURI: string = config.get("mongoURI");
+// console.log({ mongoURI });
 
 // Import routes
 
@@ -15,15 +18,13 @@ app.use(bodyParser.json());
 //Route middleware
 
 // Mongo DB
-// const options = {useNewUrlParser: true, useUnifiedTopology: true};
-// mongoose.set("useFindAndModify", false);
-
-// mongoose
-//   .connect(process.env.DATABASE as string, options)
-//   .then((con: {connection: {host: string}}) => {
-//     console.log(`MongoDB Database connected with HOST: ${con.connection.host}`);
-//   })
-//   .catch((error: string) => console.log("Mongo DB Error => ", error));
+const options = { useNewUrlParser: true, useUnifiedTopology: true };
+mongoose
+  .connect(mongoURI, options)
+  .then((con: { connection: { host: string } }) => {
+    console.log(`MongoDB Database connected with HOST: ${con.connection.host}`);
+  })
+  .catch((error: string) => console.log("Mongo DB Error => ", error));
 
 // Test route
 app.get("/", (req: Request, res: Response) => {
