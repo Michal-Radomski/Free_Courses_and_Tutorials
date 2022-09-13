@@ -4,7 +4,7 @@
   "description": "MERN Api TS",
   "main": "index.ts",
   "scripts": {
-    "start": "nodemon src/index.ts"
+    "start": "clear && nodemon src/index.ts"
   },
   "keywords": [],
   "author": "MichRad",
