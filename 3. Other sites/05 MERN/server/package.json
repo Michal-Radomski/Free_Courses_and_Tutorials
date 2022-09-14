@@ -4,7 +4,9 @@
   "description": "MERN - server",
   "main": "server.ts",
   "scripts": {
-    "server": "clear && nodemon server.ts"
+    "server": "nodemon server.ts",
+    "client": "BROWSER=NONE npm start --prefix ../client/",
+    "dev": "clear && concurrently \"npm run server\"  \"npm run client\""
   },
   "author": "MichRad",
   "license": "ISC",
