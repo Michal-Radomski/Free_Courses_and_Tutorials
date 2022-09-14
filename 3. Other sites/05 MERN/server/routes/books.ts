@@ -6,7 +6,7 @@ const router = express.Router();
 // // @route GET api/books/test
 // // @description Tests books route
 // // @access Public
-// router.get("/test", (req: Request, res: Response) => {
+// router.get("/test", (req, res) => {
 //   console.log("req.ip:", req.ip);
 //   res.send("book route testing!");
 // });
@@ -36,4 +36,4 @@ router.put("/:id", updateBook);
 // @access Public
 router.delete("/:id", deleteBook);
 
-export default router;
+module.exports = router;
