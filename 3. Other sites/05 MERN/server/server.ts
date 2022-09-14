@@ -8,6 +8,7 @@ const mongoURI: string = config.get("mongoURI");
 // console.log({ mongoURI });
 
 // Import routes
+import bookRoutes from "./routes/books";
 
 // The server
 const app: Express = express();
@@ -16,6 +17,7 @@ const app: Express = express();
 app.use(cors());
 app.use(bodyParser.json());
 //Route middleware
+app.use("/api", bookRoutes);
 
 // Mongo DB
 const options = { useNewUrlParser: true, useUnifiedTopology: true };
