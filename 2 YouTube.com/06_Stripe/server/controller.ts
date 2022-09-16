@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 const { v4: uuidv4 } = require("uuid");
-const stripe = require("stripe")(process.env.STRIPE_PUBLIC_KEY, {
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2022-08-01",
 });
 
@@ -10,8 +10,9 @@ interface ExtendedObject extends Object {
 
 export const stripePayment = (req: Request, res: Response) => {
   console.log("req.ip:", req.ip);
-  const { product, token } = req.body;
-  console.log({ product, token });
+  const { product, token, price } = req.body;
+  // console.log({ product, token, price });
+  // console.log("price:", price, typeof price);
   const idempotencyKey = uuidv4();
   return stripe.customers
     .create({
@@ -21,7 +22,7 @@ export const stripePayment = (req: Request, res: Response) => {
     .then((customer: ExtendedObject) => {
       stripe.charges.create(
         {
-          amount: product.price * 100,
+          amount: price * 100,
           currency: "pln",
           customer: customer.id,
           receipt_email: token.email,

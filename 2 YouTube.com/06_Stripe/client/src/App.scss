@@ -1,4 +1,13 @@
 body {
   background-color: lightyellow;
   box-sizing: border-box;
+  margin: 1rem;
+}
+
+div.stripe {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
