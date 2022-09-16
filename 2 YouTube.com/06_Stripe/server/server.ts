@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 
 // Import routes
+const routes = require("./route");
 
 // The server
 const app: Express = express();
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(morgan("combined"));
 //Route middleware
+app.use("/api", routes);
 
 // Test route
 app.get("/", (req: Request, res: Response) => {
@@ -28,5 +30,5 @@ const port = (process.env.PORT || 5000) as number;
 app.listen({ port: port }, () => {
   console.log(`Server is listening at http://localhost:${port}`);
   // For testing only
-  console.log("Current Time:", new Date().toLocaleTimeString());
+  console.info("Current Time:", new Date().toLocaleTimeString());
 });
