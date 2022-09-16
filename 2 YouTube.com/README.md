@@ -10,3 +10,5 @@
 4. MERN API -> according to [this tutorial](https://www.youtube.com/watch?v=72_5_YuDCNA).
 
 5. MERN JWT Authentication -> according to [this tutorial](https://www.youtube.com/watch?v=duyv0se4eNs).
+
+6. React/Node with Stripe -> according to [this tutorial](https://www.youtube.com/watch?v=lbEFSP1WAv0).
