@@ -7,6 +7,10 @@ import jwt from "jsonwebtoken";
 import User from "../models/User";
 import { JWT_KEY, FRONTEND_URL } from "../config/config";
 
+interface CustomJwtPayload {
+  userId: string;
+}
+
 export const signupUser: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
   const { name, email, password } = req.body;
 
@@ -43,9 +47,9 @@ export const signinUser: RequestHandler = async (req, res, next) => {
     if (!user) {
       return next(createHttpError(404, "User not Found!"));
     }
-    // if (!user.isUserVerified) {
-    //   return next(createHttpError(406, "User not Verified"));
-    // }
+    if (!user.isUserVerified) {
+      return next(createHttpError(406, "User not Verified"));
+    }
 
     const isValidPassword: boolean = await bcrypt.compare(password, user.password);
 
@@ -98,13 +102,13 @@ export const sendVerificationMail: RequestHandler = async (req, res, next) => {
     // let testAccount = await nodemailer.createTestAccount();
     // res.json({ testAccount });
 
-    let testAccount = {
+    //* Normally it should be hidden
+    const testAccount = {
       user: "lisandro.keeling@ethereal.email",
       pass: "4KpGXgmZFpwtX7aYQz",
     };
-
     // Create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransport({
       host: "smtp.ethereal.email",
       port: 587,
       secure: false, //* true for 465, false for other ports
@@ -115,7 +119,7 @@ export const sendVerificationMail: RequestHandler = async (req, res, next) => {
     });
 
     // Send mail with defined transport object
-    let info = await transporter.sendMail({
+    const info = await transporter.sendMail({
       from: '"Test Email" <test-mail-test-app@com.pl>', // Sender address
       to: `${email}`, // List of receivers
       subject: "For Email Verification", // Subject line
@@ -126,10 +130,32 @@ export const sendVerificationMail: RequestHandler = async (req, res, next) => {
 
     await user.updateOne({ $set: { verifyToken: encryptedToken } });
     res.json({
-      message: `Preview URL: %s ${nodemailer.getTestMessageUrl(info)}`,
+      message: `Preview URL: ${nodemailer.getTestMessageUrl(info)}`,
     });
   } catch (error) {
     console.log({ error });
     return next(InternalServerError);
+  }
+};
+
+export const verifyUserMail: RequestHandler = async (req, res, next) => {
+  const { token }: { token: string } = req.body;
+
+  try {
+    const decodedToken = jwt.verify(token, JWT_KEY as string) as CustomJwtPayload;
+    // console.log({ decodedToken });
+
+    const user = await User.findById(decodedToken.userId);
+    if (!user) return next(createHttpError(401, "Token Invalid"));
+
+    await user.updateOne({
+      $set: { isUserVerified: true },
+      $unset: { verifyToken: 0 },
+    });
+
+    res.json({ message: "Email Verified!" });
+  } catch (error) {
+    console.log({ error });
+    return next(createHttpError(401, "Token Invalid"));
   }
 };
