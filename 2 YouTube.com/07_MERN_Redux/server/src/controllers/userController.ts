@@ -5,7 +5,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 import User from "../models/User";
-import { JWT_KEY, FRONTEND_URL } from "../config/config";
+import { JWT_KEY, FRONTEND_URL, transporter } from "../config/config";
+// console.log({ transporter });
 
 interface CustomJwtPayload {
   userId: string;
@@ -102,21 +103,7 @@ export const sendVerificationMail: RequestHandler = async (req, res, next) => {
     // let testAccount = await nodemailer.createTestAccount();
     // res.json({ testAccount });
 
-    //* Normally it should be hidden
-    const testAccount = {
-      user: "lisandro.keeling@ethereal.email",
-      pass: "4KpGXgmZFpwtX7aYQz",
-    };
-    // Create reusable transporter object using the default SMTP transport
-    const transporter = nodemailer.createTransport({
-      host: "smtp.ethereal.email",
-      port: 587,
-      secure: false, //* true for 465, false for other ports
-      auth: {
-        user: testAccount.user, // Generated ethereal user
-        pass: testAccount.pass, // Generated ethereal password
-      },
-    });
+    //- const testAccount and transporter are moved to default.json
 
     // Send mail with defined transport object
     const info = await transporter.sendMail({
@@ -126,7 +113,7 @@ export const sendVerificationMail: RequestHandler = async (req, res, next) => {
       text: "Hello world!", // Plain text body
       html: `Your Verification Link <a href="${FRONTEND_URL}/email-verify/${jwtToken}">Link</a>`, // HTML body
     });
-    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    console.log("Preview URL:", nodemailer.getTestMessageUrl(info));
 
     await user.updateOne({ $set: { verifyToken: encryptedToken } });
     res.json({
@@ -154,6 +141,66 @@ export const verifyUserMail: RequestHandler = async (req, res, next) => {
     });
 
     res.json({ message: "Email Verified!" });
+  } catch (error) {
+    console.log({ error });
+    return next(createHttpError(401, "Token Invalid"));
+  }
+};
+
+export const sendForgotPasswordMail: RequestHandler = async (req, res, next) => {
+  const { email }: { email: string } = req.body;
+  try {
+    const user = await User.findOne({ email });
+    if (!user) return next(createHttpError(404, "Email IS Not Valid!"));
+
+    const encryptedToken = await bcrypt.hash(user._id.toString(), 8);
+    const jwtToken = jwt.sign({ userId: user._id }, JWT_KEY as string, {
+      expiresIn: "1h",
+    });
+    // console.log({ encryptedToken, jwtToken });
+
+    const info = await transporter.sendMail({
+      from: '"Test Email" <test-mail-test-app@com.pl>', // Sender address
+      to: `${email}`, // List of receivers
+      subject: "For Forgot Password Verification Mail", // Subject line
+      text: "Hello world!", // Plain text body
+      html: `Your Verification for forgot password Link <a href="${FRONTEND_URL}/forgot-password-verify/${jwtToken}">Link</a>`, // HTML body
+    });
+    console.log("Preview URL:", nodemailer.getTestMessageUrl(info));
+
+    await user.updateOne({ $set: { verifyToken: encryptedToken } });
+
+    res.json({
+      message: `Preview URL: ${nodemailer.getTestMessageUrl(info)}`,
+    });
+  } catch (error) {
+    console.log({ error });
+    return next(InternalServerError);
+  }
+};
+
+export const verifyForgotMail: RequestHandler = async (req, res, next) => {
+  const { token, password }: { token: string; password: string } = req.body;
+  // console.log({ token, password });
+
+  try {
+    const decodedToken = jwt.verify(token, JWT_KEY as string) as CustomJwtPayload;
+    // console.log({ decodedToken });
+
+    const user = await User.findById(decodedToken.userId);
+    if (!user) return next(createHttpError(401, "Token Invalid"));
+    // console.log({ user });
+
+    const salt = await bcrypt.genSalt(10);
+    const encryptedPassword = await bcrypt.hash(password, salt);
+    // console.log({ salt, encryptedPassword });
+
+    await user.updateOne({
+      $set: { password: encryptedPassword },
+      $unset: { verifyToken: 0 },
+    });
+
+    res.json({ message: "Password Changed!" });
   } catch (error) {
     console.log({ error });
     return next(createHttpError(401, "Token Invalid"));
