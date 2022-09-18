@@ -10,9 +10,11 @@ import { JWT_KEY } from "../config/config";
 export const signupUser: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
   const { name, email, password } = req.body;
 
-  if (password.length < 8) {
-    return next(createHttpError(400, "Password must be at least 8 characters long"));
-  }
+  //* Validation check by Validation files
+  // if (password.length < 8) {
+  //   console.log("Password must be at least 8 characters long");
+  //   return next(createHttpError(400, "Password must be at least 8 characters long"));
+  // }
 
   try {
     const existingUser = await User.findOne({ email });

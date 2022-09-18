@@ -5,6 +5,9 @@ require("dotenv").config();
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
+import passport from "passport";
+
+import JwtStrategy from "./middleware/passport";
 
 // Import routes
 import userRoutes from "./routes/userRoutes";
@@ -17,6 +20,11 @@ app.use(cors());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(morgan("combined"));
+
+app.use(passport.initialize());
+JwtStrategy(passport);
+console.log({ JwtStrategy });
+
 //Route middleware
 app.use("/api/user", userRoutes);
 
