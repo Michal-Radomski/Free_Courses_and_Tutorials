@@ -7,6 +7,7 @@ const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 
 // Import routes
+import userRoutes from "./routes/userRoutes";
 
 // The server
 const app: Express = express();
@@ -17,6 +18,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(morgan("combined"));
 //Route middleware
+app.use("/api/user", userRoutes);
 
 // Mongo DB
 mongoose

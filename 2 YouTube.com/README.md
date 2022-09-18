@@ -12,3 +12,5 @@
 5. MERN JWT Authentication -> according to [this tutorial](https://www.youtube.com/watch?v=duyv0se4eNs).
 
 6. React/Node with Stripe -> according to [this tutorial](https://www.youtube.com/watch?v=lbEFSP1WAv0).
+
+7. MERN App with Redux -> according to [this tutorial](https://www.youtube.com/watch?v=a9NRFuMKV4o).
