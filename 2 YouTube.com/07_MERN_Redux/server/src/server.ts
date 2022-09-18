@@ -22,8 +22,8 @@ app.use(bodyParser.json());
 app.use(morgan("combined"));
 
 app.use(passport.initialize());
-JwtStrategy(passport);
-console.log({ JwtStrategy });
+JwtStrategy(passport); //* Check if user if authenticated
+// console.log({ JwtStrategy });
 
 //Route middleware
 app.use("/api/user", userRoutes);
