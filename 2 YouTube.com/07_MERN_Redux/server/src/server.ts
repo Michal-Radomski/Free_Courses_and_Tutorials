@@ -6,8 +6,10 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 import passport from "passport";
+import createHttpError from "http-errors";
 
 import JwtStrategy from "./middleware/passport";
+import errorHandler from "./middleware/errorHandler";
 
 // Import routes
 import userRoutes from "./routes/userRoutes";
@@ -27,6 +29,12 @@ JwtStrategy(passport); //* Check if user if authenticated
 
 //Route middleware
 app.use("/api/user", userRoutes);
+
+app.use(() => {
+  throw createHttpError(404, "Route not found");
+});
+
+app.use(errorHandler);
 
 // Mongo DB
 mongoose

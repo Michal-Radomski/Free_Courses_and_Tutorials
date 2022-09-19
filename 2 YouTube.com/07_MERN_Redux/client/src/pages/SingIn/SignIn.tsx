@@ -12,32 +12,36 @@ import { AppDispatch, CustomError } from "../../Interfaces";
 
 const SignIn = (): JSX.Element => {
   // console.info({ useSigninUserMutation });
-  const [email, setEmail] = React.useState<string>();
+  const [email, setEmail] = React.useState<string>("");
+  // console.info({ email });
   const dispatch: AppDispatch = useAppDispatch();
 
   const toast = useToast();
   const navigate = useNavigate();
   const [signinUser, { data, isLoading, error, isError, isSuccess }] = useSigninUserMutation();
-  console.info({ data });
+  // console.info({ data });
+  console.info({ error, isError });
 
-  if (isError) {
-    toast({
-      title: (error as CustomError).data?.message,
-      status: "error",
-      duration: 5000,
-    });
-    if ((error as CustomError).data?.message === "User not Verified") {
-      navigate("/send-verify-mail", {
-        state: { email },
+  React.useEffect(() => {
+    if (isError) {
+      toast({
+        title: (error as CustomError).data?.message,
+        status: "error",
+        duration: 5000,
       });
+      if ((error as CustomError).data?.message === "User not Verified") {
+        navigate("/send-verify-mail", {
+          state: { email },
+        });
+      }
     }
-  }
-  if (isSuccess) {
-    dispatch(setUser({ token: data.token, name: data.name }));
-    navigate("/");
-    localStorage.setItem("token", data.token);
-  }
-  // console.info({ error });
+    if (isSuccess) {
+      dispatch(setUser({ token: data.token, name: data.name }));
+      navigate("/");
+      localStorage.setItem("token", data.token);
+    }
+    // console.info({ error });
+  });
 
   return (
     <Formik

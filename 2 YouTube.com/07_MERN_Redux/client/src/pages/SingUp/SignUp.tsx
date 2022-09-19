@@ -6,9 +6,9 @@ import { InputControl, SubmitButton } from "formik-chakra-ui";
 import { useSignupUserMutation } from "../../redux/api/authApi";
 
 const SignUp = (): JSX.Element => {
-  const [signupUser, { data, isLoading }] = useSignupUserMutation();
-  console.info({ data });
-  console.info({ isLoading });
+  const [signupUser, { data, isLoading, isSuccess }] = useSignupUserMutation();
+  console.info({ data, isSuccess });
+  // console.info({ isLoading });
 
   return (
     <React.Fragment>
