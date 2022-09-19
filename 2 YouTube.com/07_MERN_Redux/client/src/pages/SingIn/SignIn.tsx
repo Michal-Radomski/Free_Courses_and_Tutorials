@@ -37,7 +37,7 @@ const SignIn = (): JSX.Element => {
     navigate("/");
     localStorage.setItem("token", data.token);
   }
-  // console.log({ error });
+  // console.info({ error });
 
   return (
     <Formik
