@@ -9,27 +9,29 @@ import { useResetPasswordMutation } from "../../redux/api/authApi";
 import { CustomError } from "../../Interfaces";
 
 const ChangePassword = (): JSX.Element => {
-  // console.info({ useParams });
   const { token } = useParams();
   const toast = useToast();
-  console.info({ token });
+  // console.info({ token });
 
   const [resetPassword, { data, isError, isLoading, error, isSuccess }] = useResetPasswordMutation();
-  if (isError) {
-    toast({
-      title: (error as CustomError).data?.message,
-      status: "error",
-      duration: 5000,
-    });
-  }
-  console.info(data);
-  if (isSuccess) {
-    toast({
-      title: "Password changed successfully",
-      status: "success",
-      duration: 5000,
-    });
-  }
+
+  React.useEffect(() => {
+    if (isError) {
+      toast({
+        title: (error as CustomError).data?.message,
+        status: "error",
+        duration: 5000,
+      });
+    }
+    console.info(data);
+    if (isSuccess) {
+      toast({
+        title: "Password changed successfully",
+        status: "success",
+        duration: 5000,
+      });
+    }
+  });
 
   return (
     <React.Fragment>

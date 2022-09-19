@@ -10,7 +10,7 @@ import { CustomError } from "../../Interfaces";
 const EmailVerify = (): JSX.Element => {
   const { token } = useParams();
   const toast = useToast();
-  console.info({ token });
+  // console.info({ token });
 
   const [verifyUser, { data, isError, isLoading, error, isSuccess }] = useVerifyUserMutation();
   if (isError) {
@@ -24,7 +24,7 @@ const EmailVerify = (): JSX.Element => {
 
   React.useEffect(() => {
     if (token) {
-      verifyUser({ token });
+      verifyUser({ token: token });
     }
   }, [verifyUser, token]);
 
@@ -41,7 +41,7 @@ const EmailVerify = (): JSX.Element => {
           )}
           {isSuccess && (
             <Grid placeItems="center" h="100vh">
-              <Heading>User Verified</Heading>
+              <Heading>Email and User Verified</Heading>
             </Grid>
           )}
         </>

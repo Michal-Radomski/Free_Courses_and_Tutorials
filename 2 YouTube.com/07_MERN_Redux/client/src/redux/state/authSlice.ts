@@ -14,17 +14,21 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<{ name: string; token: string }>) => {
+    setUser: (state, action: PayloadAction<{ name: string | null; token: string | null }>) => {
       state.name = action.payload.name;
       state.token = action.payload.token;
     },
-    defaultState: (state) => {
-      state = initialState;
-    },
+    //* Unnecessary
+    // defaultState: (state) => {
+    //   state = initialState;
+    // },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setUser, defaultState } = authSlice.actions;
+export const {
+  setUser,
+  //  defaultState
+} = authSlice.actions;
 
 export default authSlice.reducer;

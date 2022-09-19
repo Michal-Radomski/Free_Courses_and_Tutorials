@@ -2,6 +2,8 @@ import React from "react";
 import { Grid, Heading, Stack } from "@chakra-ui/layout";
 import { Form, Formik } from "formik";
 import { InputControl, SubmitButton } from "formik-chakra-ui";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
 
 import { useSignupUserMutation } from "../../redux/api/authApi";
 
@@ -10,12 +12,28 @@ const SignUp = (): JSX.Element => {
   console.info({ data, isSuccess });
   // console.info({ isLoading });
 
+  const navigate = useNavigate();
+  const toast = useToast();
+
   return (
     <React.Fragment>
       <Formik
         initialValues={{ name: "", email: "", password: "" }}
         onSubmit={(values) => {
+          // console.info({ values });
           signupUser({ ...values });
+          // alert("You will be redirected to the SignIn Page");
+          toast({
+            title: "You will be redirected to the SignIn Page",
+            description: "Please SignIn",
+            status: "info",
+            duration: 5000,
+            isClosable: true,
+            position: "top-right",
+          });
+          setTimeout(() => {
+            navigate("/signin", {});
+          }, 500);
         }}
       >
         <Form>

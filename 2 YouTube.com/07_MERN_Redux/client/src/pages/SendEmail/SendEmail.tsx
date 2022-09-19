@@ -9,7 +9,7 @@ import { CustomError } from "../../Interfaces";
 const SendEmail = (): JSX.Element => {
   const toast = useToast();
   const { state } = useLocation();
-  console.info({ state });
+  // console.info({ state });
 
   const [sendMail, { isLoading, data, isError, error }] = useSendMailForVerificationMutation();
   if (isError) {

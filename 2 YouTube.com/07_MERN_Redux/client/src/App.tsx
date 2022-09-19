@@ -11,6 +11,7 @@ import SignIn from "./pages/SingIn/SignIn";
 import SignUp from "./pages/SingUp/SignUp";
 
 const NotFound = (): JSX.Element => <h1 style={{ textAlign: "center", marginTop: "80px" }}>Page Not Found</h1>;
+// TODO: protected routes
 
 function App(): JSX.Element {
   return (
