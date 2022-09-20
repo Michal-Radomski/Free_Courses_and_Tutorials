@@ -7,16 +7,19 @@ import bodyParser from "body-parser";
 import morgan from "morgan";
 
 // Import routes
+import postRoutes from "./routes/posts";
 
 // The server
 const app: Express = express();
 
 // Middlewares
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "30mb" }));
+app.use(bodyParser.urlencoded({ extended: true, limit: "30mb" }));
 app.use(morgan("combined"));
 
 //Route middleware
+app.use("/api/posts", postRoutes);
 
 // Mongo DB
 mongoose
