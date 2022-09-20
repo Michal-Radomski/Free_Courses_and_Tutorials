@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "MERN App with Redux - backend",
   "main": "server.ts",
+  "type": "commonjs",
   "scripts": {
     "server": "nodemon server.ts",
     "client": "BROWSER=NONE npm start --prefix ../client/",
