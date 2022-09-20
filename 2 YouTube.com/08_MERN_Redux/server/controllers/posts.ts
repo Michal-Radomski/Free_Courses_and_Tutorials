@@ -19,7 +19,7 @@ export const getPost: RequestHandler = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   try {
-    const post = (await PostMessage.findById(id)) as IPost;
+    const post: IPost | null = await PostMessage.findById(id);
 
     res.status(200).json(post);
   } catch (error) {
@@ -49,8 +49,7 @@ export const updatePost: RequestHandler = async (req: Request, res: Response) =>
 
   const updatedPost = { creator, title, message, tags, selectedFile, _id: id };
 
-  (await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true })) as IPost;
-
+  await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
   res.json(updatedPost);
 };
 
@@ -59,7 +58,7 @@ export const deletePost: RequestHandler = async (req: Request, res: Response) =>
 
   if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-  (await PostMessage.findByIdAndRemove(id)) as IPost;
+  await PostMessage.findByIdAndRemove(id);
 
   res.json({ message: "Post deleted successfully." });
 };
@@ -69,7 +68,7 @@ export const likePost: RequestHandler = async (req: Request, res: Response) => {
 
   if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-  const post = (await PostMessage.findById(id)) as IPost;
+  const post: IPost | null = await PostMessage.findById(id);
 
   const updatedPost = await PostMessage.findByIdAndUpdate(id, { likeCount: post!.likeCount + 1 }, { new: true });
 
