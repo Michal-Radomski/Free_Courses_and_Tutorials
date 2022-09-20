@@ -1,12 +1,13 @@
-import { Request, Response } from "express";
+import { Request, RequestHandler, Response } from "express";
 import mongoose from "mongoose";
 
-import PostMessage from "../models/PostMessage";
+// import PostMessage from "../models/PostMessage"; //* V1-> Mongoose Modele
+import { PostMessage, IPost } from "../models/PostMessage"; //* v2 -> Typegoose Model
 import { CustomError } from "../Types";
 
-export const getPosts = async (_req: Request, res: Response) => {
+export const getPosts: RequestHandler = async (_req: Request, res: Response) => {
   try {
-    const postMessages = await PostMessage.find();
+    const postMessages: IPost[] = await PostMessage.find();
 
     res.status(200).json(postMessages);
   } catch (error) {
@@ -14,11 +15,11 @@ export const getPosts = async (_req: Request, res: Response) => {
   }
 };
 
-export const getPost = async (req: Request, res: Response) => {
+export const getPost: RequestHandler = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   try {
-    const post = await PostMessage.findById(id);
+    const post = (await PostMessage.findById(id)) as IPost;
 
     res.status(200).json(post);
   } catch (error) {
@@ -26,10 +27,10 @@ export const getPost = async (req: Request, res: Response) => {
   }
 };
 
-export const createPost = async (req: Request, res: Response) => {
+export const createPost: RequestHandler = async (req: Request, res: Response) => {
   const { title, message, selectedFile, creator, tags } = req.body;
 
-  const newPostMessage = new PostMessage({ title, message, selectedFile, creator, tags });
+  const newPostMessage: IPost = new PostMessage({ title, message, selectedFile, creator, tags });
 
   try {
     await newPostMessage.save();
@@ -40,35 +41,35 @@ export const createPost = async (req: Request, res: Response) => {
   }
 };
 
-export const updatePost = async (req: Request, res: Response) => {
+export const updatePost: RequestHandler = async (req: Request, res: Response) => {
   const { id } = req.params;
   const { title, message, creator, selectedFile, tags } = req.body;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with this id: ${id}`);
 
   const updatedPost = { creator, title, message, tags, selectedFile, _id: id };
 
-  await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
+  (await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true })) as IPost;
 
   res.json(updatedPost);
 };
 
-export const deletePost = async (req: Request, res: Response) => {
+export const deletePost: RequestHandler = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-  await PostMessage.findByIdAndRemove(id);
+  (await PostMessage.findByIdAndRemove(id)) as IPost;
 
   res.json({ message: "Post deleted successfully." });
 };
 
-export const likePost = async (req: Request, res: Response) => {
+export const likePost: RequestHandler = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-  const post = await PostMessage.findById(id);
+  const post = (await PostMessage.findById(id)) as IPost;
 
   const updatedPost = await PostMessage.findByIdAndUpdate(id, { likeCount: post!.likeCount + 1 }, { new: true });
 
