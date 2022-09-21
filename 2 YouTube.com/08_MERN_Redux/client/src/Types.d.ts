@@ -1,6 +1,8 @@
 // Types and Interfaces
+import mongoose from "mongoose";
 
 export interface IPost {
+  _id?: mongoose.Schema.Types.ObjectId;
   title: string;
   message: string;
   creator: string;
