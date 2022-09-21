@@ -1,12 +1,12 @@
-import { Dispatch, State } from "../../Types";
+import { Action, RootState } from "../../Types";
 
-const initialState: State = {};
+const initialState: RootState = [];
 
-const posts = function (state = initialState, action: Dispatch) {
+const postsReducer = function (state = initialState, action: Action) {
   switch (action.type) {
     default:
       return state;
   }
 };
 
-export default posts;
+export default postsReducer;
