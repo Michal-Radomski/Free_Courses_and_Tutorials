@@ -2,14 +2,23 @@ import React from "react";
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
 
 import memories from "./images/memories.png";
+import { useAppDispatch } from "./redux/hooks";
 import "./App.scss";
 import useStyles from "./styles";
 import Posts from "./components/Posts/Posts";
 import Form from "./components/Form/Form";
+import { getPosts } from "./redux/actions/posts";
+import { AppDispatch } from "./Types";
 
 function App(): JSX.Element {
   const classes = useStyles();
   // console.log({ classes });
+  const dispatch: AppDispatch = useAppDispatch();
+
+  React.useEffect(() => {
+    dispatch(getPosts());
+  }, [dispatch]);
+
   return (
     <React.Fragment>
       <Container maxWidth="lg">
