@@ -1,6 +1,5 @@
 import { Action, IPost, RootState } from "../../Types";
-
-import { CREATE, FETCH_ALL, UPDATE } from "../actionTypes";
+import { CREATE, DELETE, FETCH_ALL, LIKE, UPDATE } from "../actionTypes";
 
 const initialState: RootState = [];
 
@@ -12,6 +11,11 @@ const postsReducer = function (state = initialState, action: Action): RootState 
       return [...state, action.payload];
     case UPDATE:
       return state.map((post: IPost) => (post._id === action.payload._id ? action.payload : post));
+    case DELETE:
+      return state.filter((post: IPost) => post._id !== action.payload);
+    case LIKE:
+      return state.map((post: IPost) => (post._id === action.payload._id ? action.payload : post));
+
     default:
       return state;
   }

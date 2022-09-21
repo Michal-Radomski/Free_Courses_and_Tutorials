@@ -43,6 +43,7 @@ export const createPost: RequestHandler = async (req: Request, res: Response): P
 
 export const updatePost: RequestHandler = async (req: Request, res: Response): Promise<any> => {
   const { id: _id } = req.params;
+  // console.log({ id: _id });
   const { title, message, creator, selectedFile, tags } = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(_id)) {
@@ -57,6 +58,7 @@ export const updatePost: RequestHandler = async (req: Request, res: Response): P
 
 export const deletePost: RequestHandler = async (req: Request, res: Response): Promise<any> => {
   const { id } = req.params;
+  // console.log({ id });
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).send(`No post with id: ${id}`);
@@ -64,7 +66,7 @@ export const deletePost: RequestHandler = async (req: Request, res: Response): P
 
   await PostMessage.findByIdAndRemove(id);
 
-  res.json({ message: "Post deleted successfully." });
+  res.json({ message: `Post with id: ${id} deleted successfully.` });
 };
 
 export const likePost: RequestHandler = async (req: Request, res: Response): Promise<any> => {

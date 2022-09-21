@@ -20,7 +20,7 @@ function App(): JSX.Element {
 
   React.useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch]);
+  }, [dispatch, currentId]);
 
   return (
     <React.Fragment>

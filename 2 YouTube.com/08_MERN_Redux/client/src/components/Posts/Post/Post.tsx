@@ -6,7 +6,9 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
 
 import useStyles from "./styles";
-import { IPost } from "../../../Types";
+import { AppDispatch, IPost } from "../../../Types";
+import { useAppDispatch } from "../../../redux/hooks";
+import { deletePost, likePost } from "../../../redux/actions/posts";
 
 const Post = ({
   post,
@@ -16,6 +18,8 @@ const Post = ({
   setCurrentId: React.Dispatch<React.SetStateAction<string>>;
 }): JSX.Element => {
   const classes = useStyles();
+  const dispatch: AppDispatch = useAppDispatch();
+
   return (
     <React.Fragment>
       <Card className={classes.card}>
@@ -32,8 +36,8 @@ const Post = ({
           <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
         </div>
         <div className={classes.overlay2}>
-          <Tooltip title="Select a Memory">
-            <Button style={{ color: "white" }} size="small" onClick={() => setCurrentId(post._id)}>
+          <Tooltip title="Select this Memory">
+            <Button style={{ color: "white" }} size="medium" onClick={() => setCurrentId(post._id)}>
               <MoreHorizIcon fontSize="large" />
             </Button>
           </Tooltip>
@@ -52,10 +56,10 @@ const Post = ({
           </Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
-          <Button size="small" color="primary" onClick={() => console.log("test")}>
+          <Button size="small" color="primary" onClick={() => dispatch(likePost(post._id))}>
             <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}{" "}
           </Button>
-          <Button size="small" color="primary" onClick={() => console.log("test")}>
+          <Button size="small" color="primary" onClick={() => dispatch(deletePost(post._id))}>
             <DeleteIcon fontSize="small" /> Delete
           </Button>
         </CardActions>
