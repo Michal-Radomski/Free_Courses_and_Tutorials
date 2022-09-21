@@ -4,10 +4,10 @@ export interface IPost {
   title: string;
   message: string;
   creator: string;
-  tags: string[];
+  tags: string[] | string;
   selectedFile: string;
-  likeCount: number;
-  createdAt: Date;
+  likeCount?: number;
+  createdAt?: Date;
 }
 
 export type RootState = ReturnType<typeof store.getState>;

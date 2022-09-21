@@ -15,5 +15,6 @@
 
 7. MERN App - TS with Redux -> according to [this tutorial](https://www.youtube.com/watch?v=a9NRFuMKV4o).
 
-8. MERN App with Redux -> according to this tutorial: [part 1](https://www.youtube.com/watch?v=ngc9gnGgUdA). Typegoose
-   tutorial is [here](https://dev.to/franciscomendes10866/how-to-build-type-safe-api-with-typegoose-and-expressjs-20oa)
+8. MERN App with Redux -> according to this tutorial: [part 1](https://www.youtube.com/watch?v=ngc9gnGgUdA),
+   [part 2](https://www.youtube.com/watch?v=aibtHnbeuio&t=0s). Typegoose tutorial is
+   [here](https://dev.to/franciscomendes10866/how-to-build-type-safe-api-with-typegoose-and-expressjs-20oa).
