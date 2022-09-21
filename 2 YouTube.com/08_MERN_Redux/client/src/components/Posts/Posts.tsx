@@ -6,9 +6,9 @@ import Post from "./Post/Post";
 import { useAppSelector } from "../../redux/hooks";
 import { IPost, RootState } from "../../Types";
 
-const Posts = (): JSX.Element => {
+const Posts = ({ setCurrentId }: { setCurrentId: React.Dispatch<React.SetStateAction<string>> }): JSX.Element => {
   const posts = useAppSelector((state: RootState) => state.posts);
-  console.log({ posts });
+  // console.log({ posts });
 
   const classes = useStyles();
   return (
@@ -19,7 +19,7 @@ const Posts = (): JSX.Element => {
         <Grid className={classes.mainContainer} container alignItems="stretch" spacing={3}>
           {posts.map((post: IPost) => (
             <Grid key={post._id} item xs={12} sm={6} md={6}>
-              <Post post={post} />
+              <Post post={post} setCurrentId={setCurrentId} />
             </Grid>
           ))}
         </Grid>

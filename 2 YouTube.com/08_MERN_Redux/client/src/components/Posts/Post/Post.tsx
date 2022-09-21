@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardActions, CardContent, CardMedia, Button, Typography } from "@material-ui/core/";
+import { Card, CardActions, CardContent, CardMedia, Button, Typography, Tooltip } from "@material-ui/core/";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import DeleteIcon from "@material-ui/icons/Delete";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
@@ -8,7 +8,13 @@ import moment from "moment";
 import useStyles from "./styles";
 import { IPost } from "../../../Types";
 
-const Post = ({ post }: { post: IPost }): JSX.Element => {
+const Post = ({
+  post,
+  setCurrentId,
+}: {
+  post: IPost;
+  setCurrentId: React.Dispatch<React.SetStateAction<string>>;
+}): JSX.Element => {
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -26,9 +32,11 @@ const Post = ({ post }: { post: IPost }): JSX.Element => {
           <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
         </div>
         <div className={classes.overlay2}>
-          <Button style={{ color: "white" }} size="small" onClick={() => console.log(post._id)}>
-            <MoreHorizIcon fontSize="medium" />
-          </Button>
+          <Tooltip title="Select a Memory">
+            <Button style={{ color: "white" }} size="small" onClick={() => setCurrentId(post._id)}>
+              <MoreHorizIcon fontSize="large" />
+            </Button>
+          </Tooltip>
         </div>
         <div className={classes.details}>
           <Typography variant="body2" color="textSecondary" component="h2">

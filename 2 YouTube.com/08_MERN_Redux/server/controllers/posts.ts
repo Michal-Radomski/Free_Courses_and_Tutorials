@@ -42,16 +42,16 @@ export const createPost: RequestHandler = async (req: Request, res: Response): P
 };
 
 export const updatePost: RequestHandler = async (req: Request, res: Response): Promise<any> => {
-  const { id } = req.params;
+  const { id: _id } = req.params;
   const { title, message, creator, selectedFile, tags } = req.body;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).send(`No post with this id: ${id}`);
+  if (!mongoose.Types.ObjectId.isValid(_id)) {
+    return res.status(404).send(`No post with this _id: ${_id}`);
   }
 
-  const updatedPost = { creator, title, message, tags, selectedFile, _id: id };
+  const updatedPost = { creator, title, message, tags, selectedFile, _id: _id };
 
-  await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
+  await PostMessage.findByIdAndUpdate(_id, updatedPost, { new: true });
   res.json(updatedPost);
 };
 

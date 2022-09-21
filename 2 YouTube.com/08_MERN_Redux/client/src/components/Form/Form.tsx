@@ -3,21 +3,46 @@ import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from "react-file-base64";
 
 import useStyles from "./styles";
-import { AppDispatch, IPost } from "../../Types";
-import { useAppDispatch } from "../../redux/hooks";
-import { createPost } from "../../redux/actions/posts";
+import { AppDispatch, IPost, RootState } from "../../Types";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { createPost, updatePost } from "../../redux/actions/posts";
 
-const Form = (): JSX.Element => {
+const Form = ({
+  currentId,
+  setCurrentId,
+}: {
+  currentId: string;
+  setCurrentId: React.Dispatch<React.SetStateAction<string>>;
+}): JSX.Element => {
+  const post = useAppSelector((state: RootState) =>
+    currentId ? state.posts.find((post: IPost) => post._id === currentId) : null
+  );
+  // console.log({ post });
+
   const dispatch: AppDispatch = useAppDispatch();
   const classes = useStyles();
   const [postData, setPostData] = React.useState<IPost>({ creator: "", title: "", message: "", tags: "", selectedFile: "" });
 
+  React.useEffect(() => {
+    if (post) {
+      setPostData(post);
+    }
+  }, [post]);
+
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
-    dispatch(createPost(postData));
+    if (currentId === "") {
+      dispatch(createPost(postData));
+      // clear();
+    } else {
+      dispatch(updatePost(currentId as string, postData));
+      // clear();
+    }
+    clear();
   };
 
   const clear = () => {
+    setCurrentId("");
     setPostData({ creator: "", title: "", message: "", tags: "", selectedFile: "" });
   };
 
@@ -25,7 +50,7 @@ const Form = (): JSX.Element => {
     <React.Fragment>
       <Paper className={classes.paper}>
         <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-          <Typography variant="h6">Creating a Memory</Typography>
+          <Typography variant="h6">{currentId !== "" ? `Editing "${post.title}"` : "Creating a Memory"}</Typography>
           <TextField
             name="creator"
             variant="outlined"

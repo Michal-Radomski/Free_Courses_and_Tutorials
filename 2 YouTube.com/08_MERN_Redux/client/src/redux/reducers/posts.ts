@@ -1,6 +1,6 @@
-import { Action, RootState } from "../../Types";
+import { Action, IPost, RootState } from "../../Types";
 
-import { CREATE, FETCH_ALL } from "../actionTypes";
+import { CREATE, FETCH_ALL, UPDATE } from "../actionTypes";
 
 const initialState: RootState = [];
 
@@ -10,6 +10,8 @@ const postsReducer = function (state = initialState, action: Action): RootState 
       return action.payload;
     case CREATE:
       return [...state, action.payload];
+    case UPDATE:
+      return state.map((post: IPost) => (post._id === action.payload._id ? action.payload : post));
     default:
       return state;
   }
