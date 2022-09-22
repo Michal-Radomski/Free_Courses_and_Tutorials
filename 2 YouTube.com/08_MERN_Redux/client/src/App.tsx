@@ -1,10 +1,11 @@
 import React from "react";
 import { Container } from "@material-ui/core";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./App.scss";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
+import Auth from "./components/Auth/Auth";
 
 function App(): JSX.Element {
   return (
@@ -12,7 +13,10 @@ function App(): JSX.Element {
       <Router>
         <Container maxWidth="lg">
           <Navbar />
-          <Home />
+          <Switch>
+            <Route path="/" exact={true} component={Home} />
+            <Route path="/auth" exact={true} component={Auth} />
+          </Switch>
         </Container>
       </Router>
     </React.Fragment>
