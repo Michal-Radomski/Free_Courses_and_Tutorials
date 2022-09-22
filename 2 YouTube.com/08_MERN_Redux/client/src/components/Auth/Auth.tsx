@@ -1,15 +1,17 @@
 import React from "react";
 import { Avatar, Button, Paper, Grid, Typography, Container } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import { GoogleLogin } from "react-google-login";
+// import { GoogleLogin } from "react-google-login"; //* Deprecated - it can be removed from package.json
+// import { GoogleLogin} from "@react-oauth/google"; //* @react-oauth/google -> base version
+import { useGoogleLogin } from "@react-oauth/google"; //* @react-oauth/google -> custom version
 
 import useStyles from "./styles";
 import Input from "./Input";
 import Icon from "./Icon";
 
 const Auth = (): JSX.Element => {
-  const Google_clientId = process.env.REACT_APP_Google_clientId as string;
-  console.log({ Google_clientId });
+  // const Google_clientId = process.env.REACT_APP_Google_clientId as string; //* to react-google-login
+  // console.log({ Google_clientId });
   const classes = useStyles();
 
   const [isSignup, setIsSignup] = React.useState<boolean>(false);
@@ -30,14 +32,13 @@ const Auth = (): JSX.Element => {
     setShowPassword(false);
   };
 
-  const googleSuccess = async (res: any) => {
-    await console.log({ res });
-  };
-
-  const googleError = () => {
-    console.log("Google Sign In was unsuccessful. Try again later");
-    // alert("Google Sign In was unsuccessful. Try again later");
-  };
+  const loginWithGoogle = useGoogleLogin({
+    onSuccess: (tokenResponse) => console.log({ tokenResponse }),
+    onError: () => {
+      console.log("Google Sign In was unsuccessful. Try again later");
+      alert("Google Sign In was unsuccessful. Try again later");
+    },
+  });
 
   return (
     <React.Fragment>
@@ -78,7 +79,9 @@ const Auth = (): JSX.Element => {
             <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
               {isSignup ? "Sign Up" : "Sign In"}
             </Button>
-            <GoogleLogin
+
+            {/* //* Google-React-Login -> Deprecated  */}
+            {/* <GoogleLogin
               clientId={Google_clientId}
               render={(renderProps) => (
                 <Button
@@ -96,7 +99,30 @@ const Auth = (): JSX.Element => {
               onSuccess={googleSuccess}
               onFailure={googleError}
               cookiePolicy="single_host_origin"
-            />
+            /> */}
+
+            {/* //* @react-oauth/google -> base version */}
+            {/* <GoogleLogin
+              onSuccess={(credentialResponse) => {
+                console.log(credentialResponse);
+              }}
+              onError={() => {
+                console.log("Login Failed");
+              }}
+            /> */}
+
+            {/* //* @react-oauth/google -> custom version */}
+            <Button
+              onClick={() => loginWithGoogle()}
+              className={classes.googleButton}
+              color="secondary"
+              fullWidth
+              startIcon={<Icon />}
+              variant="contained"
+            >
+              Sign In With Google
+            </Button>
+
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Button onClick={switchMode}>
