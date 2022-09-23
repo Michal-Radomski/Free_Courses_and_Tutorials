@@ -7,7 +7,8 @@
 //   creator: string;
 //   tags: string[] | string;
 //   selectedFile: string;
-//   likeCount: number;
+//   // likeCount: number;
+//   likes: string[];
 //   createdAt: Date;
 // }
 
@@ -18,7 +19,8 @@
 //     creator: { type: String },
 //     tags: { type: [String] },
 //     selectedFile: { type: String },
-//     likeCount: { type: Number, default: 0 },
+//     // likeCount: { type: Number, default: 0 },
+//     likes: { type: [String], default: [] },
 //     createdAt: { type: Date, default: new Date() },
 //   },
 //   { timestamps: true }
@@ -46,8 +48,11 @@ class postClass {
   @prop()
   public selectedFile!: string;
 
-  @prop({ default: 0 })
-  public likeCount!: number;
+  // @prop({ default: 0 })
+  // public likeCount!: number;
+
+  @prop({ type: () => [String], default: [] })
+  public likes!: string[];
 
   @prop({ default: new Date() })
   public createdAt!: Date;

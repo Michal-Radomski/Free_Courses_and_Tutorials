@@ -30,3 +30,11 @@ export interface User extends Object {
     picture: string;
   };
 }
+
+export interface SignUp {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}

@@ -1,10 +1,10 @@
-import * as apiPosts from "../../Api/index";
+import * as API from "../../Api/index";
 import { AppDispatch, CustomError, IPost } from "../../Types";
 import { CREATE, DELETE, FETCH_ALL, LIKE, UPDATE } from "../actionTypes";
 
 export const getPosts = () => async (dispatch: AppDispatch) => {
   try {
-    const { data } = await apiPosts.fetchPosts();
+    const { data } = await API.fetchPosts();
     // console.log({ data });
     // dispatch(action)
     dispatch({ type: FETCH_ALL, payload: data });
@@ -15,7 +15,7 @@ export const getPosts = () => async (dispatch: AppDispatch) => {
 
 export const createPost = (post: IPost) => async (dispatch: AppDispatch) => {
   try {
-    const { data } = await apiPosts.createPost(post);
+    const { data } = await API.createPost(post);
 
     dispatch({ type: CREATE, payload: data });
   } catch (error) {
@@ -25,7 +25,7 @@ export const createPost = (post: IPost) => async (dispatch: AppDispatch) => {
 
 export const updatePost = (id: string, post: IPost) => async (dispatch: AppDispatch) => {
   try {
-    const { data } = await apiPosts.updatePost(id, post);
+    const { data } = await API.updatePost(id, post);
 
     dispatch({ type: UPDATE, payload: data });
   } catch (error) {
@@ -36,7 +36,7 @@ export const updatePost = (id: string, post: IPost) => async (dispatch: AppDispa
 
 export const deletePost = (id: string) => async (dispatch: AppDispatch) => {
   try {
-    await apiPosts.deletePost(id);
+    await API.deletePost(id);
 
     dispatch({ type: DELETE, payload: id });
   } catch (error) {
@@ -47,7 +47,7 @@ export const deletePost = (id: string) => async (dispatch: AppDispatch) => {
 
 export const likePost = (id: string) => async (dispatch: AppDispatch) => {
   try {
-    const { data } = await apiPosts.likePost(id);
+    const { data } = await API.likePost(id);
 
     dispatch({ type: LIKE, payload: data });
   } catch (error) {

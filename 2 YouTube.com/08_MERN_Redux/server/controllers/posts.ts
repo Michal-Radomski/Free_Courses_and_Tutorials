@@ -1,11 +1,15 @@
 import { Request, RequestHandler, Response } from "express";
 import mongoose from "mongoose";
 
-// import PostMessage, { IPost } from "../models/PostMessage"; //* V1-> Mongoose Modele
+// import PostMessage, { IPost } from "../models/PostMessage"; //* V1-> Mongoose Model
 import { PostMessage, IPost } from "../models/PostMessage"; //* v2 -> Typegoose Model
 import { CustomError } from "../Types";
 
-export const getPosts = async (_req: Request, res: Response): Promise<void> => {
+interface CustomRequest extends Request {
+  userId?: string;
+}
+
+export const getPosts: RequestHandler = async (_req: Request, res: Response): Promise<void> => {
   try {
     const postMessages: IPost[] = await PostMessage.find();
 
@@ -15,17 +19,18 @@ export const getPosts = async (_req: Request, res: Response): Promise<void> => {
   }
 };
 
-export const getPost: RequestHandler = async (req: Request, res: Response): Promise<void> => {
-  const { id } = req.params;
+//* Unnecessary
+// export const getPost: RequestHandler = async (req: Request, res: Response): Promise<void> => {
+//   const { id } = req.params;
 
-  try {
-    const post: IPost | null = await PostMessage.findById(id);
+//   try {
+//     const post: IPost | null = await PostMessage.findById(id);
 
-    res.status(200).json(post);
-  } catch (error) {
-    res.status(404).json({ message: (error as CustomError).message });
-  }
-};
+//     res.status(200).json(post);
+//   } catch (error) {
+//     res.status(404).json({ message: (error as CustomError).message });
+//   }
+// };
 
 export const createPost: RequestHandler = async (req: Request, res: Response): Promise<void> => {
   const { title, message, selectedFile, creator, tags } = req.body;
@@ -69,16 +74,27 @@ export const deletePost: RequestHandler = async (req: Request, res: Response): P
   res.json({ message: `Post with id: ${id} deleted successfully.` });
 };
 
-export const likePost: RequestHandler = async (req: Request, res: Response): Promise<any> => {
+export const likePost: RequestHandler = async (req: CustomRequest, res: Response): Promise<any> => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).send(`No post with id: ${id}`);
+  if (!req.userId) {
+    return res.json({ message: "Unauthenticated" });
   }
+
+  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
   const post: IPost | null = await PostMessage.findById(id);
 
-  const updatedPost = await PostMessage.findByIdAndUpdate(id, { likeCount: post!.likeCount + 1 }, { new: true });
+  const index = post?.likes.findIndex((id: string) => id === String(req.userId));
+  console.log({ index });
 
-  res.json(updatedPost);
+  if (index === -1) {
+    // Like a Post
+    post?.likes.push(req.userId);
+  } else {
+    // Dislike a Post
+    post!.likes = post!.likes.filter((id) => id !== String(req.userId));
+  }
+  const updatedPost = await PostMessage.findByIdAndUpdate(id, post as IPost, { new: true });
+  res.status(200).json(updatedPost);
 };

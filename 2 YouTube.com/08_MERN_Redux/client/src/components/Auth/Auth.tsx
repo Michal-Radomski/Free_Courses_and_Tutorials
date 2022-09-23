@@ -1,18 +1,21 @@
 import React from "react";
 import { Avatar, Button, Paper, Grid, Typography, Container } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-// import { GoogleLogin } from "react-google-login"; //* Deprecated - it can be removed from package.json
+// import { GoogleLogin } from "react-google-login"; //* Deprecated - It was removed from package.json
 // import { GoogleLogin} from "@react-oauth/google"; //* @react-oauth/google -> base version
 import { useGoogleLogin } from "@react-oauth/google"; //* @react-oauth/google -> custom version
 import { useHistory } from "react-router-dom";
+import axios from "axios";
+import { signin, signup } from "../../redux/actions/auth";
 
 import useStyles from "./styles";
 import Input from "./Input";
 import Icon from "./Icon";
-import { AppDispatch } from "../../Types";
+import { AppDispatch, SignUp } from "../../Types";
 import { useAppDispatch } from "../../redux/hooks";
 import { AUTH } from "../../redux/actionTypes";
-import axios from "axios";
+
+const initialState: SignUp = { firstName: "", lastName: "", email: "", password: "", confirmPassword: "" };
 
 const Auth = (): JSX.Element => {
   // const Google_clientId = process.env.REACT_APP_Google_clientId as string; //* to react-google-login
@@ -23,6 +26,8 @@ const Auth = (): JSX.Element => {
 
   const [isSignup, setIsSignup] = React.useState<boolean>(false);
   const [showPassword, setShowPassword] = React.useState<boolean>(false);
+  const [formData, setFormData] = React.useState<SignUp>(initialState);
+
   //* V1
   const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
   //* v2
@@ -30,9 +35,17 @@ const Auth = (): JSX.Element => {
 
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
+    // console.log({ event });
+    // console.log({ formData });
+    if (isSignup) {
+      dispatch(signup(formData, history));
+    } else {
+      dispatch(signin(formData, history));
+    }
   };
 
-  const handleChange = () => {};
+  const handleChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setFormData({ ...formData, [(event.target as HTMLInputElement).name]: (event.target as HTMLInputElement).value });
 
   const switchMode = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
@@ -44,7 +57,7 @@ const Auth = (): JSX.Element => {
       // console.log({ tokenResponse });
       const token = tokenResponse.access_token;
       // console.log({ token });
-      const expireIn = 10 * 1000 + new Date().getTime();
+      const expireIn = tokenResponse.expires_in * 1000 + new Date().getTime();
       // console.log({ expireIn });
       const userInfo = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
         headers: { Authorization: `Bearer ${token}` },

@@ -5,7 +5,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 interface CustomInputProps {
   name: string;
-  handleChange: () => void;
+  handleChange: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   label: string;
   half?: boolean;
   autoFocus?: boolean;

@@ -30,7 +30,7 @@ const Navbar = (): JSX.Element => {
     const expireIn = user?.expireIn;
     const now = new Date().getTime();
     const timeToLogout = (expireIn! - now) / 1000;
-    console.log(`AutoLogOut in : ${timeToLogout} seconds`);
+    // console.log(`AutoLogOut in : ${timeToLogout} seconds`);
     if (user) {
       if (timeToLogout < 0) {
         logout();

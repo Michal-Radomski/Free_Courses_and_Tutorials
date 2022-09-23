@@ -8,6 +8,7 @@ import morgan from "morgan";
 
 // Import routes
 import postRoutes from "./routes/posts";
+import authRoutes from "./routes/auth";
 
 // The server
 const app: Express = express();
@@ -20,6 +21,7 @@ app.use(morgan("combined"));
 
 //Route middleware
 app.use("/api/posts", postRoutes);
+app.use("/api/auth", authRoutes);
 
 // Mongo DB
 mongoose
