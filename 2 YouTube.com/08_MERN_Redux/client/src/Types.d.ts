@@ -5,7 +5,8 @@ export interface IPost {
   _id?: mongoose.Schema.Types.ObjectId;
   title: string;
   message: string;
-  creator: string;
+  creator?: string;
+  name?: string;
   tags: string[] | string;
   selectedFile: string;
   likeCount?: number;

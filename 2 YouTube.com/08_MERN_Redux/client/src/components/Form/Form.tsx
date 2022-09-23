@@ -19,9 +19,11 @@ const Form = ({
   );
   // console.log({ post });
 
+  const userProfile = JSON.parse(localStorage.getItem("profile") as string);
+
   const dispatch: AppDispatch = useAppDispatch();
   const classes = useStyles();
-  const [postData, setPostData] = React.useState<IPost>({ creator: "", title: "", message: "", tags: "", selectedFile: "" });
+  const [postData, setPostData] = React.useState<IPost>({ title: "", message: "", tags: "", selectedFile: "" });
 
   React.useEffect(() => {
     if (post) {
@@ -32,10 +34,10 @@ const Form = ({
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
     if (currentId === "") {
-      dispatch(createPost(postData));
+      dispatch(createPost({ ...postData, name: userProfile?.userData?.name ?? "Unknown User" }));
       // clear();
     } else {
-      dispatch(updatePost(currentId as string, postData));
+      dispatch(updatePost(currentId, { ...postData, name: userProfile?.userData?.name ?? "Unknown User" }));
       // clear();
     }
     clear();
@@ -43,22 +45,24 @@ const Form = ({
 
   const clear = () => {
     setCurrentId("");
-    setPostData({ creator: "", title: "", message: "", tags: "", selectedFile: "" });
+    setPostData({ title: "", message: "", tags: "", selectedFile: "" });
   };
+
+  if (!userProfile?.userData?.name) {
+    return (
+      <Paper className={classes.paper}>
+        <Typography variant="h6" align="center">
+          Please Sign In to create your own memories and like other's memories.
+        </Typography>
+      </Paper>
+    );
+  }
 
   return (
     <React.Fragment>
       <Paper className={classes.paper}>
         <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
           <Typography variant="h6">{currentId !== "" ? `Editing "${post.title}"` : "Creating a Memory"}</Typography>
-          <TextField
-            name="creator"
-            variant="outlined"
-            label="Author"
-            fullWidth
-            value={postData.creator}
-            onChange={(event) => setPostData({ ...postData, creator: event.target.value })}
-          />
           <TextField
             name="title"
             variant="outlined"

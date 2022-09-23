@@ -5,6 +5,7 @@
 //   title: string;
 //   message: string;
 //   creator: string;
+//   name: string;
 //   tags: string[] | string;
 //   selectedFile: string;
 //   // likeCount: number;
@@ -17,6 +18,7 @@
 //     title: { type: String, required: true },
 //     message: { type: String, required: true, minlength: [8, "Min password length is 8 characters"] },
 //     creator: { type: String },
+//     name: { type: String },
 //     tags: { type: [String] },
 //     selectedFile: { type: String },
 //     // likeCount: { type: Number, default: 0 },
@@ -41,6 +43,9 @@ class postClass {
 
   @prop()
   public creator!: string;
+
+  @prop()
+  public name!: string;
 
   @prop({ type: () => [String] })
   public tags!: string[];

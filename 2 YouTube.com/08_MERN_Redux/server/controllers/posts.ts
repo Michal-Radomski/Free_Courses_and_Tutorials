@@ -32,10 +32,10 @@ export const getPosts: RequestHandler = async (_req: Request, res: Response): Pr
 //   }
 // };
 
-export const createPost: RequestHandler = async (req: Request, res: Response): Promise<void> => {
-  const { title, message, selectedFile, creator, tags } = req.body;
+export const createPost: RequestHandler = async (req: CustomRequest, res: Response): Promise<void> => {
+  const post: IPost = req.body;
 
-  const newPostMessage: IPost = new PostMessage({ title, message, selectedFile, creator, tags });
+  const newPostMessage: IPost = new PostMessage({ ...post, creator: req.userId, createdAt: new Date().toISOString() });
 
   try {
     await newPostMessage.save();
