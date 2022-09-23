@@ -4,15 +4,22 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 // import { GoogleLogin } from "react-google-login"; //* Deprecated - it can be removed from package.json
 // import { GoogleLogin} from "@react-oauth/google"; //* @react-oauth/google -> base version
 import { useGoogleLogin } from "@react-oauth/google"; //* @react-oauth/google -> custom version
+import { useHistory } from "react-router-dom";
 
 import useStyles from "./styles";
 import Input from "./Input";
 import Icon from "./Icon";
+import { AppDispatch } from "../../Types";
+import { useAppDispatch } from "../../redux/hooks";
+import { AUTH } from "../../redux/actionTypes";
+import axios from "axios";
 
 const Auth = (): JSX.Element => {
   // const Google_clientId = process.env.REACT_APP_Google_clientId as string; //* to react-google-login
   // console.log({ Google_clientId });
   const classes = useStyles();
+  const dispatch: AppDispatch = useAppDispatch();
+  const history = useHistory();
 
   const [isSignup, setIsSignup] = React.useState<boolean>(false);
   const [showPassword, setShowPassword] = React.useState<boolean>(false);
@@ -33,9 +40,27 @@ const Auth = (): JSX.Element => {
   };
 
   const loginWithGoogle = useGoogleLogin({
-    onSuccess: (tokenResponse) => console.log({ tokenResponse }),
-    onError: () => {
-      console.log("Google Sign In was unsuccessful. Try again later");
+    onSuccess: async (tokenResponse) => {
+      // console.log({ tokenResponse });
+      const token = tokenResponse.access_token;
+      // console.log({ token });
+      const expireIn = 10 * 1000 + new Date().getTime();
+      // console.log({ expireIn });
+      const userInfo = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const userData = userInfo.data;
+      // console.log({ userData });
+
+      try {
+        dispatch({ type: AUTH, data: { userData, token, expireIn } });
+        history.push("/");
+      } catch (error) {
+        console.log({ error });
+      }
+    },
+    onError: (error) => {
+      console.log("Google Sign In was unsuccessful. Try again later", error);
       alert("Google Sign In was unsuccessful. Try again later");
     },
   });

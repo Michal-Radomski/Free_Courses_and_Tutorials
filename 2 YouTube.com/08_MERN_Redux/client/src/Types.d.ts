@@ -20,3 +20,13 @@ export type Action = typeof store.action;
 export interface CustomError extends Error {
   message: string;
 }
+
+export interface User extends Object {
+  token: string;
+  expireIn: number;
+  userData: {
+    email?: string;
+    name: string;
+    picture: string;
+  };
+}
