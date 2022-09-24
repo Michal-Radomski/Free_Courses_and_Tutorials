@@ -9,7 +9,7 @@ export interface IPost {
   name?: string;
   tags: string[] | string;
   selectedFile: string;
-  likeCount?: number;
+  likes?: string[];
   createdAt?: Date;
 }
 
