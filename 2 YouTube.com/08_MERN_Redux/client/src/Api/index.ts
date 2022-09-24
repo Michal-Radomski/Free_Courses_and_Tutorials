@@ -15,6 +15,8 @@ Api.interceptors.request.use((req) => {
 
 // Posts
 export const fetchPosts = () => Api.get("/posts");
+export const fetchPostsBySearch = (searchQuery: { search: string; tags: string }) =>
+  Api.get(`/posts/search?searchQuery=${searchQuery.search || "none"}&tags=${searchQuery.tags}`);
 export const createPost = (newPost: IPost) => Api.post("/posts", newPost);
 export const likePost = (id: string) => Api.patch(`/posts/${id}/likePost`);
 export const updatePost = (id: string, updatedPost: IPost) => Api.patch(`/posts/${id}`, updatedPost);

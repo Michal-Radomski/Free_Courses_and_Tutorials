@@ -8,7 +8,7 @@ import Form from "../Form/Form";
 import useStyles from "./styles";
 import { AppDispatch } from "../../Types";
 import { useAppDispatch } from "../../redux/hooks";
-import { getPosts } from "../../redux/actions/posts";
+import { getPosts, getPostsBySearch } from "../../redux/actions/posts";
 import Paginate from "../Paginate";
 
 function useQuery() {
@@ -24,6 +24,7 @@ const Home = (): JSX.Element => {
   const query = useQuery();
   const page = Number(query.get("page")) || 1;
   const searchQuery = query.get("searchQuery");
+  // console.log({ searchQuery });
 
   const [currentId, setCurrentId] = React.useState<string>("");
   // console.log({ currentId });
@@ -31,12 +32,12 @@ const Home = (): JSX.Element => {
   const [tags, setTags] = React.useState<string[]>([]);
 
   React.useEffect(() => {
-    dispatch(getPosts());
-  }, [dispatch, currentId]);
+    dispatch(getPosts(page));
+  }, [dispatch, currentId, page]);
 
   const searchPost = () => {
     if (search.trim() || tags) {
-      // dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
+      dispatch(getPostsBySearch({ search, tags: tags.join(",") }));
       history.push(`/posts/search?searchQuery=${search || "none"}&tags=${tags.join(",")}`);
     } else {
       history.push("/");
@@ -44,7 +45,7 @@ const Home = (): JSX.Element => {
   };
 
   const handleKeyPress = (event: React.KeyboardEvent) => {
-    console.log({ event });
+    // console.log({ event });
     // if (event.keyCode === 13) { //* Deprecated -> below the same
     if (event.key === "Enter") {
       searchPost();
@@ -85,9 +86,7 @@ const Home = (): JSX.Element => {
                   Search
                 </Button>
               </AppBar>
-
               <Form currentId={currentId} setCurrentId={setCurrentId} />
-
               {!searchQuery && !tags.length && (
                 <Paper className={classes.paginate} elevation={6}>
                   <Paginate page={page} />

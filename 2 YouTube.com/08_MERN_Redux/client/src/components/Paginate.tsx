@@ -15,7 +15,7 @@ const Paginate = ({ page }: { page: number }): JSX.Element => {
 
   React.useEffect(() => {
     if (page) {
-      dispatch(getPosts()); //+ ---------------------------
+      dispatch(getPosts(page));
     }
   }, [dispatch, page]);
 

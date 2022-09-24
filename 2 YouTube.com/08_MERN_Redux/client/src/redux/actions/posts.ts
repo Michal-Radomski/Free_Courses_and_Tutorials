@@ -1,8 +1,8 @@
 import * as API from "../../Api/index";
 import { AppDispatch, CustomError, IPost } from "../../Types";
-import { CREATE, DELETE, FETCH_ALL, LIKE, UPDATE } from "../actionTypes";
+import { CREATE, DELETE, END_LOADING, FETCH_ALL, FETCH_BY_SEARCH, LIKE, START_LOADING, UPDATE } from "../actionTypes";
 
-export const getPosts = () => async (dispatch: AppDispatch) => {
+export const getPosts = (page: number) => async (dispatch: AppDispatch) => {
   try {
     const { data } = await API.fetchPosts();
     // console.log({ data });
@@ -52,5 +52,19 @@ export const likePost = (id: string) => async (dispatch: AppDispatch) => {
     dispatch({ type: LIKE, payload: data });
   } catch (error) {
     console.log((error as CustomError).message);
+  }
+};
+
+export const getPostsBySearch = (searchQuery: { search: string; tags: string }) => async (dispatch: AppDispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
+    const {
+      data: { data },
+    } = await API.fetchPostsBySearch(searchQuery);
+
+    dispatch({ type: FETCH_BY_SEARCH, payload: { data } });
+    dispatch({ type: END_LOADING });
+  } catch (error) {
+    console.log({ error });
   }
 };
