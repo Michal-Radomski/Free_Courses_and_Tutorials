@@ -30,6 +30,7 @@ const Home = (): JSX.Element => {
   // console.log({ currentId });
   const [search, setSearch] = React.useState<string>("");
   const [tags, setTags] = React.useState<string[]>([]);
+  // console.log({ tags });
 
   React.useEffect(() => {
     dispatch(getPosts(page));

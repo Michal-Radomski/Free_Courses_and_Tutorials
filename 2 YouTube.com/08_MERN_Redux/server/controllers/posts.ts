@@ -98,3 +98,19 @@ export const likePost: RequestHandler = async (req: CustomRequest, res: Response
   const updatedPost = await PostMessage.findByIdAndUpdate(id, post as IPost, { new: true });
   res.status(200).json(updatedPost);
 };
+
+export const getPostsBySearch: RequestHandler = async (req: Request, res: Response): Promise<void> => {
+  const { searchQuery, tags } = req.query;
+  // console.log("req.query:", req.query);
+
+  try {
+    const title = new RegExp(searchQuery as string, "i"); //* -> specifies a case-insensitive match
+
+    const posts = await PostMessage.find({ $or: [{ title }, { tags: { $in: (tags as string)?.split(",") } }] });
+    // console.log({ posts });
+
+    res.json({ data: posts });
+  } catch (error) {
+    res.status(404).json({ message: (error as CustomError).message });
+  }
+};
