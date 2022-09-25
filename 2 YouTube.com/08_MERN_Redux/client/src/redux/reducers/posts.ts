@@ -1,5 +1,6 @@
 import { Action, IPost, RootState } from "../../Types";
 import {
+  COMMENT,
   CREATE,
   DELETE,
   END_LOADING,
@@ -44,6 +45,16 @@ const postsReducer = function (state = initialState, action: Action): RootState 
       return { ...state, posts: action.payload.data };
     case FETCH_POST:
       return { ...state, selectedPost: action.payload.post };
+    case COMMENT:
+      return {
+        ...state,
+        posts: state.posts.map((post: IPost) => {
+          if (post._id === action.payload._id) {
+            return action.payload;
+          }
+          return post;
+        }),
+      };
 
     default:
       return state;

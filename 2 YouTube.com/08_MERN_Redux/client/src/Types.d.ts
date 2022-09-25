@@ -2,6 +2,7 @@
 import mongoose from "mongoose";
 
 export interface IPost {
+  comments?: string[];
   _id?: mongoose.Schema.Types.ObjectId;
   title: string;
   message: string;

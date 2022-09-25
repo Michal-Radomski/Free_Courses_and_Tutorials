@@ -7,6 +7,7 @@ import { getPost, getPostsBySearch } from "../../redux/actions/posts";
 import useStyles from "./styles";
 import { AppDispatch, IPost, RootState } from "../../Types";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import Comments from "./Comments";
 
 const PostDetails = (): JSX.Element => {
   const classes = useStyles();
@@ -61,9 +62,7 @@ const PostDetails = (): JSX.Element => {
           <Typography variant="h6">Created by: {selectedPost.name}</Typography>
           <Typography variant="body1">{moment(selectedPost.createdAt).fromNow()}</Typography>
           <Divider style={{ margin: "20px 0" }} />
-          <Typography variant="body1">
-            <strong>Comments - coming soon!</strong>
-          </Typography>
+          <Comments post={selectedPost} />
           <Divider style={{ margin: "20px 0" }} />
         </div>
         <div className={classes.imageSection}>

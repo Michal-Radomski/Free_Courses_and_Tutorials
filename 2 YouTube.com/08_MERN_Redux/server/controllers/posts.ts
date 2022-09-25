@@ -118,3 +118,21 @@ export const getPostsBySearch: RequestHandler = async (req: Request, res: Respon
     res.status(404).json({ message: (error as CustomError).message });
   }
 };
+
+export const commentPost: RequestHandler = async (req: Request, res: Response): Promise<any> => {
+  const { id } = req.params;
+  const { value } = req.body;
+
+  try {
+    const post = (await PostMessage.findById(id)) as IPost;
+
+    post?.comments.push(value);
+
+    const updatedPost = await PostMessage.findByIdAndUpdate(id, post, { new: true });
+
+    res.json(updatedPost);
+  } catch (error) {
+    console.log({ error });
+    res.status(500).json({ message: (error as CustomError).message });
+  }
+};

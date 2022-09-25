@@ -3,6 +3,7 @@ import { History } from "history";
 import * as API from "../../Api/index";
 import { AppDispatch, CustomError, IPost } from "../../Types";
 import {
+  COMMENT,
   CREATE,
   DELETE,
   END_LOADING,
@@ -96,6 +97,18 @@ export const getPostsBySearch = (searchQuery: { search: string; tags: string }) 
 
     dispatch({ type: FETCH_BY_SEARCH, payload: { data } });
     dispatch({ type: END_LOADING });
+  } catch (error) {
+    console.log({ error });
+  }
+};
+
+export const commentPost = (value: string, id: string) => async (dispatch: AppDispatch) => {
+  try {
+    const { data } = await API.comment(value, id);
+
+    dispatch({ type: COMMENT, payload: data });
+
+    return data.comments;
   } catch (error) {
     console.log({ error });
   }
