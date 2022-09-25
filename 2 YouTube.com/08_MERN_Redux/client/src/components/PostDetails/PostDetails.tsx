@@ -54,7 +54,7 @@ const PostDetails = (): JSX.Element => {
             {selectedPost.title}
           </Typography>
           <Typography gutterBottom variant="h6" color="textSecondary" component="h2">
-            {selectedPost.length > 0 && selectedPost.tags.map((tag: string) => `#${tag} `)}
+            {!isEmpty && selectedPost.tags.map((tag: string) => `#${tag} `)}
           </Typography>
           <Typography gutterBottom variant="body1" component="p">
             {selectedPost.message}

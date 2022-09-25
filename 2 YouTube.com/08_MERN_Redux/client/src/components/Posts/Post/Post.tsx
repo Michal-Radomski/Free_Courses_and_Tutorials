@@ -94,6 +94,10 @@ const Post = ({
             <Typography variant="body2" color="textSecondary" component="p">
               {post.message}
             </Typography>
+            <br />
+            <Typography variant="body2" color="textSecondary" component="h2">
+              Number of comments: <strong>{post?.comments?.length}</strong>
+            </Typography>
           </CardContent>
         </ButtonBase>
         <CardActions className={classes.cardActions}>
