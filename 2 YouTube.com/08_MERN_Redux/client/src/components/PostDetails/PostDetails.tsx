@@ -10,22 +10,26 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 const PostDetails = (): JSX.Element => {
   const classes = useStyles();
-  const { post, posts, isLoading } = useAppSelector((state: RootState) => state.posts);
+  const { selectedPost, posts, isLoading } = useAppSelector((state: RootState) => state.posts);
+  // console.log("selectedPost:", selectedPost);
+
   const dispatch: AppDispatch = useAppDispatch();
   const history = useHistory();
   const { id } = useParams<{ id: string }>();
+
+  const isEmpty = Object.keys(selectedPost).length === 0;
 
   React.useEffect(() => {
     dispatch(getPost(id));
   }, [dispatch, id]);
 
   React.useEffect(() => {
-    if (post) {
-      dispatch(getPostsBySearch({ search: "none", tags: post?.tags.join(",") }));
+    if (!isEmpty) {
+      dispatch(getPostsBySearch({ search: "none", tags: selectedPost?.tags.join(",") }));
     }
-  }, [dispatch, post]);
+  }, [dispatch, isEmpty, selectedPost?.tags]);
 
-  if (!post) {
+  if (isEmpty) {
     return null as any;
   }
 
@@ -39,23 +43,23 @@ const PostDetails = (): JSX.Element => {
     );
   }
 
-  const recommendedPosts: IPost[] = posts.filter(({ _id }: { _id: string }) => _id !== post._id);
+  const recommendedPosts: IPost[] = posts.filter(({ _id }: { _id: string }) => _id !== selectedPost._id);
 
   return (
     <Paper style={{ padding: "20px", borderRadius: "15px" }} elevation={6}>
       <div className={classes.card}>
         <div className={classes.section}>
           <Typography variant="h3" component="h2">
-            {post.title}
+            {selectedPost.title}
           </Typography>
           <Typography gutterBottom variant="h6" color="textSecondary" component="h2">
-            {post.tags.map((tag: string) => `#${tag} `)}
+            {selectedPost.length > 0 && selectedPost.tags.map((tag: string) => `#${tag} `)}
           </Typography>
           <Typography gutterBottom variant="body1" component="p">
-            {post.message}
+            {selectedPost.message}
           </Typography>
-          <Typography variant="h6">Created by: {post.name}</Typography>
-          <Typography variant="body1">{moment(post.createdAt).fromNow()}</Typography>
+          <Typography variant="h6">Created by: {selectedPost.name}</Typography>
+          <Typography variant="body1">{moment(selectedPost.createdAt).fromNow()}</Typography>
           <Divider style={{ margin: "20px 0" }} />
           <Typography variant="body1">
             <strong>Comments - coming soon!</strong>
@@ -66,13 +70,14 @@ const PostDetails = (): JSX.Element => {
           <img
             className={classes.media}
             src={
-              post.selectedFile ||
+              selectedPost.selectedFile ||
               "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
             }
-            alt={post.title}
+            alt={selectedPost.title}
           />
         </div>
       </div>
+
       {!!recommendedPosts.length && (
         <div className={classes.section}>
           <Typography gutterBottom variant="h5">

@@ -11,7 +11,7 @@ import {
   UPDATE,
 } from "../actionTypes";
 
-const initialState: RootState = { isLoading: true, posts: [] };
+const initialState: RootState = { isLoading: true, posts: [], selectedPost: {} };
 
 const postsReducer = function (state = initialState, action: Action): RootState {
   switch (action.type) {
@@ -43,7 +43,7 @@ const postsReducer = function (state = initialState, action: Action): RootState 
     case FETCH_BY_SEARCH:
       return { ...state, posts: action.payload.data };
     case FETCH_POST:
-      return { ...state, post: action.payload.post };
+      return { ...state, selectedPost: action.payload.post };
 
     default:
       return state;
