@@ -1,6 +1,7 @@
 import React from "react";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from "react-file-base64";
+import { useHistory } from "react-router-dom";
 
 import useStyles from "./styles";
 import { AppDispatch, IPost, RootState } from "../../Types";
@@ -15,7 +16,7 @@ const Form = ({
   setCurrentId: React.Dispatch<React.SetStateAction<string>>;
 }): JSX.Element => {
   const post = useAppSelector((state: RootState) =>
-    currentId ? state.posts.find((post: IPost) => post._id === currentId) : null
+    currentId ? state.posts.posts.find((post: IPost) => post._id === currentId) : null
   );
   // console.log({ post });
 
@@ -23,6 +24,8 @@ const Form = ({
 
   const dispatch: AppDispatch = useAppDispatch();
   const classes = useStyles();
+  const history = useHistory();
+
   const [postData, setPostData] = React.useState<IPost>({ title: "", message: "", tags: "", selectedFile: "" });
 
   React.useEffect(() => {
@@ -34,7 +37,7 @@ const Form = ({
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
     if (currentId === "") {
-      dispatch(createPost({ ...postData, name: userProfile?.userData?.name ?? "Unknown User" }));
+      dispatch(createPost({ ...postData, name: userProfile?.userData?.name ?? "Unknown User" }, history));
       // clear();
     } else {
       dispatch(updatePost(currentId, { ...postData, name: userProfile?.userData?.name ?? "Unknown User" }));

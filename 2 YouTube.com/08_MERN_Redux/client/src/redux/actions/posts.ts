@@ -1,3 +1,5 @@
+import { History } from "history";
+
 import * as API from "../../Api/index";
 import { AppDispatch, CustomError, IPost } from "../../Types";
 import {
@@ -40,9 +42,10 @@ export const getPost = (id: string) => async (dispatch: AppDispatch) => {
   }
 };
 
-export const createPost = (post: IPost) => async (dispatch: AppDispatch) => {
+export const createPost = (post: IPost, history: History) => async (dispatch: AppDispatch) => {
   try {
     const { data } = await API.createPost(post);
+    await history.push(`/posts/${data._id}`);
 
     dispatch({ type: CREATE, payload: data });
   } catch (error) {
