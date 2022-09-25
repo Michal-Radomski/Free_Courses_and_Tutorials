@@ -27,12 +27,11 @@ const Navbar = (): JSX.Element => {
   };
 
   React.useEffect(() => {
-    // @ts-ignore
     const expireIn = user?.userData?.expireIn;
-    console.log("expireIn:", expireIn);
+    // console.log("expireIn:", expireIn);
     const now = new Date().getTime();
-    const timeToLogout = (expireIn! * 1000 - now) / 1000 - 3590;
-    console.log(`AutoLogOut in : ${timeToLogout} seconds`);
+    const timeToLogout = (expireIn! * 1000 - now) / 1000;
+    // console.log(`AutoLogOut in : ${timeToLogout} seconds`);
     if (user) {
       if (timeToLogout < 0) {
         logout();
