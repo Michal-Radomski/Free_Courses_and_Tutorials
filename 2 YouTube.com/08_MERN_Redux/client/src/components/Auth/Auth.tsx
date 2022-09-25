@@ -169,17 +169,19 @@ const Auth = (): JSX.Element => {
             /> */}
 
             {/* //* @react-oauth/google -> base version */}
-            <GoogleLogin
-              locale="en"
-              width="364px"
-              onSuccess={(credentialResponse) => {
-                loginWithGoogle(credentialResponse);
-              }}
-              onError={() => {
-                console.log("Google Sign In was unsuccessful. Try again later");
-                alert("Google Sign In was unsuccessful. Try again later");
-              }}
-            />
+            {!isSignup && (
+              <GoogleLogin
+                locale="en"
+                width="364px"
+                onSuccess={(credentialResponse) => {
+                  loginWithGoogle(credentialResponse);
+                }}
+                onError={() => {
+                  console.log("Google Sign In was unsuccessful. Try again later");
+                  alert("Google Sign In was unsuccessful. Try again later");
+                }}
+              />
+            )}
 
             {/* //* @react-oauth/google -> custom version */}
             {/* <Button
@@ -197,11 +199,11 @@ const Auth = (): JSX.Element => {
               <Grid item>
                 <Button onClick={switchMode}>
                   {isSignup ? (
-                    <p style={{ margin: 0 }}>
+                    <p style={{ margin: 4 }}>
                       Already have an account? <span style={{ color: "maroon", fontWeight: "bold" }}>Sign In</span>
                     </p>
                   ) : (
-                    <p style={{ margin: 0 }}>
+                    <p style={{ margin: 4 }}>
                       Don't have an account? <span style={{ color: "maroon", fontWeight: "bold" }}>Sign Up</span>
                     </p>
                   )}
