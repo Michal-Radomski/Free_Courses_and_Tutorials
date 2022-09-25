@@ -1,12 +1,21 @@
 import { Action, IPost, RootState } from "../../Types";
-import { CREATE, DELETE, FETCH_ALL, FETCH_BY_SEARCH, LIKE, UPDATE } from "../actionTypes";
+import { CREATE, DELETE, END_LOADING, FETCH_ALL, FETCH_BY_SEARCH, LIKE, START_LOADING, UPDATE } from "../actionTypes";
 
 const initialState: RootState = [];
 
 const postsReducer = function (state = initialState, action: Action): RootState {
   switch (action.type) {
+    case START_LOADING:
+      return { ...state, isLoading: true };
+    case END_LOADING:
+      return { ...state, isLoading: false };
     case FETCH_ALL:
-      return action.payload;
+      return {
+        ...state,
+        posts: action.payload.data,
+        currentPage: action.payload.currentPage,
+        numberOfPages: action.payload.numberOfPages,
+      };
     case CREATE:
       return [...state, action.payload];
     case UPDATE:

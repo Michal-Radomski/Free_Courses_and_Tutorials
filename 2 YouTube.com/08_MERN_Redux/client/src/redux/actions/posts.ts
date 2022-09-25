@@ -4,10 +4,15 @@ import { CREATE, DELETE, END_LOADING, FETCH_ALL, FETCH_BY_SEARCH, LIKE, START_LO
 
 export const getPosts = (page: number) => async (dispatch: AppDispatch) => {
   try {
-    const { data } = await API.fetchPosts();
+    dispatch({ type: START_LOADING });
+    const {
+      data: { data, currentPage, numberOfPages },
+    } = await API.fetchPosts(page);
     // console.log({ data });
+
     // dispatch(action)
-    dispatch({ type: FETCH_ALL, payload: data });
+    dispatch({ type: FETCH_ALL, payload: { data, currentPage, numberOfPages } });
+    dispatch({ type: END_LOADING });
   } catch (error) {
     console.log((error as CustomError).message);
   }

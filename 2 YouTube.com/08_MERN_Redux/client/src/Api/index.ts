@@ -14,7 +14,7 @@ Api.interceptors.request.use((req) => {
 });
 
 // Posts
-export const fetchPosts = () => Api.get("/posts");
+export const fetchPosts = (page: number) => Api.get(`/posts?page=${page}`);
 export const fetchPostsBySearch = (searchQuery: { search: string; tags: string }) =>
   Api.get(`/posts/search?searchQuery=${searchQuery.search || "none"}&tags=${searchQuery.tags}`);
 export const createPost = (newPost: IPost) => Api.post("/posts", newPost);

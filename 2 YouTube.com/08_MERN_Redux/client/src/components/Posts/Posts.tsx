@@ -7,13 +7,13 @@ import { useAppSelector } from "../../redux/hooks";
 import { IPost, RootState } from "../../Types";
 
 const Posts = ({ setCurrentId }: { setCurrentId: React.Dispatch<React.SetStateAction<string>> }): JSX.Element => {
-  const posts = useAppSelector((state: RootState) => state.posts);
+  const { posts } = useAppSelector((state: RootState) => state?.posts);
   // console.log({ posts });
 
   const classes = useStyles();
   return (
     <React.Fragment>
-      {!posts.length ? (
+      {!posts?.length ? (
         <CircularProgress />
       ) : (
         <Grid className={classes.mainContainer} container alignItems="stretch" spacing={3}>

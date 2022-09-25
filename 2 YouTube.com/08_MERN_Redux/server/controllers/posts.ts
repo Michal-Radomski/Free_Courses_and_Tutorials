@@ -9,11 +9,16 @@ interface CustomRequest extends Request {
   userId?: string;
 }
 
-export const getPosts: RequestHandler = async (_req: Request, res: Response): Promise<void> => {
+export const getPosts: RequestHandler = async (req: CustomRequest, res: Response): Promise<void> => {
+  const { page } = req.query;
   try {
-    const postMessages: IPost[] = await PostMessage.find();
+    const LIMIT = 4;
+    const startIndex = (Number(page) - 1) * LIMIT; // Get the starting index of every page
 
-    res.status(200).json(postMessages);
+    const totalPosts = await PostMessage.countDocuments({});
+    const posts = await PostMessage.find().sort({ _id: -1 }).limit(LIMIT).skip(startIndex);
+
+    res.json({ data: posts, currentPage: Number(page), numberOfPages: Math.ceil(totalPosts / LIMIT) });
   } catch (error) {
     res.status(404).json({ message: (error as CustomError).message });
   }

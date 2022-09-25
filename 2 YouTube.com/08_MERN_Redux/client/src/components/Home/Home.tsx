@@ -8,7 +8,7 @@ import Form from "../Form/Form";
 import useStyles from "./styles";
 import { AppDispatch } from "../../Types";
 import { useAppDispatch } from "../../redux/hooks";
-import { getPosts, getPostsBySearch } from "../../redux/actions/posts";
+import { getPostsBySearch } from "../../redux/actions/posts";
 import Paginate from "../Paginate";
 
 function useQuery() {
@@ -31,10 +31,6 @@ const Home = (): JSX.Element => {
   const [search, setSearch] = React.useState<string>("");
   const [tags, setTags] = React.useState<string[]>([]);
   // console.log({ tags });
-
-  React.useEffect(() => {
-    dispatch(getPosts(page));
-  }, [dispatch, currentId, page]);
 
   const searchPost = () => {
     if (search.trim() || tags) {
