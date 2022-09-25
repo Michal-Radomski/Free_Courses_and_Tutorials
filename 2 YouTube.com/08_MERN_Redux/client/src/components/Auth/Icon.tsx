@@ -1,5 +1,7 @@
 import React from "react";
 
+//* The file is no longer needed
+
 const Icon = (): JSX.Element => (
   <React.Fragment>
     <svg style={{ width: "20px", height: "20px" }} viewBox="0 0 24 24">

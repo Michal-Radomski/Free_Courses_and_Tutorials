@@ -24,11 +24,11 @@ export interface CustomError extends Error {
 
 export interface User extends Object {
   token: string;
-  expireIn: number;
   userData: {
     email?: string;
     name: string;
     picture: string;
+    expireIn?: number;
   };
 }
 

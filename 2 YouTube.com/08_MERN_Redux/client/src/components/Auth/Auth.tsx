@@ -2,15 +2,14 @@ import React from "react";
 import { Avatar, Button, Paper, Grid, Typography, Container } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 // import { GoogleLogin } from "react-google-login"; //* Deprecated - It was removed from package.json
-// import { GoogleLogin} from "@react-oauth/google"; //* @react-oauth/google -> base version
-import { useGoogleLogin } from "@react-oauth/google"; //* @react-oauth/google -> custom version
+import { CredentialResponse, GoogleLogin } from "@react-oauth/google"; //* @react-oauth/google -> base version
+// import { useGoogleLogin } from "@react-oauth/google"; //* @react-oauth/google -> custom version
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 import { signin, signup } from "../../redux/actions/auth";
+import jwt_decode from "jwt-decode";
 
 import useStyles from "./styles";
 import Input from "./Input";
-import Icon from "./Icon";
 import { AppDispatch, SignUp } from "../../Types";
 import { useAppDispatch } from "../../redux/hooks";
 import { AUTH } from "../../redux/actionTypes";
@@ -52,31 +51,61 @@ const Auth = (): JSX.Element => {
     setShowPassword(false);
   };
 
-  const loginWithGoogle = useGoogleLogin({
-    onSuccess: async (tokenResponse) => {
-      // console.log({ tokenResponse });
-      const token = tokenResponse.access_token;
-      // console.log({ token });
-      const expireIn = tokenResponse.expires_in * 1000 + new Date().getTime();
-      // console.log({ expireIn });
-      const userInfo = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      const userData = userInfo.data;
-      // console.log({ userData });
+  // * @react-oauth/google -> custom version
+  // const loginWithGoogle = useGoogleLogin({
+  //   onSuccess: async (tokenResponse) => {
+  //     // console.log({ tokenResponse });
+  //     const token = tokenResponse.access_token;
+  //     // console.log({ token });
+  //     const expireIn = tokenResponse.expires_in * 1000 + new Date().getTime();
+  //     // console.log({ expireIn });
+  //     const userInfo = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     });
+  //     const userData = userInfo.data;
+  //     // console.log({ userData });
 
-      try {
-        dispatch({ type: AUTH, data: { userData, token, expireIn } });
-        history.push("/");
-      } catch (error) {
-        console.log({ error });
-      }
-    },
-    onError: (error) => {
-      console.log("Google Sign In was unsuccessful. Try again later", error);
-      alert("Google Sign In was unsuccessful. Try again later");
-    },
-  });
+  //     try {
+  //       dispatch({ type: AUTH, data: { userData, token, expireIn } });
+  //       history.push("/");
+  //     } catch (error) {
+  //       console.log({ error });
+  //     }
+  //   },
+  //   onError: (error) => {
+  //     console.log("Google Sign In was unsuccessful. Try again later", error);
+  //     alert("Google Sign In was unsuccessful. Try again later");
+  //   },
+  // });
+
+  // * @react-oauth/google -> base version
+  const loginWithGoogle = (credentialResponse: CredentialResponse) => {
+    // console.log("credentialResponse:", credentialResponse);
+    const token = credentialResponse.credential;
+    // console.log("credential:", credential);
+    const decodedToken: {
+      picture: any;
+      email: string;
+      given_name: string;
+      exp: number;
+    } = jwt_decode(token as string);
+    // console.log("decoded:", decodedToken);
+
+    const userData = {
+      email: decodedToken.email,
+      name: decodedToken.given_name,
+      expireIn: decodedToken.exp,
+      picture: decodedToken.picture,
+    };
+    // console.log({ userData });
+
+    try {
+      dispatch({ type: AUTH, data: { userData, token } });
+      history.push("/");
+    } catch (error) {
+      console.log({ error });
+    }
+  };
 
   return (
     <React.Fragment>
@@ -140,17 +169,20 @@ const Auth = (): JSX.Element => {
             /> */}
 
             {/* //* @react-oauth/google -> base version */}
-            {/* <GoogleLogin
+            <GoogleLogin
+              locale="en"
+              width="364px"
               onSuccess={(credentialResponse) => {
-                console.log(credentialResponse);
+                loginWithGoogle(credentialResponse);
               }}
               onError={() => {
-                console.log("Login Failed");
+                console.log("Google Sign In was unsuccessful. Try again later");
+                alert("Google Sign In was unsuccessful. Try again later");
               }}
-            /> */}
+            />
 
             {/* //* @react-oauth/google -> custom version */}
-            <Button
+            {/* <Button
               onClick={() => loginWithGoogle()}
               className={classes.googleButton}
               color="secondary"
@@ -159,7 +191,7 @@ const Auth = (): JSX.Element => {
               variant="contained"
             >
               Sign In With Google
-            </Button>
+            </Button> */}
 
             <Grid container justifyContent="flex-end">
               <Grid item>

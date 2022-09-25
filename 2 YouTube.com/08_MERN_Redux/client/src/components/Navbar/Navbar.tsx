@@ -27,18 +27,21 @@ const Navbar = (): JSX.Element => {
   };
 
   React.useEffect(() => {
-    const expireIn = user?.expireIn;
+    // @ts-ignore
+    const expireIn = user?.userData?.expireIn;
+    console.log("expireIn:", expireIn);
     const now = new Date().getTime();
-    const timeToLogout = (expireIn! - now) / 1000;
-    // console.log(`AutoLogOut in : ${timeToLogout} seconds`);
+    const timeToLogout = (expireIn! * 1000 - now) / 1000 - 3590;
+    console.log(`AutoLogOut in : ${timeToLogout} seconds`);
     if (user) {
       if (timeToLogout < 0) {
         logout();
+        alert("You was LoggedOut");
       }
     }
     setUser(JSON.parse(localStorage.getItem("profile") as string));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location, user?.expireIn]);
+  }, [location, user?.userData?.expireIn]);
 
   return (
     <React.Fragment>
