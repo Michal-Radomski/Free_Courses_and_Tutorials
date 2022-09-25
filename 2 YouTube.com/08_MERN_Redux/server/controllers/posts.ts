@@ -24,18 +24,17 @@ export const getPosts: RequestHandler = async (req: CustomRequest, res: Response
   }
 };
 
-//* Unnecessary
-// export const getPost: RequestHandler = async (req: Request, res: Response): Promise<void> => {
-//   const { id } = req.params;
+export const getPost: RequestHandler = async (req: Request, res: Response): Promise<void> => {
+  const { id } = req.params;
 
-//   try {
-//     const post: IPost | null = await PostMessage.findById(id);
+  try {
+    const post: IPost | null = await PostMessage.findById(id);
 
-//     res.status(200).json(post);
-//   } catch (error) {
-//     res.status(404).json({ message: (error as CustomError).message });
-//   }
-// };
+    res.status(200).json(post);
+  } catch (error) {
+    res.status(404).json({ message: (error as CustomError).message });
+  }
+};
 
 export const createPost: RequestHandler = async (req: CustomRequest, res: Response): Promise<void> => {
   const post: IPost = req.body;

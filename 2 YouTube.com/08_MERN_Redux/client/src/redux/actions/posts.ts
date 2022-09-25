@@ -1,6 +1,16 @@
 import * as API from "../../Api/index";
 import { AppDispatch, CustomError, IPost } from "../../Types";
-import { CREATE, DELETE, END_LOADING, FETCH_ALL, FETCH_BY_SEARCH, LIKE, START_LOADING, UPDATE } from "../actionTypes";
+import {
+  CREATE,
+  DELETE,
+  END_LOADING,
+  FETCH_ALL,
+  FETCH_BY_SEARCH,
+  FETCH_POST,
+  LIKE,
+  START_LOADING,
+  UPDATE,
+} from "../actionTypes";
 
 export const getPosts = (page: number) => async (dispatch: AppDispatch) => {
   try {
@@ -15,6 +25,18 @@ export const getPosts = (page: number) => async (dispatch: AppDispatch) => {
     dispatch({ type: END_LOADING });
   } catch (error) {
     console.log((error as CustomError).message);
+  }
+};
+
+export const getPost = (id: string) => async (dispatch: AppDispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
+
+    const { data } = await API.fetchPost(id);
+
+    dispatch({ type: FETCH_POST, payload: { post: data } });
+  } catch (error) {
+    console.log({ error });
   }
 };
 

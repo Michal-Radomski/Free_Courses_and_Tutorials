@@ -1,5 +1,15 @@
 import { Action, IPost, RootState } from "../../Types";
-import { CREATE, DELETE, END_LOADING, FETCH_ALL, FETCH_BY_SEARCH, LIKE, START_LOADING, UPDATE } from "../actionTypes";
+import {
+  CREATE,
+  DELETE,
+  END_LOADING,
+  FETCH_ALL,
+  FETCH_BY_SEARCH,
+  FETCH_POST,
+  LIKE,
+  START_LOADING,
+  UPDATE,
+} from "../actionTypes";
 
 const initialState: RootState = { isLoading: true, posts: [] };
 
@@ -32,6 +42,8 @@ const postsReducer = function (state = initialState, action: Action): RootState 
       };
     case FETCH_BY_SEARCH:
       return { ...state, posts: action.payload.data };
+    case FETCH_POST:
+      return { ...state, post: action.payload.post };
 
     default:
       return state;
