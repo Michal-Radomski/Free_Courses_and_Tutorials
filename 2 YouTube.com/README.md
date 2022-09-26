@@ -19,3 +19,5 @@
    [part 2](https://www.youtube.com/watch?v=aibtHnbeuio&t=0s), [part 3](https://www.youtube.com/watch?v=LKlO8vLvUao),
    [part 4](https://www.youtube.com/watch?v=LYWgPSbPDfQ) and [part 5](https://www.youtube.com/watch?v=46NRrn4xi5Y). Typegoose
    tutorial is [here](https://dev.to/franciscomendes10866/how-to-build-type-safe-api-with-typegoose-and-expressjs-20oa).
+
+9. MERN App with Passport -> according to [this tutorial](https://www.youtube.com/watch?v=Gwru3BueuiE)
