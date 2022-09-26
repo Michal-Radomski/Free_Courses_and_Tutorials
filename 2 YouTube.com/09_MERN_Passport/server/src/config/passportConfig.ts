@@ -17,8 +17,9 @@ const passportConfig = (passport: {
   passport.use(
     new LocalStrategy((username: string, password: string, done) => {
       User.findOne({ username: username }, (error: Error, user: UserInterface) => {
+        // console.log({ user });
         if (error) throw error;
-        if (!user) return done(null, false);
+        if (!user) return done(null, false, { message: "Incorrect username or password." });
 
         bcrypt.compare(password, user.password, (error, result: boolean) => {
           if (error) throw error;
@@ -33,10 +34,12 @@ const passportConfig = (passport: {
   );
 
   passport.serializeUser((user: CustomUser, cb) => {
+    // console.log({ user });
     cb(null, user._id);
   });
 
   passport.deserializeUser((id: string, cb) => {
+    // console.log({ id, cb });
     User.findOne({ _id: id }, (error: Error, user: UserInterface) => {
       const userInformation = {
         username: user.username,
