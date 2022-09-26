@@ -5,27 +5,54 @@ import mongoose from "mongoose";
 import cors from "cors";
 import bodyParser from "body-parser";
 import morgan from "morgan";
+import passport from "passport";
+import cookieParser from "cookie-parser";
+import session from "express-session";
+
+import passportLocal from "passport-local";
 
 // Import routes
+import userRoutes from "./routes/userRoutes";
 
 // The server
 const app: Express = express();
 
 // Middlewares
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+  })
+);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("combined"));
+app.use(
+  session({
+    secret: process.env.SECRET as string,
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Route middleware
+app.use("/api", userRoutes);
 
 // Mongo DB
 mongoose
-  .connect(process.env.MONGO_URL as string)
+  .connect(process.env.MONGO_URL as string, {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then((con: { connection: { host: string } }) => {
     console.log(`MongoDB Database connected with HOST: ${con.connection.host}`);
   })
-  .catch((error: string) => console.log("Mongo DB Error => ", error));
+  .catch((error: Error) => console.log("Mongo DB Error => ", error));
 
 // Test route
 app.get("/", (req: Request, res: Response) => {
