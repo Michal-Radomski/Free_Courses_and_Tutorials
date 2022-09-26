@@ -82,9 +82,10 @@ const Auth = (): JSX.Element => {
   const loginWithGoogle = (credentialResponse: CredentialResponse) => {
     // console.log("credentialResponse:", credentialResponse);
     const token = credentialResponse.credential;
-    // console.log("credential:", credential);
+    // console.log("token:", token);
     const decodedToken: {
-      picture: any;
+      sub: string;
+      picture: string;
       email: string;
       given_name: string;
       exp: number;
@@ -96,6 +97,7 @@ const Auth = (): JSX.Element => {
       name: decodedToken.given_name,
       expireIn: decodedToken.exp,
       picture: decodedToken.picture,
+      googleId: decodedToken.sub,
     };
     // console.log({ userData });
 

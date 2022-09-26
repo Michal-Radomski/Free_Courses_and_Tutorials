@@ -28,6 +28,7 @@ const Post = ({
   const user = JSON.parse(localStorage.getItem("profile") as string);
 
   const userId = user?.userData.googleId || user?.userData?._id;
+  // console.log({ userId });
   const hasLikedPost = post?.likes?.find((like) => like === userId);
 
   const Likes = (): JSX.Element => {
@@ -120,7 +121,7 @@ const Post = ({
             <Likes />
           </Button>
 
-          {(user?.result?.googleId === post?.creator || user?.userData?._id === post?.creator) && (
+          {(user?.userData?.googleId === post?.creator || user?.userData?._id === post?.creator) && (
             <Button size="small" color="secondary" onClick={() => dispatch(deletePost(post._id))}>
               <DeleteIcon fontSize="small" /> Delete
             </Button>
