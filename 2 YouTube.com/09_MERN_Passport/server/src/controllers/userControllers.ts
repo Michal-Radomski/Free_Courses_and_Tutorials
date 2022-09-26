@@ -44,14 +44,14 @@ export const getAllUsers: RequestHandler = async (_req: Request, res: Response) 
       throw error;
     }
 
-    let filteredUsers;
+    const filteredUsers: UserInterface[] = [];
     data.forEach((item: UserInterface) => {
       const userInformation = {
         id: item._id,
         username: item.username,
         isAdmin: item.isAdmin,
       };
-      filteredUsers.push(userInformation);
+      filteredUsers.push(userInformation as UserInterface);
     });
     res.send(filteredUsers);
   });
