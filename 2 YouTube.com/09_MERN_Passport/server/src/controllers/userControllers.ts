@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 
 import User, { UserInterface } from "../models/User";
 
+// Register User by Username and Password
 export const registerUser: RequestHandler = async (req: Request, res: Response) => {
   const { username, password } = req?.body;
   if (!username || !password || typeof username !== "string" || typeof password !== "string") {
@@ -18,6 +19,7 @@ export const registerUser: RequestHandler = async (req: Request, res: Response) 
     if (!doc) {
       const salt = await bcrypt.genSalt(12);
       const hashedPassword = await bcrypt.hash(password, salt);
+
       const newUser = new User({
         username: username,
         password: hashedPassword,
@@ -29,57 +31,28 @@ export const registerUser: RequestHandler = async (req: Request, res: Response) 
   });
 };
 
-// const isAdministratorMiddleware = (req: Request, res: Response, next: NextFunction) => {
-//   const { user }: any = req;
-//   if (user) {
-//     User.findOne({ username: user.username }, (err, doc: DatabaseUserInterface) => {
-//       if (err) throw err;
-//       if (doc?.isAdmin) {
-//         next();
-//       }
-//       else {
-//         res.send("Sorry, only admin's can perform this.")
-//       }
-//     })
-//   }
-//   else {
-//     res.send("Sorry, you arent logged in.")
-//   }
-// }
+export const deleteUser: RequestHandler = async (req: Request | any, res: Response) => {
+  const { id }: { id: string } = req?.body;
+  await User.findByIdAndDelete(id);
+  res.send("success" + id);
+};
 
-// app.post("/login", passport.authenticate("local"), (req, res) => {
-//   res.send("success")
-// });
+export const getAllUsers: RequestHandler = async (_req: Request, res: Response) => {
+  await User.find({}, (error, data: UserInterface[]) => {
+    if (error) {
+      console.log({ error });
+      throw error;
+    }
 
-// app.get("/user", (req, res) => {
-//   res.send(req.user);
-// });
-
-// app.get("/logout", (req, res) => {
-//   req.logout();
-//   res.send("success")
-// });
-
-// app.post("/deleteuser", isAdministratorMiddleware, async (req, res) => {
-//   const { id } = req?.body;
-//   await User.findByIdAndDelete(id, (err) => {
-//     if (err) throw err;
-//   });
-//   res.send("success");
-// });
-
-// app.get("/getallusers", isAdministratorMiddleware, async (req, res) => {
-//   await User.find({}, (err, data: DatabaseUserInterface[]) => {
-//     if (err) throw err;
-//     const filteredUsers: UserInterface[] = [];
-//     data.forEach((item: DatabaseUserInterface) => {
-//       const userInformation = {
-//         id: item._id,
-//         username: item.username,
-//         isAdmin: item.isAdmin
-//       }
-//       filteredUsers.push(userInformation);
-//     });
-//     res.send(filteredUsers);
-//   })
-// });
+    let filteredUsers;
+    data.forEach((item: UserInterface) => {
+      const userInformation = {
+        id: item._id,
+        username: item.username,
+        isAdmin: item.isAdmin,
+      };
+      filteredUsers.push(userInformation);
+    });
+    res.send(filteredUsers);
+  });
+};

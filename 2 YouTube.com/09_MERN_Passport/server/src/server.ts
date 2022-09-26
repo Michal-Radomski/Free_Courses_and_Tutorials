@@ -9,10 +9,12 @@ import passport from "passport";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 
-import passportLocal from "passport-local";
-
 // Import routes
 import userRoutes from "./routes/userRoutes";
+
+// Import passportConfig
+import passportConfig from "./config/passportConfig";
+passportConfig(passport);
 
 // The server
 const app: Express = express();
@@ -36,6 +38,8 @@ app.use(
   })
 );
 app.use(cookieParser());
+
+// Passport
 app.use(passport.initialize());
 app.use(passport.session());
 
