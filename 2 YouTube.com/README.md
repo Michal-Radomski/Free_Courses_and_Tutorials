@@ -2,7 +2,7 @@
 
 1. MERN app -> according to [this tutorial](https://www.youtube.com/watch?v=_2Nid40Jbgc).
 
-2. MERN app -> according to [this tutorial](https://www.youtube.com/watch?v=IUPHbf9cw74).
+2. Node with Passport -> according to [this tutorial](https://www.youtube.com/watch?v=IUPHbf9cw74).
 
 3. MERN API -> according to this tutorial: [part1](https://www.youtube.com/watch?v=1o9YOHeKhNQ) and
    [part2](https://www.youtube.com/watch?v=FXzsv2BJLKs).
@@ -21,3 +21,5 @@
    tutorial is [here](https://dev.to/franciscomendes10866/how-to-build-type-safe-api-with-typegoose-and-expressjs-20oa).
 
 9. MERN App with Passport -> according to [this tutorial](https://www.youtube.com/watch?v=Gwru3BueuiE)
+
+10. Node with Passport -> according to [this tutorial](https://www.youtube.com/watch?v=6FOq4cUdH8k)
