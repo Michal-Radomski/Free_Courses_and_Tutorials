@@ -7,7 +7,7 @@ const router = express.Router();
 // Home/ Welcome Page
 router.get("/", (req: Request, res: Response) => {
   console.log("req.ip:", req.ip);
-  res.send("welcome");
+  res.send("Welcome to port:5000");
   // res.render("welcome");
 });
 

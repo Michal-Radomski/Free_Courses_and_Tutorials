@@ -1,5 +1,6 @@
 import * as dotenv from "dotenv";
 dotenv.config();
+// const ejs = require("ejs"); //* Not nesesery to import
 import express, { Express, Request, Response } from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
@@ -11,6 +12,7 @@ import session from "express-session";
 
 // Import routes
 import routes from "./routes/index";
+import userRouter from "./routes/users";
 
 // The server
 const app: Express = express();
@@ -22,6 +24,21 @@ app.use(morgan("combined"));
 
 //Route middleware
 app.use("/", routes);
+app.use("/users", userRouter);
+
+// Express session
+app.use(
+  session({
+    secret: process.env.SECRET as string,
+    resave: true,
+    saveUninitialized: true,
+    cookie: { maxAge: 600000 },
+  })
+);
+
+// EJS
+app.use(expressLayouts);
+app.set("view engine", "ejs");
 
 // Mongo DB
 mongoose
