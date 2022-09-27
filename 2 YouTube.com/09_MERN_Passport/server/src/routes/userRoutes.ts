@@ -13,7 +13,8 @@ router.post("/login", passport.authenticate("local"), async (_req: Request, res:
 });
 
 router.get("/user", async (req: Request, res: Response) => {
-  res.send(req.user);
+  // res.send(req.user);
+  res.status(200).json(req.user);
 });
 
 router.get("/logout", async (req: Request, res: Response, next: NextFunction) => {
