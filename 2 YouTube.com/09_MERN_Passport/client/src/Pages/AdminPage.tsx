@@ -9,18 +9,26 @@ const AdminPage = (): JSX.Element => {
 
   const [data, setData] = React.useState<UserInterface[]>([]);
   const [selectedUser, setSelectedUser] = React.useState<string>("");
+  console.log({ selectedUser });
 
-  React.useEffect(() => {
+  const getAllUsers = () => {
     Axios.get("/getallusers", {
       withCredentials: true,
     }).then((res: AxiosResponse) => {
+      console.log({ res });
       setData(
         res.data.filter((item: UserInterface) => {
           return item.username !== ctx.username;
         })
       );
     });
+  };
+
+  React.useEffect(() => {
+    getAllUsers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ctx]);
+
   if (!data) {
     return null as any;
   }
@@ -41,7 +49,9 @@ const AdminPage = (): JSX.Element => {
       {
         withCredentials: true,
       }
-    );
+    ).then(() => {
+      getAllUsers();
+    });
   };
 
   return (

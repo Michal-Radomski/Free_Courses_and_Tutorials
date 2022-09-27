@@ -27,6 +27,7 @@ app.use(
     credentials: true,
   })
 );
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("combined"));
@@ -35,6 +36,7 @@ app.use(
     secret: process.env.SECRET as string,
     resave: true,
     saveUninitialized: true,
+    cookie: { maxAge: 600000 },
   })
 );
 app.use(cookieParser());

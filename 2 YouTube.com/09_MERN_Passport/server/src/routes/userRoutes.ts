@@ -18,12 +18,13 @@ router.get("/user", async (req: Request, res: Response) => {
 });
 
 router.get("/logout", async (req: Request, res: Response, next: NextFunction) => {
-  req.logout(function (error) {
+  req.logout(async function (error) {
     if (error) {
       console.log({ error });
       return next(error);
     }
-    res.send("Success");
+    await res.clearCookie("connect.sid"); //* It doesn't work
+    await res.send("Success");
   });
 });
 

@@ -17,13 +17,14 @@ const passportConfig = (passport: {
   passport.use(
     new LocalStrategy((username: string, password: string, done) => {
       User.findOne({ username: username }, (error: Error, user: UserInterface) => {
-        // console.log({ user });
+        console.log({ user });
         if (error) throw error;
         if (!user) return done(null, false, { message: "Incorrect username or password." });
 
         bcrypt.compare(password, user.password, (error, result: boolean) => {
           if (error) throw error;
           if (result === true) {
+            console.log({ result });
             return done(null, user);
           } else {
             return done(null, false);

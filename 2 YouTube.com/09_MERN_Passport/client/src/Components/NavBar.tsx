@@ -1,11 +1,10 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Axios, { AxiosResponse } from "axios";
 
 import { myContext } from "../Context";
 
 const NavBar = (): JSX.Element => {
-  const history = useHistory();
   const ctx = React.useContext(myContext);
 
   const logout = () => {
@@ -13,11 +12,11 @@ const NavBar = (): JSX.Element => {
       withCredentials: true,
     }).then((res: AxiosResponse) => {
       if (res.data === "Success") {
-        // window.location.href = "/";
-        history.push("/");
+        window.location.href = "/";
       }
     });
   };
+
   return (
     <div className="NavContainer">
       {ctx ? (

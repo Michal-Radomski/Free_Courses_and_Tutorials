@@ -25,8 +25,8 @@ export const registerUser: RequestHandler = async (req: Request, res: Response) 
         password: hashedPassword,
       });
       await newUser.save();
-      // res.send("success");
-      res.status(201).json({ newUser });
+      res.send("Created");
+      // res.status(201).json({ newUser });
     }
   });
 };

@@ -1,12 +1,9 @@
 import React from "react";
 import axios, { AxiosResponse } from "axios";
-import { useHistory } from "react-router-dom";
 
 const Login = (): JSX.Element => {
   const [username, setUsername] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
-
-  const history = useHistory();
 
   const login = async () => {
     await axios
@@ -25,8 +22,7 @@ const Login = (): JSX.Element => {
           console.log({ res });
           if (res.data === "Success") {
             console.log("Login successfully");
-            // window.location.href = "/";
-            history.push("/");
+            window.location.href = "/";
           }
         },
         (error) => {
