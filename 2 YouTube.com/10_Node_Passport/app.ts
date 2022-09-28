@@ -1,7 +1,7 @@
 import * as dotenv from "dotenv";
 dotenv.config();
-// const ejs = require("ejs"); //* Not nesesery to import
-import express, { Express, Request, Response } from "express";
+// const ejs = require("ejs"); //* Not necessary to import
+import express, { Express, NextFunction, Request, Response } from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import morgan from "morgan";
@@ -14,6 +14,10 @@ import session from "express-session";
 import routes from "./routes/index";
 import userRouter from "./routes/users";
 
+// Import passportConfig
+import passportConfig from "./config/passportConfig";
+passportConfig(passport);
+
 // The server
 const app: Express = express();
 
@@ -22,7 +26,6 @@ app.set("view engine", "ejs");
 app.use(expressLayouts);
 
 // Middlewares
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("combined"));
 
@@ -40,6 +43,21 @@ app.use(
   })
 );
 
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Connect flash
+app.use(flash());
+
+// Global variables
+app.use(function (req: Request, res: Response, next: NextFunction) {
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
+  next();
+});
+
 // Mongo DB
 mongoose
   .connect(process.env.MONGO_URL as string, {
@@ -52,11 +70,11 @@ mongoose
   })
   .catch((error: string) => console.log("Mongo DB Error => ", error));
 
-// Test route
-app.get("/test", (req: Request, res: Response) => {
-  console.log("req.ip:", req.ip);
-  res.send("<h1 style='color:blue;text-align:center'>API is running</h1>");
-});
+// // Test route
+// app.get("/test", (req: Request, res: Response) => {
+//   console.log("req.ip:", req.ip);
+//   res.send("<h1 style='color:blue;text-align:center'>API is running</h1>");
+// });
 
 // Port
 const port = (process.env.PORT || 5000) as number;
