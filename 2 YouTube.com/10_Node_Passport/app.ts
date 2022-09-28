@@ -28,12 +28,9 @@ app.use(expressLayouts);
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("combined"));
+app.use(express.static("public"));
 
-//Route middleware
-app.use("/", routes);
-app.use("/users", userRouter);
-
-// Express session
+//Setup session
 app.use(
   session({
     secret: process.env.SECRET as string,
@@ -44,8 +41,14 @@ app.use(
 );
 
 // Passport middleware
+//Initialize passport
 app.use(passport.initialize());
+//Use passport to deal with session
 app.use(passport.session());
+
+//Route middleware
+app.use("/", routes);
+app.use("/users", userRouter);
 
 // Connect flash
 app.use(flash());
