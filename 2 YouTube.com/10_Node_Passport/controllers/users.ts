@@ -69,7 +69,7 @@ export const register: RequestHandler = async (req: Request, res: Response) => {
               .save()
               .then((user: IUser) => {
                 console.log({ user });
-                req.flash("success_msg", "You are now registered and can log in");
+                // req.flash("success_msg", "You are now registered and can log in");
                 res.redirect("/users/login");
               })
               .catch((error) => console.log({ error }));
@@ -95,6 +95,6 @@ export const logout: RequestHandler = async (req: Request, res: Response, next: 
       return next(error);
     }
   });
+  await res.redirect("/");
   await req.flash("success_msg", "You are logged out");
-  await res.redirect("/users/login");
 };

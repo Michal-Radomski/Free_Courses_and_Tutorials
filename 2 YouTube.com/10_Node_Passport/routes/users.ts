@@ -5,10 +5,10 @@ import { login, logout, register } from "../controllers/users";
 const userRouter = express.Router();
 
 // Login Page
-userRouter.get("/login", async (_req: Request, res: Response) => await res.render("login"));
+userRouter.get("/login", (_req: Request, res: Response) => res.render("login"));
 
 // Register Page
-userRouter.get("/register", async (_req: Request, res: Response) => await res.render("register"));
+userRouter.get("/register", (_req: Request, res: Response) => res.render("register"));
 
 // Register
 userRouter.post("/register", register);

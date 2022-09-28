@@ -9,6 +9,7 @@ import expressLayouts from "express-ejs-layouts";
 import passport from "passport";
 import flash from "connect-flash";
 import session from "express-session";
+import cookieParser from "cookie-parser";
 
 // Import routes
 import routes from "./routes/index";
@@ -27,6 +28,7 @@ app.use(expressLayouts);
 
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser(process.env.SECRET as string));
 app.use(morgan("combined"));
 app.use(express.static("public"));
 
@@ -76,6 +78,7 @@ mongoose
 // // Test route
 // app.get("/test", (req: Request, res: Response) => {
 //   console.log("req.ip:", req.ip);
+//   console.log("res.locals:", res.locals);
 //   res.send("<h1 style='color:blue;text-align:center'>API is running</h1>");
 // });
 
