@@ -23,3 +23,5 @@
 9. MERN App with Passport -> according to [this tutorial](https://www.youtube.com/watch?v=Gwru3BueuiE)
 
 10. Node with Passport -> according to [this tutorial](https://www.youtube.com/watch?v=6FOq4cUdH8k)
+
+11. React with i18next -> according to [this tutorial](https://www.youtube.com/watch?v=baLjPx_wFi4)
