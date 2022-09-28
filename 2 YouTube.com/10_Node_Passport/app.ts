@@ -7,7 +7,6 @@ import bodyParser from "body-parser";
 import morgan from "morgan";
 import expressLayouts from "express-ejs-layouts";
 import passport from "passport";
-import flash from "connect-flash";
 import session from "express-session";
 import cookieParser from "cookie-parser";
 
@@ -28,7 +27,7 @@ app.use(expressLayouts);
 
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser(process.env.SECRET as string));
+app.use(cookieParser());
 app.use(morgan("combined"));
 app.use(express.static("public"));
 
@@ -51,17 +50,6 @@ app.use(passport.session());
 //Route middleware
 app.use("/", routes);
 app.use("/users", userRouter);
-
-// Connect flash
-app.use(flash());
-
-// Global variables
-app.use(function (req: Request, res: Response, next: NextFunction) {
-  res.locals.success_msg = req.flash("success_msg");
-  res.locals.error_msg = req.flash("error_msg");
-  res.locals.error = req.flash("error");
-  next();
-});
 
 // Mongo DB
 mongoose

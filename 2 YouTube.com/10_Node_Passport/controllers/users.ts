@@ -13,6 +13,7 @@ export const register: RequestHandler = async (req: Request, res: Response) => {
   console.log("req.body:", req.body);
   const { name, email, password, password2 } = req.body;
   let errors = [] as Errors[];
+  console.log({ errors });
 
   // Check required fields
   if (!name || !email || !password || !password2) {
@@ -69,7 +70,6 @@ export const register: RequestHandler = async (req: Request, res: Response) => {
               .save()
               .then((user: IUser) => {
                 console.log({ user });
-                // req.flash("success_msg", "You are now registered and can log in");
                 res.redirect("/users/login");
               })
               .catch((error) => console.log({ error }));
@@ -96,5 +96,4 @@ export const logout: RequestHandler = async (req: Request, res: Response, next: 
     }
   });
   await res.redirect("/");
-  await req.flash("success_msg", "You are logged out");
 };

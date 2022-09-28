@@ -18,7 +18,7 @@ const passportStrategy = (passport: {
         email: email,
       }).then((user: IUser | null) => {
         if (!user) {
-          return done(null, false, { message: "That email is not registered" });
+          return done(null, false);
         }
 
         // Match password check
@@ -30,7 +30,7 @@ const passportStrategy = (passport: {
           if (isMatch) {
             return done(null, user);
           } else {
-            return done(null, false, { message: "Password incorrect" });
+            return done(null, false);
           }
         });
       });
