@@ -25,3 +25,5 @@
 10. Node with Passport -> according to [this tutorial](https://www.youtube.com/watch?v=6FOq4cUdH8k)
 
 11. React with i18next -> according to [this tutorial](https://www.youtube.com/watch?v=baLjPx_wFi4)
+
+12. Node with SendGrid -> according to [this tutorial](https://www.youtube.com/watch?v=G7iLLFKZVWA)
