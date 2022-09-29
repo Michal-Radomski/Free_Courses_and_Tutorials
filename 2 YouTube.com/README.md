@@ -20,10 +20,12 @@
    [part 4](https://www.youtube.com/watch?v=LYWgPSbPDfQ) and [part 5](https://www.youtube.com/watch?v=46NRrn4xi5Y). Typegoose
    tutorial is [here](https://dev.to/franciscomendes10866/how-to-build-type-safe-api-with-typegoose-and-expressjs-20oa).
 
-9. MERN App with Passport -> according to [this tutorial](https://www.youtube.com/watch?v=Gwru3BueuiE)
+9. MERN App with Passport -> according to [this tutorial](https://www.youtube.com/watch?v=Gwru3BueuiE).
 
-10. Node with Passport -> according to [this tutorial](https://www.youtube.com/watch?v=6FOq4cUdH8k)
+10. Node with Passport -> according to [this tutorial](https://www.youtube.com/watch?v=6FOq4cUdH8k).
 
-11. React with i18next -> according to [this tutorial](https://www.youtube.com/watch?v=baLjPx_wFi4)
+11. React with i18next -> according to [this tutorial](https://www.youtube.com/watch?v=baLjPx_wFi4).
 
-12. Node with SendGrid -> according to [this tutorial](https://www.youtube.com/watch?v=G7iLLFKZVWA)
+12. Node with SendGrid -> according to [this tutorial](https://www.youtube.com/watch?v=G7iLLFKZVWA).
+
+13. React + Node with SendGrid -> according to [this tutorial](https://www.youtube.com/watch?v=NIqti2oEm20).
