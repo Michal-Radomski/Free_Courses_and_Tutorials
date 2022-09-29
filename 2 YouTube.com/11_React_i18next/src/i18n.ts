@@ -13,7 +13,7 @@ i18n
       loadPath: "/assets/i18n/{{ns}}/{{lng}}.json",
     },
     fallbackLng: "en",
-    // Disabled in production
+    // Logs in console
     debug: true,
     // You can have multiple namespaces, in case you want to divide a huge translation into smaller pieces and load them on demand
     ns: ["common", "home", "profile"],
@@ -22,7 +22,8 @@ i18n
       formatSeparator: ",",
     },
     react: {
-      wait: true,
+      // wait: true, //* old option
+      useSuspense: true,
     },
   } as any);
 

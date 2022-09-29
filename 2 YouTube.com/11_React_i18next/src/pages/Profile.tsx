@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 const Profile = (): JSX.Element => {
   const { t } = useTranslation(["common", "profile"]);
   // console.log({ t });
+  // console.log({ useTranslation });
 
   return (
     <React.Fragment>

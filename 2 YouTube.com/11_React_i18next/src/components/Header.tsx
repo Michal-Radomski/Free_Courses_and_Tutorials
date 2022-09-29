@@ -7,6 +7,7 @@ const Header = (): JSX.Element => {
   const { i18n, t } = useTranslation(["common"]);
 
   // console.log({ i18n });
+  // console.log({ i18next });
 
   React.useEffect(() => {
     if (localStorage.getItem("i18nextLng")?.length! > 2) {
