@@ -29,3 +29,5 @@
 12. Node with SendGrid -> according to [this tutorial](https://www.youtube.com/watch?v=G7iLLFKZVWA).
 
 13. React + Node with SendGrid -> according to [this tutorial](https://www.youtube.com/watch?v=NIqti2oEm20).
+
+14. Express + EJS -> according to [this tutorial](https://www.youtube.com/watch?v=PozEoga90r8).
