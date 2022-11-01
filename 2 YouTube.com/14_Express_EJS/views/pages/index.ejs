@@ -5,5 +5,34 @@
   </head>
   <body class="m-5">
     <h1>Express EJS Weather App</h1>
+    <div class="container">
+      <header>
+        <div class="compass-icon"><img src="compass.svg" alt="compass icon" /></div>
+      </header>
+      <div class="weather-title">
+        <p>View the current weather for your city</p>
+      </div>
+      <form action="/" method="POST" onsubmit="submit()">
+        <input type="text" name="city" class="ghost-input" placeholder="Enter a city" />
+      </form>
+
+      <div class="result">
+        <% if(temp !== null) {%>
+        <h1 class="temp"><%= temp %></h1>
+        <% } %>
+
+        <div class="icon-des">
+          <% if(icon !== null) {%>
+          <img class="icon" src="http://openweathermap.org/img/w/<%= icon %>.png" alt="" />
+          <% } %> <% if(des !== null) {%>
+          <h3><%= des %></h3>
+          <% } %>
+        </div>
+
+        <% if(city !== null) {%>
+        <p class="city"><%= city %></p>
+        <% } %>
+      </div>
+    </div>
   </body>
 </html>
