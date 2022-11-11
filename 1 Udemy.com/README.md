@@ -6,5 +6,5 @@
 
 2. Node + Docker -> according to [this course](https://www.udemy.com/course/build-and-deploy-a-nodejs-api)
 
-3. MongoDB -> according to [this course](https://www.udemy.com/course/getting-started-with-mongodb) - only MongoDB Shell
-   (mongosh)
+3. MongoDB -> according to [this course](https://www.udemy.com/course/getting-started-with-mongodb) - MongoDB Shell (mongosh)
+   only
