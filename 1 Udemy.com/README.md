@@ -8,3 +8,5 @@
 
 3. MongoDB -> according to [this course](https://www.udemy.com/course/getting-started-with-mongodb) - MongoDB Shell (mongosh)
    only
+
+4. Mongoose -> according to [this course](https://www.udemy.com/course/mongoose)
