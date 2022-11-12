@@ -38,10 +38,10 @@ mongoose
   .catch((error: string) => console.log("Mongo DB Error => ", error));
 
 // Test route
-// app.get("/", (req: Request, res: Response) => {
-//   console.log("req.ip:", req.ip);
-//   res.send("<h1 style='color:blue;text-align:center'>API is running</h1>");
-// });
+app.get("/", (req: Request, res: Response) => {
+  console.log("req.ip:", req.ip);
+  res.send("<h1 style='color:blue;text-align:center'>API is running</h1>");
+});
 
 // Port
 const port = (process.env.PORT || 5000) as number;
