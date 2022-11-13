@@ -1,12 +1,12 @@
 import { Request, RequestHandler, Response } from "express";
 import mongoose from "mongoose";
 
-import Post, { IPost } from "./Model";
+import Post, { IPost } from "./PostModel";
 
 export const getPosts: RequestHandler = async (req: Request, res: Response): Promise<void> => {
   console.log("req.ip:", req.ip);
   try {
-    const list: IPost[] = await Post.find({}).sort({ createdAt: -1 });
+    const list: IPost[] = await Post.find({}, { id: 1, title: 1, text: 1 }).sort({ createdAt: -1 });
     res.status(200).json(list);
   } catch (error) {
     console.log({ error });
@@ -16,7 +16,7 @@ export const getPosts: RequestHandler = async (req: Request, res: Response): Pro
 
 export const sendPost: RequestHandler = async (req: Request, res: Response): Promise<void> => {
   try {
-    const newPost = new Post({
+    const newPost: IPost = new Post({
       text: req.body.text,
       title: req.body.title,
       viewCounter: req.body.viewCounter,

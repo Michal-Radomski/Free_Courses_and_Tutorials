@@ -1,17 +1,10 @@
 import mongoose, { Schema, Document } from "mongoose";
 
-enum userRole {
-  "user",
-  "admin",
-  "staff",
-}
-
 export interface IPost extends Document {
   title: string;
   text: number;
   followers?: Schema.Types.ObjectId[];
   mata?: any;
-  role?: userRole;
   comments?: { text: string; author: { id: Schema.Types.ObjectId; name: string } }[];
   viewCounter: number;
   published?: boolean;
@@ -34,7 +27,6 @@ const postSchema: Schema = new mongoose.Schema(
       },
     },
     text: { type: String, required: true, minLength: [3, "At least 3 characters"], maxLength: 25 },
-    role: { type: String, enum: userRole, default: "user" },
     followers: [Schema.Types.ObjectId],
     meta: Schema.Types.Mixed,
     comments: [
@@ -78,5 +70,27 @@ const postSchema: Schema = new mongoose.Schema(
   },
   { timestamps: true, toJSON: { getters: true } }
 );
+
+postSchema.virtual("Description").get(function (this: IPost) {
+  return `Post has title: ${this.title} and text: ${this.text}`;
+});
+
+postSchema.pre("save", function (this, next) {
+  console.log("doc:", this);
+  next();
+});
+
+postSchema.pre("validate", function (next) {
+  console.log("Validating...");
+  next();
+});
+
+postSchema.post("validate", function () {
+  console.log("After validation...");
+});
+
+postSchema.post("save", function (this) {
+  console.log(`The document with this id: ${this.id} was saved to the MongoDB`);
+});
 
 export default mongoose.model<IPost>("Post", postSchema);
