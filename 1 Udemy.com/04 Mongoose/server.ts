@@ -3,6 +3,7 @@ dotenv.config();
 import express, { Express, Request, Response } from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
+import errorHandler from "errorhandler";
 import morgan from "morgan";
 import helmet from "helmet";
 import http from "http";
@@ -25,13 +26,14 @@ app.use(
     crossOriginOpenerPolicy: false,
   })
 );
+app.use(errorHandler());
 
 //Route middleware
 app.use("/", indexRouter);
 
 // Mongo DB
 mongoose
-  .connect(process.env.MONGO_URL as string, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.MONGO_URL as string, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
   .then((con: { connection: { host: string } }) => {
     console.log(`MongoDB Database connected with HOST: ${con.connection.host}`);
   })
