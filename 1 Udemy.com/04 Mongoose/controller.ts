@@ -1,4 +1,5 @@
 import { Request, RequestHandler, Response } from "express";
+import mongoose from "mongoose";
 
 import Post, { IPost } from "./Model";
 
@@ -60,6 +61,22 @@ export const updatePost: RequestHandler = async (req: Request, res: Response): P
 
     await Post.findByIdAndUpdate(id, updatedPost, { new: true });
     res.status(202).json(updatedPost);
+  } catch (error) {
+    console.error({ error });
+    res.status(500).send("Server Error");
+  }
+};
+
+export const deletePost: RequestHandler = async (req: Request, res: Response): Promise<any> => {
+  console.log("req.ip:", req.ip);
+  try {
+    const { id } = req.params;
+    // console.log({ id });
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).send(`No post with id: ${id}`);
+    }
+    await Post.findByIdAndRemove(id);
+    res.status(200).json({ message: `Post with id: ${id} deleted successfully.` });
   } catch (error) {
     console.error({ error });
     res.status(500).send("Server Error");
