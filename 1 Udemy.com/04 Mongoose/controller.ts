@@ -18,6 +18,7 @@ export const sendPost: RequestHandler = async (req: Request, res: Response): Pro
     const newPost = new Post({
       text: req.body.text,
       title: req.body.title,
+      viewCounter: req.body.viewCounter,
     });
     const post = await newPost.save();
     // console.log({post});
@@ -37,7 +38,7 @@ export const getPost: RequestHandler = async (req: Request, res: Response): Prom
     if (!post) {
       return res.status(404).json({ msg: "Post not found" });
     }
-    res.json(post);
+    res.status(200).json(post);
   } catch (error) {
     console.error({ error });
     res.status(500).send("Server Error");
