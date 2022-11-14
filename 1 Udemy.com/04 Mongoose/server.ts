@@ -10,6 +10,7 @@ import http from "http";
 
 // Import routes
 import indexRouter from "./indexRouter";
+import Post from "./PostModel";
 
 // The server
 const app: Express = express();
@@ -33,7 +34,12 @@ app.use("/", indexRouter);
 
 // Mongo DB
 mongoose
-  .connect(process.env.MONGO_URL as string, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
+  .connect(process.env.MONGO_URL as string, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  })
   .then((con: { connection: { host: string } }) => {
     console.log(`MongoDB Database connected with HOST: ${con.connection.host}`);
   })
@@ -42,7 +48,10 @@ mongoose
 // Test route
 app.get("/", (req: Request, res: Response) => {
   console.log("req.ip:", req.ip);
-  res.send("<h1 style='color:blue;text-align:center'>API is running</h1>");
+  // @ts-ignore
+  Post.staticMethod(function () {
+    res.send("<h1 style='color:blue;text-align:center'>API is running</h1>");
+  });
 });
 
 // Port

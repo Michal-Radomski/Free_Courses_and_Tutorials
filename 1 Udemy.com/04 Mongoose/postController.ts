@@ -6,7 +6,7 @@ import Post, { IPost } from "./PostModel";
 export const getPosts: RequestHandler = async (req: Request, res: Response): Promise<void> => {
   console.log("req.ip:", req.ip);
   try {
-    const list: IPost[] = await Post.find({}, { id: 1, title: 1, text: 1 }).sort({ createdAt: -1 });
+    const list: IPost[] = await Post.find({}, { id: 1, title: 1, text: 1, author: 1 }).sort({ createdAt: -1 });
     res.status(200).json(list);
   } catch (error) {
     console.log({ error });
@@ -20,6 +20,7 @@ export const sendPost: RequestHandler = async (req: Request, res: Response): Pro
       text: req.body.text,
       title: req.body.title,
       viewCounter: req.body.viewCounter,
+      author: req.body.author,
     });
     const post = await newPost.save();
     // console.log({post});
@@ -34,7 +35,7 @@ export const sendPost: RequestHandler = async (req: Request, res: Response): Pro
 export const getPost: RequestHandler = async (req: Request, res: Response): Promise<any> => {
   console.log("req.ip:", req.ip);
   try {
-    const post = await Post.findById(req.params.id);
+    const post = await Post.findById(req.params.id).populate("author");
     // console.log(req.params.id);
     if (!post) {
       return res.status(404).json({ msg: "Post not found" });

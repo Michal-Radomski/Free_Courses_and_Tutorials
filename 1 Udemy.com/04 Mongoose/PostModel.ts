@@ -4,7 +4,8 @@ export interface IPost extends Document {
   title: string;
   text: number;
   followers?: Schema.Types.ObjectId[];
-  mata?: any;
+  meta?: any;
+  author: Schema.Types.ObjectId;
   comments?: { text: string; author: { id: Schema.Types.ObjectId; name: string } }[];
   viewCounter: number;
   published?: boolean;
@@ -28,6 +29,7 @@ const postSchema: Schema = new mongoose.Schema(
     },
     text: { type: String, required: true, minLength: [3, "At least 3 characters"], maxLength: 25 },
     followers: [Schema.Types.ObjectId],
+    author: { type: Schema.Types.ObjectId, required: true, ref: "User" },
     meta: Schema.Types.Mixed,
     comments: [
       {
@@ -92,5 +94,10 @@ postSchema.post("validate", function () {
 postSchema.post("save", function (this) {
   console.log(`The document with this id: ${this.id} was saved to the MongoDB`);
 });
+
+postSchema.statics.staticMethod = function (callback: Function) {
+  console.log("Static Method");
+  return callback();
+};
 
 export default mongoose.model<IPost>("Post", postSchema);
