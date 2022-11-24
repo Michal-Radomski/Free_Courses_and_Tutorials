@@ -31,3 +31,7 @@
 13. React + Node with SendGrid -> according to [this tutorial](https://www.youtube.com/watch?v=NIqti2oEm20).
 
 14. Express + EJS -> according to [this tutorial](https://www.youtube.com/watch?v=PozEoga90r8).
+
+15. PostgreSQL (psql) -> according to [this tutorial](https://www.youtube.com/watch?v=BLH3s5eTL4Y) and
+    [this tutorial](https://www.geeksforgeeks.org/postgresql-psql-commands) and
+    [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-20-04)
