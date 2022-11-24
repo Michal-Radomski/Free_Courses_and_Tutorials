@@ -10,3 +10,5 @@
    only
 
 4. Mongoose -> according to [this course](https://www.udemy.com/course/mongoose)
+
+5. PERN -> according to [this course](https://www.udemy.com/course/react-fullstack-with-nodeexpress-psql-and-aws)
