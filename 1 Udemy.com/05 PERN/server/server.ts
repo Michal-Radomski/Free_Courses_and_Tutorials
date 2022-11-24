@@ -5,7 +5,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import morgan from "morgan";
 import helmet from "helmet";
-
+import cookieParser from "cookie-parser";
 import http from "http";
 
 // Import routes
@@ -15,6 +15,7 @@ import indexRouter from "./indexRouter";
 const app: Express = express();
 
 // Middlewares
+app.use(cookieParser());
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -29,7 +30,7 @@ app.use(
 );
 
 //Route middleware
-app.use("/", indexRouter);
+app.use("/api", indexRouter);
 
 // // Test route
 // app.get("/", (req: Request, res: Response) => {
