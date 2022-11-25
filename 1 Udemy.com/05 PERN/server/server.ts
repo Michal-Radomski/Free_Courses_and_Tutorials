@@ -1,6 +1,6 @@
 import * as dotenv from "dotenv";
 dotenv.config();
-import express, { Express } from "express";
+import express, { Express, Request, Response } from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import morgan from "morgan";
@@ -33,10 +33,10 @@ app.use(
 app.use("/api", indexRouter);
 
 // // Test route
-// app.get("/", (req: Request, res: Response) => {
-//   console.log("req.ip:", req.ip);
-//   res.send("<h1 style='color:blue;text-align:center'>API is running</h1>");
-// });
+app.get("/", (req: Request, res: Response) => {
+  console.log("req.ip:", req.ip);
+  res.send("<h1 style='color:blue;text-align:center'>API is running</h1>");
+});
 
 // Port
 const port = (process.env.PORT || 5000) as number;
