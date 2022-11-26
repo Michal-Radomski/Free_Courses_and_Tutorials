@@ -4,13 +4,20 @@
   "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.10.15",
     "@redux-devtools/extension": "^3.2.3",
     "@types/node": "^16.18.3",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
+    "auth0-js": "^9.19.2",
     "axios": "^1.2.0",
+    "history": "^4.10.1",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-js-pagination": "^3.0.3",
     "react-redux": "^8.0.5",
     "react-router-dom": "^5.3.4",
     "react-scripts": "5.0.1",
@@ -44,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-js-pagination": "^3.0.4",
     "@types/react-router-dom": "^5.3.3"
   }
 }

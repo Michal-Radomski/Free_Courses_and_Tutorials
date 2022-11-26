@@ -11,4 +11,5 @@
 
 4. Mongoose -> according to [this course](https://www.udemy.com/course/mongoose)
 
-5. PERN -> according to [this course](https://www.udemy.com/course/react-fullstack-with-nodeexpress-psql-and-aws)
+5. PERN -> according to [this course](https://www.udemy.com/course/react-fullstack-with-nodeexpress-psql-and-aws) and
+   [this tutorial](https://www.freecodecamp.org/news/fullstack-react-blog-app-with-express-and-psql)
