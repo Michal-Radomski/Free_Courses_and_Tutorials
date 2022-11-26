@@ -21,13 +21,12 @@ interface CustomProps {
 class AuthCheck extends React.Component<CustomProps, {}> {
   send_profile_to_db = (profile: { profile: { email: string } }) => {
     const data = profile;
-    axios
-      .post("/api/posts/userprofiletodb", data)
-      .then(() =>
-        axios
-          .get("/api/get/userprofiletodb", { params: { email: profile.profile.email } })
-          .then((res) => this.props.set_db_profile(res.data))
-      );
+    axios.post("/api/posts/userprofiletodb", data).then(() =>
+      axios.get("/api/get/userprofilefromdb", { params: { email: profile.profile.email } }).then((res) => {
+        this.props.set_db_profile(res.data);
+        // console.log(res.data);
+      })
+    );
   };
 
   componentDidMount() {

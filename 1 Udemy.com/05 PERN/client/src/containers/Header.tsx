@@ -13,12 +13,6 @@ class Header extends React.Component<{ is_authenticated: boolean; auth: { login(
         <Link to="/profile" style={{ padding: "5px" }}>
           Profile
         </Link>
-        <Link to="/component1" style={{ padding: "5px" }}>
-          Component 1
-        </Link>
-        <Link to="/form1" style={{ padding: "5px" }}>
-          Form 1
-        </Link>
         <Link to="/renderlist" style={{ padding: "5px" }}>
           List
         </Link>
