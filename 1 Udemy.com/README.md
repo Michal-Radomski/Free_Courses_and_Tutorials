@@ -2,14 +2,15 @@
 
 1. Gulp.js course -> according to [this course](https://www.udemy.com/course/build-a-web-developer-starter-kit). Webpack +
    TS + React -> according to
-   [this tutorial](https://dev.to/shivampawar/setup-react-application-using-typescript-and-webpack-2kn6)
+   [this tutorial](https://dev.to/shivampawar/setup-react-application-using-typescript-and-webpack-2kn6).
 
-2. Node + Docker -> according to [this course](https://www.udemy.com/course/build-and-deploy-a-nodejs-api)
+2. Node + Docker -> according to [this course](https://www.udemy.com/course/build-and-deploy-a-nodejs-api).
 
 3. MongoDB -> according to [this course](https://www.udemy.com/course/getting-started-with-mongodb) - MongoDB Shell (mongosh)
-   only
+   only.
 
-4. Mongoose -> according to [this course](https://www.udemy.com/course/mongoose)
+4. Mongoose -> according to [this course](https://www.udemy.com/course/mongoose).
 
 5. PERN -> according to [this course](https://www.udemy.com/course/react-fullstack-with-nodeexpress-psql-and-aws) and
-   [this tutorial](https://www.freecodecamp.org/news/fullstack-react-blog-app-with-express-and-psql)
+   [this tutorial](https://www.freecodecamp.org/news/fullstack-react-blog-app-with-express-and-psql) - without Admin's App.
+   Little bugs need to be fixed.

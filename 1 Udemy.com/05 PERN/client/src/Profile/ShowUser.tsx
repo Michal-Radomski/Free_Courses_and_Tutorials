@@ -25,13 +25,13 @@ class ShowUser extends React.Component<CustomProps, RootState> {
       .get("/api/get/otheruserprofilefromdb", { params: { username: username } })
       .then((res) => this.props.set_profile(res.data))
       .catch(function (error) {
-        console.log(error);
+        console.log({ error });
       });
     axios
       .get("/api/get/otheruserposts", { params: { username: username } })
       .then((res) => this.props.set_db_posts(res.data))
       .catch(function (error) {
-        console.log(error);
+        console.log({ error });
       });
     window.scrollTo({ top: 0, left: 0 });
   }

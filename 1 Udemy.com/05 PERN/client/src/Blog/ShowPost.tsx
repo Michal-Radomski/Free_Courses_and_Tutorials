@@ -44,6 +44,7 @@ class ShowPost extends React.Component<CustomProps, RootState> {
   }
 
   componentDidMount() {
+    // console.log("this.props.location:", this.props.location);
     axios
       .get("/api/get/allpostcomments", { params: { post_id: this.props.location.state.post.post.pid } })
       .then((res) => this.props.set_comments(res.data))

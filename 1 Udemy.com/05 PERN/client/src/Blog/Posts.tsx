@@ -103,8 +103,8 @@ class Posts extends React.Component<CustomProps, RootState> {
   animate_posts = () => {
     this.setState({ posts_motion: [] });
     let i = 1;
-    // eslint-disable-next-line array-callback-return
-    this.state.posts_slice.map((post: string) => {
+
+    this.state.posts_slice.forEach((post: string) => {
       setTimeout(() => {
         this.setState({ posts_motion: [...this.state.posts_motion, post] });
       }, 400 * i);
@@ -158,6 +158,7 @@ class Posts extends React.Component<CustomProps, RootState> {
   );
 
   render() {
+    //  console.log(this.state.posts);
     return (
       <div>
         <div style={{ opacity: this.state.opacity, transition: "opacity 2s ease" }}>
@@ -191,11 +192,17 @@ class Posts extends React.Component<CustomProps, RootState> {
 
         <div style={{ opacity: this.state.opacity, transition: "opacity 2s ease" }}>
           <h1>Posts</h1>
-          <div>
+          {/* <div>
             {this.state.posts
               ? this.state.posts_motion.map((post: { pid: string }) => (
                   <this.RenderPosts key={post.pid} post={post as any} />
                 ))
+              : null}
+          </div> */}
+          {/* //* Fixed */}
+          <div>
+            {this.state.posts
+              ? this.state.posts.map((post: { pid: string }) => <this.RenderPosts key={post.pid} post={post as any} />)
               : null}
           </div>
         </div>
