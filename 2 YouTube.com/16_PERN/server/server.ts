@@ -1,7 +1,5 @@
 import http from "http";
 
-import * as dotenv from "dotenv";
-dotenv.config();
 import express, { Express, Request, Response } from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -9,7 +7,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 
 // Import routes
-// import routes from "./routes";
+import indexRouter from "./indexRouter";
 
 // The server
 const app: Express = express();
@@ -29,7 +27,7 @@ app.use(
 );
 
 //Route middleware
-// app.use("/api", routes);
+app.use("/api", indexRouter);
 
 // Test route
 app.get("/test", (req: Request, res: Response) => {
