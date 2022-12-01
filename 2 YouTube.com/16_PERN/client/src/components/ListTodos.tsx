@@ -8,10 +8,13 @@ export interface ToDo {
 }
 
 const ListTodos = (): JSX.Element => {
+  // const [todos, setTodos] = React.useState<ToDo[]>([]);
   const [todos, setTodos] = React.useState<Array<ToDo>>([]);
+  //  console.log({ todos });
 
-  // Delete todo function
+  //* Delete todo function
   const deleteTodo = async (id: number) => {
+    // console.log({ id });
     try {
       const deleteTodo = await fetch(`/api/todos/${id}`, {
         method: "DELETE",
@@ -27,6 +30,7 @@ const ListTodos = (): JSX.Element => {
     try {
       const response = await fetch("/api/todos");
       const jsonData = await response.json();
+      // console.log({ jsonData });
 
       setTodos(jsonData);
     } catch (error) {
@@ -38,22 +42,21 @@ const ListTodos = (): JSX.Element => {
     getTodos();
   }, []);
 
-  console.log({ todos });
-
   return (
     <React.Fragment>
-      {" "}
       <table className="table mt-5 text-center">
         <thead>
           <tr>
+            <th>PSQL_ID</th>
             <th>Description</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          {todos.map((todo) => (
+          {todos.map((todo: ToDo) => (
             <tr key={todo.todo_id}>
+              <td>{todo.todo_id}</td>
               <td>{todo.description}</td>
               <td>
                 <EditTodo todo={todo} />

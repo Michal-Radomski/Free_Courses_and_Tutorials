@@ -5,10 +5,11 @@ import { ToDo } from "./ListTodos";
 const win: Window = window;
 
 const EditTodo = ({ todo }: { todo: ToDo }): JSX.Element => {
+  // console.log({ todo });
   const [description, setDescription] = React.useState<string>(todo.description);
-  console.log({ description });
+  // console.log({ description });
 
-  // Edit description function
+  //* Edit description function
   const updateDescription = async (event: React.SyntheticEvent) => {
     event.preventDefault();
     try {
@@ -31,11 +32,13 @@ const EditTodo = ({ todo }: { todo: ToDo }): JSX.Element => {
         Edit
       </button>
 
+      {/* //* Reset description */}
       <div className="modal" id={`id${todo.todo_id}`} onClick={() => setDescription(todo.description)}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
               <h4 className="modal-title">Edit Todo</h4>
+              {/* //* Reset description */}
               <button type="button" className="close" data-dismiss="modal" onClick={() => setDescription(todo.description)}>
                 &times;
               </button>
@@ -59,9 +62,10 @@ const EditTodo = ({ todo }: { todo: ToDo }): JSX.Element => {
               >
                 Edit
               </button>
+              {/* //* Reset description */}
               <button
                 type="button"
-                className="btn btn-danger"
+                className="btn btn-info"
                 data-dismiss="modal"
                 onClick={() => setDescription(todo.description)}
               >
