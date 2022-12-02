@@ -37,3 +37,6 @@
     [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-20-04).
 
 16. PERN Stack App -> according to [this tutorial](https://www.youtube.com/watch?v=ldYcgPKEZC8).
+
+17. PERN with JWT -> according to [this tutorial - part1](https://www.youtube.com/watch?v=7UQBMb8ZpuE) and
+    [this tutorial - part2](https://www.youtube.com/watch?v=cjqfF5hyZFg).
