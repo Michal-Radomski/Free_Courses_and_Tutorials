@@ -1,5 +1,7 @@
 CREATE DATABASE pern_auth_todo;
 
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 CREATE TABLE users(
   user_id uuid DEFAULT uuid_generate_v4(),
   user_name VARCHAR(255) NOT NULL,
@@ -21,3 +23,18 @@ INSERT INTO
   users (user_name, user_email, user_password)
 VALUES
   ('Michal', 'michal@op.pl', 'qawsed123');
+
+select
+  *
+from
+  users;
+
+select
+  *
+from
+  pg_extension;
+
+select
+  *
+from
+  pg_available_extensions;
