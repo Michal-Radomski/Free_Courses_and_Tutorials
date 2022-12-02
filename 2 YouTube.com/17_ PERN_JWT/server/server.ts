@@ -7,7 +7,8 @@ import morgan from "morgan";
 import helmet from "helmet";
 
 // Import routes
-// import indexRouter from "./indexRouter";
+import jwtAuthRouter from "./routes/jwtAuth";
+import dashboardRouter from "./routes/dashboard";
 
 // The server
 const app: Express = express();
@@ -27,7 +28,8 @@ app.use(
 );
 
 //Route middleware
-// app.use("/api", indexRouter);
+app.use("/api/auth", jwtAuthRouter);
+app.use("/api/dashboard", dashboardRouter);
 
 // Test route
 app.get("/test", (req: Request, res: Response) => {
