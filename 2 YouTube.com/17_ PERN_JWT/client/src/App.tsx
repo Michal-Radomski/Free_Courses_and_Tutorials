@@ -17,10 +17,9 @@ function App(): JSX.Element {
         method: "POST",
         headers: { jwt_token: localStorage.jwt_token },
       });
-
       const parseRes = await res.json();
-
       parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
+      // console.log({ parseRes });
     } catch (error) {
       console.error({ error });
     }
@@ -62,7 +61,7 @@ function App(): JSX.Element {
           </Switch>
         </div>
       </Router>
-      <ToastContainer autoClose={8000} />
+      <ToastContainer autoClose={5000} />
     </React.Fragment>
   );
 }

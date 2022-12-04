@@ -12,6 +12,7 @@ const Dashboard = ({ setAuth }: { setAuth(arg0: boolean): void }): JSX.Element =
       });
 
       const parseData = await res.json();
+      // console.log({ parseData });
       setName(parseData.user_name);
     } catch (error) {
       console.error({ error });

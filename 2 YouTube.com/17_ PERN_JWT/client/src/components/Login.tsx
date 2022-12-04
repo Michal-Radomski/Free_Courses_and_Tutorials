@@ -62,7 +62,7 @@ const Login = ({ setAuth }: { setAuth(arg0: boolean): void }): JSX.Element => {
         />
         <button className="btn btn-success btn-block">Submit</button>
       </form>
-      <Link to="/register">register</Link>
+      <Link to="/register">Register</Link>
     </React.Fragment>
   );
 };
