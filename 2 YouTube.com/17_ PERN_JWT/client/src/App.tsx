@@ -1,12 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // Components
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
+
+const NotFound = (): JSX.Element => <h1 style={{ textAlign: "center", marginTop: "80px" }}>Page Not Found</h1>;
 
 function App(): JSX.Element {
   const checkAuthenticated = async () => {
@@ -56,9 +58,11 @@ function App(): JSX.Element {
               path="/dashboard"
               render={(props) => (isAuthenticated ? <Dashboard {...props} setAuth={setAuth} /> : <Redirect to="/login" />)}
             />
+            <Route path="/*" component={NotFound} />
           </Switch>
         </div>
       </Router>
+      <ToastContainer autoClose={8000} />
     </React.Fragment>
   );
 }
