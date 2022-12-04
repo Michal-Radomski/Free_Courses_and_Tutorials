@@ -15,7 +15,7 @@ function App(): JSX.Element {
     try {
       const res = await fetch("/api/auth/verify", {
         method: "POST",
-        headers: { jwt_token: localStorage.token },
+        headers: { jwt_token: localStorage.jwt_token },
       });
 
       const parseRes = await res.json();

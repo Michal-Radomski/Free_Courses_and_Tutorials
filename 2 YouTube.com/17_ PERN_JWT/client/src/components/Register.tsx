@@ -19,15 +19,16 @@ const Register = ({ setAuth }: { setAuth(arg0: boolean): void }): JSX.Element =>
     // console.log({ inputs });
     try {
       const body = { email, password, name };
-      const response = await fetch("api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
         },
         body: JSON.stringify(body),
       });
+      // console.log({ response });
       const parseRes = await response.json();
-      console.log({ parseRes });
+      // console.log({ parseRes });
 
       if (parseRes.jwtToken) {
         localStorage.setItem("jwt_token", parseRes.jwtToken);

@@ -7,7 +7,7 @@ interface CustomRequest extends Request {
   user?: { id?: string };
 }
 
-const dashboardRouter: express.Router = express.Router();
+const dashboardRouter: Router = express.Router();
 
 dashboardRouter.get("/", authorize, async (req: CustomRequest, res: Response): Promise<void> => {
   try {

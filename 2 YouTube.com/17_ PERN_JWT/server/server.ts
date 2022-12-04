@@ -1,6 +1,6 @@
 import http from "http";
 
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import morgan from "morgan";
@@ -31,11 +31,11 @@ app.use(
 app.use("/api/auth", jwtAuthRouter);
 app.use("/api/dashboard", dashboardRouter);
 
-// Test route
-app.get("/test", (req: Request, res: Response) => {
-  console.log("req.ip:", req.ip);
-  res.send("<h1 style='color:blue;text-align:center'>API is running</h1>");
-});
+// // Test route
+// app.get("/test", (req: Request, res: Response) => {
+//   console.log("req.ip:", req.ip);
+//   res.send("<h1 style='color:blue;text-align:center'>API is running</h1>");
+// });
 
 // Port
 const port = (process.env.PORT || 5000) as number;
