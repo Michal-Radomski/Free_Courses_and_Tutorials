@@ -3,11 +3,13 @@ import bcrypt from "bcrypt";
 
 import pool from "../psql";
 import jwtGenerator from "../utils/jwtGenerator";
+import validInfo from "../middleware/validInfo";
+import authorize from "../middleware/authorize";
 
 const jwtAuthRouter: Router = express.Router();
 
 // Register
-jwtAuthRouter.post("/register", async (req: Request, res: Response): Promise<Object> => {
+jwtAuthRouter.post("/register", validInfo, async (req: Request, res: Response): Promise<Object> => {
   const { email, name, password } = req.body;
 
   try {
@@ -40,7 +42,7 @@ jwtAuthRouter.post("/register", async (req: Request, res: Response): Promise<Obj
 });
 
 // Login
-jwtAuthRouter.post("/login", async (req: Request, res: Response): Promise<Object | undefined> => {
+jwtAuthRouter.post("/login", validInfo, async (req: Request, res: Response): Promise<Object | undefined> => {
   const { email, password } = req.body;
 
   try {
@@ -60,6 +62,16 @@ jwtAuthRouter.post("/login", async (req: Request, res: Response): Promise<Object
   } catch (error) {
     console.error({ error });
     res.status(500).send("Server error" + error);
+  }
+});
+
+// Verify
+jwtAuthRouter.post("/verify", authorize, (_req: Request, res: Response) => {
+  try {
+    res.json(true);
+  } catch (error) {
+    console.error({ error });
+    res.status(500).send("Server error");
   }
 });
 
