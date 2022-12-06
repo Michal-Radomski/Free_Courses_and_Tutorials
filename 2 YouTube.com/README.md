@@ -40,3 +40,6 @@
 
 17. PERN with JWT -> according to [this tutorial - part1](https://www.youtube.com/watch?v=7UQBMb8ZpuE) and
     [this tutorial - part2](https://www.youtube.com/watch?v=cjqfF5hyZFg).
+
+18. PERN Stack App with JWT -> according to [this tutorial - part1](https://www.youtube.com/watch?v=l3njf_tU8us) and
+    [this tutorial - part2](https://www.youtube.com/watch?v=25kouonvUbg).
