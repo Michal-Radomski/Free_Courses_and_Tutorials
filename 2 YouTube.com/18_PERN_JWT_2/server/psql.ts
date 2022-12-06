@@ -5,7 +5,7 @@ import { Pool } from "pg";
 const pool = new Pool({
   host: "localhost",
   port: 5432,
-  database: "pern_auth_todo",
+  database: "pern_auth_todo_jwt",
   user: process.env.user,
   password: process.env.password,
 });

@@ -10,6 +10,7 @@ CREATE TABLE users(
   PRIMARY KEY(user_id)
 );
 
+-- //* This is unnecessary!
 CREATE TABLE todo(
   todo_id SERIAL,
   user_id UUID,
