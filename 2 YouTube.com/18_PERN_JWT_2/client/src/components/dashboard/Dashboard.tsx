@@ -1,6 +1,10 @@
 import React from "react";
 import { toast } from "react-toastify";
 
+// Components
+import InputTodo from "./todoList/InputTodo";
+import ListTodos from "./todoList/ListTodos";
+
 const Dashboard = ({ setAuth }: { setAuth(arg0: boolean): void }): JSX.Element => {
   const [name, setName] = React.useState<string>("");
 
@@ -36,13 +40,14 @@ const Dashboard = ({ setAuth }: { setAuth(arg0: boolean): void }): JSX.Element =
 
   return (
     <React.Fragment>
-      <div>
-        <h1 className="mt-5">Dashboard</h1>
-        <h2>Welcome {name}</h2>
+      <div className="d-flex mt-5 justify-content-around">
+        <h2>{name}'s Todo List</h2>
         <button onClick={(event) => logout(event)} className="btn btn-primary">
           Logout
         </button>
       </div>
+      <InputTodo />
+      <ListTodos />
     </React.Fragment>
   );
 };

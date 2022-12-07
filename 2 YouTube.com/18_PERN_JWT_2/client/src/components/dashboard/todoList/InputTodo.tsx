@@ -1,22 +1,25 @@
 import React from "react";
 
-const win: Window = window;
-
 const InputTodo = (): JSX.Element => {
   const [description, setDescription] = React.useState<string>("");
 
   const onSubmitForm = async (event: React.SyntheticEvent) => {
     event.preventDefault();
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("jwt_token", localStorage.jwt_token);
+
     try {
       const body = { description };
-      const response = await fetch("/api/todos", {
+      const response = await fetch("/api/dashboard/todos", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        // headers: { "Content-Type": "application/json" },
+        headers: myHeaders,
         body: JSON.stringify(body),
       });
-      await console.log({ response });
-
-      win.location = "/";
+      const parseResponse = await response.json();
+      console.log({ parseResponse });
     } catch (error) {
       console.error({ error });
     }
