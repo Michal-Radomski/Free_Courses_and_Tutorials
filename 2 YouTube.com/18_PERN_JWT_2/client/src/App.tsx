@@ -6,7 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 // Components
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./components/dashboard/Dashboard";
+import Landing from "./components/Landing";
 
 const NotFound = (): JSX.Element => <h1 style={{ textAlign: "center", marginTop: "80px" }}>Page Not Found</h1>;
 
@@ -57,7 +58,15 @@ function App(): JSX.Element {
               path="/dashboard"
               render={(props) => (isAuthenticated ? <Dashboard {...props} setAuth={setAuth} /> : <Redirect to="/login" />)}
             />
-            <Redirect from="/" to="/login" />
+
+            {/* <Redirect from="/" to="/login" /> */}
+            {/* <Route path="/" exact={true} component={Landing} /> */}
+            <Route
+              exact
+              path="/"
+              render={(props) => (!isAuthenticated ? <Landing {...props} /> : <Redirect to="/dashboard" />)}
+            />
+
             <Route path="/*" component={NotFound} />
           </Switch>
         </div>

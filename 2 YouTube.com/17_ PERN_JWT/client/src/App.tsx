@@ -57,6 +57,7 @@ function App(): JSX.Element {
               path="/dashboard"
               render={(props) => (isAuthenticated ? <Dashboard {...props} setAuth={setAuth} /> : <Redirect to="/login" />)}
             />
+            <Redirect from="/" to="/login" />
             <Route path="/*" component={NotFound} />
           </Switch>
         </div>
