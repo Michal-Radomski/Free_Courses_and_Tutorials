@@ -68,3 +68,13 @@ select
 from
   users
   INNER JOIN todos ON users.user_id = todos.user_id;
+
+SELECT
+  u.user_name,
+  t.todo_id,
+  t.description
+FROM
+  users AS u
+  LEFT JOIN todos AS t ON u.user_id = t.user_id
+WHERE
+  u.user_id = 'd3578573-6f29-4e0c-8187-324a7cb8f0bd';
