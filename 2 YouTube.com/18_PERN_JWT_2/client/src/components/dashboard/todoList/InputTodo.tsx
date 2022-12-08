@@ -1,6 +1,6 @@
 import React from "react";
 
-const InputTodo = (): JSX.Element => {
+const InputTodo = ({ setTodosChange }: { setTodosChange: React.Dispatch<React.SetStateAction<boolean>> }): JSX.Element => {
   const [description, setDescription] = React.useState<string>("");
 
   const onSubmitForm = async (event: React.SyntheticEvent) => {
@@ -20,6 +20,8 @@ const InputTodo = (): JSX.Element => {
       });
       const parseResponse = await response.json();
       console.log({ parseResponse });
+      setTodosChange(true);
+      setDescription("");
     } catch (error) {
       console.error({ error });
     }
@@ -33,6 +35,7 @@ const InputTodo = (): JSX.Element => {
           type="text"
           className="form-control"
           value={description}
+          placeholder="Enter description"
           onChange={(event) => setDescription(event.target.value)}
         />
         <button className="btn btn-success">Add</button>

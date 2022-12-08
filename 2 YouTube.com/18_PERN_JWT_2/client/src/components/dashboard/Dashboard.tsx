@@ -3,10 +3,12 @@ import { toast } from "react-toastify";
 
 // Components
 import InputTodo from "./todoList/InputTodo";
-import ListTodos from "./todoList/ListTodos";
+import ListTodos, { ToDo } from "./todoList/ListTodos";
 
 const Dashboard = ({ setAuth }: { setAuth(arg0: boolean): void }): JSX.Element => {
   const [name, setName] = React.useState<string>("");
+  const [allTodos, setAllTodos] = React.useState<Array<ToDo>>([]);
+  const [todosChange, setTodosChange] = React.useState<boolean>(false);
 
   const getProfile = async () => {
     try {
@@ -17,7 +19,8 @@ const Dashboard = ({ setAuth }: { setAuth(arg0: boolean): void }): JSX.Element =
 
       const parseData = await res.json();
       // console.log({ parseData });
-      setName(parseData.user_name);
+      setName(parseData[0].user_name);
+      setAllTodos(parseData);
     } catch (error) {
       console.error({ error });
     }
@@ -36,7 +39,8 @@ const Dashboard = ({ setAuth }: { setAuth(arg0: boolean): void }): JSX.Element =
 
   React.useEffect(() => {
     getProfile();
-  }, []);
+    setTodosChange(false);
+  }, [todosChange]);
 
   return (
     <React.Fragment>
@@ -46,8 +50,8 @@ const Dashboard = ({ setAuth }: { setAuth(arg0: boolean): void }): JSX.Element =
           Logout
         </button>
       </div>
-      <InputTodo />
-      <ListTodos />
+      <InputTodo setTodosChange={setTodosChange} />
+      <ListTodos allTodos={allTodos} setTodosChange={setTodosChange} />
     </React.Fragment>
   );
 };

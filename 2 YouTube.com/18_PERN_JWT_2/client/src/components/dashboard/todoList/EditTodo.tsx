@@ -2,25 +2,37 @@ import React from "react";
 
 import { ToDo } from "./ListTodos";
 
-const win: Window = window;
+// const win: Window = window;
 
-const EditTodo = ({ todo }: { todo: ToDo }): JSX.Element => {
+const EditTodo = ({
+  todo,
+  setTodosChange,
+}: {
+  todo: ToDo;
+  setTodosChange: React.Dispatch<React.SetStateAction<boolean>>;
+}): JSX.Element => {
   // console.log({ todo });
   const [description, setDescription] = React.useState<string>(todo.description);
   // console.log({ description });
+
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("jwt_token", localStorage.jwt_token);
 
   //* Edit description function
   const updateDescription = async (event: React.SyntheticEvent) => {
     event.preventDefault();
     try {
       const body = { description };
-      const response = await fetch(`/api/todos/${todo.todo_id}`, {
+      const response = await fetch(`/api/dashboard/todos/${todo.todo_id}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        // headers: { "Content-Type": "application/json" },
+        headers: myHeaders,
         body: JSON.stringify(body),
       });
       console.log({ response });
-      win.location = "/";
+      setTodosChange(true);
+      // win.location = "/";
     } catch (error) {
       console.error({ error });
     }

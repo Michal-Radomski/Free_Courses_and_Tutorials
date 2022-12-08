@@ -5,42 +5,37 @@ import EditTodo from "./EditTodo";
 export interface ToDo {
   todo_id: number;
   description: string;
+  user_name: string;
 }
 
-const ListTodos = (): JSX.Element => {
+const ListTodos = ({
+  allTodos,
+  setTodosChange,
+}: {
+  allTodos: ToDo[];
+  setTodosChange: React.Dispatch<React.SetStateAction<boolean>>;
+}): JSX.Element => {
   // const [todos, setTodos] = React.useState<ToDo[]>([]);
   const [todos, setTodos] = React.useState<Array<ToDo>>([]);
-  //  console.log({ todos });
+  // console.log({ allTodos });
 
   //* Delete todo function
   const deleteTodo = async (id: number) => {
     // console.log({ id });
     try {
-      const deleteTodo = await fetch(`/api/todos/${id}`, {
+      await fetch(`/api/dashboard/todos/${id}`, {
         method: "DELETE",
+        headers: { jwt_token: localStorage.jwt_token },
       });
-      console.log({ deleteTodo });
       setTodos(todos.filter((todo) => todo.todo_id !== id));
     } catch (error) {
       console.error({ error });
     }
   };
 
-  const getTodos = async () => {
-    try {
-      const response = await fetch("/api/todos");
-      const jsonData = await response.json();
-      // console.log({ jsonData });
-
-      setTodos(jsonData);
-    } catch (error) {
-      console.error({ error });
-    }
-  };
-
   React.useEffect(() => {
-    getTodos();
-  }, []);
+    setTodos(allTodos);
+  }, [allTodos]);
 
   return (
     <React.Fragment>
@@ -54,20 +49,22 @@ const ListTodos = (): JSX.Element => {
           </tr>
         </thead>
         <tbody>
-          {todos.map((todo: ToDo) => (
-            <tr key={todo.todo_id}>
-              <td>{todo.todo_id}</td>
-              <td>{todo.description}</td>
-              <td>
-                <EditTodo todo={todo} />
-              </td>
-              <td>
-                <button className="btn btn-danger" onClick={() => deleteTodo(todo.todo_id)}>
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
+          {todos.length !== 0 &&
+            todos[0].todo_id !== null &&
+            todos.map((todo: ToDo) => (
+              <tr key={todo.todo_id}>
+                <td>{todo.todo_id}</td>
+                <td>{todo.description}</td>
+                <td>
+                  <EditTodo todo={todo} setTodosChange={setTodosChange} />
+                </td>
+                <td>
+                  <button className="btn btn-danger" onClick={() => deleteTodo(todo.todo_id)}>
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </React.Fragment>
