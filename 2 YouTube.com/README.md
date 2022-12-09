@@ -43,3 +43,5 @@
 
 18. PERN Stack App with JWT -> according to [this tutorial - part1](https://www.youtube.com/watch?v=l3njf_tU8us) and
     [this tutorial - part2](https://www.youtube.com/watch?v=25kouonvUbg).
+
+19. Prisma tutorial -> according to [this tutorial](https://www.youtube.com/watch?v=Ehv69qFvN2I).
