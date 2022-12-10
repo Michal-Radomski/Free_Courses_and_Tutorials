@@ -7,12 +7,8 @@ import express, { Express, Request, Response } from "express";
 import bodyParser from "body-parser";
 import morgan from "morgan";
 
-// Prisma
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
-
 // Import routes
-// import indexRouter from "./indexRouter";
+import indexRouter from "./indexRouter";
 
 // The server
 const app: Express = express();
@@ -24,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("combined"));
 
 //Route middleware
-// app.use("/api", indexRouter);
+app.use("/api", indexRouter);
 
 // Test route
 app.get("/", (req: Request, res: Response) => {
