@@ -47,3 +47,5 @@ Use SSL mode for the connection -h: used to state the host -U:used to state the 
 `\H` Switch the output to HTML format
 
 `\q` Exit psql shell
+
+`\! clear` Clear the screen

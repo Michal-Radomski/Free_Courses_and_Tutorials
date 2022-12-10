@@ -1,3 +1,9 @@
+-- Create Database
+CREATE DATABASE prisma_tutorial;
+
+-- Switch to the Database
+\ c prisma_tutorial -- PSQL command
+--
 -- Create a custom type
 CREATE TYPE "user_role_enum" AS ENUM ('user', 'admin', 'superadmin');
 
@@ -38,8 +44,8 @@ VALUES
   ('It does', 'Yeahhh', 1);
 
 -- Drop schema
-DROP TABLE "User";
+DROP TABLE "users" CASCADE;
 
-DROP TABLE "Post";
+DROP TABLE "posts" CASCADE;
 
 DROP TYPE "user_role_enum";
