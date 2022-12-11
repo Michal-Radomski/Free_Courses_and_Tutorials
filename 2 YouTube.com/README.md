@@ -46,3 +46,5 @@
     [this tutorial - part2](https://www.youtube.com/watch?v=25kouonvUbg).
 
 19. Prisma_PSQL tutorial -> according to [this tutorial](https://www.youtube.com/watch?v=Ehv69qFvN2I).
+
+20. Sequelize tutorial -> according to [this tutorial](https://www.youtube.com/watch?v=3qlnR9hK-lQ).
