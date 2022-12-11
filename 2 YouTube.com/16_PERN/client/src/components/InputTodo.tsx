@@ -2,6 +2,8 @@ import React from "react";
 
 const win: Window = window;
 
+// * Proxy is only in dev mode!, in prod mode is ignored!
+
 const InputTodo = (): JSX.Element => {
   const [description, setDescription] = React.useState<string>("");
 

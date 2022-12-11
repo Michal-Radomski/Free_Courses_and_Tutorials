@@ -7,6 +7,8 @@ export interface ToDo {
   description: string;
 }
 
+// * Proxy is only in dev mode!, in prod mode is ignored!
+
 const ListTodos = (): JSX.Element => {
   // const [todos, setTodos] = React.useState<ToDo[]>([]);
   const [todos, setTodos] = React.useState<Array<ToDo>>([]);

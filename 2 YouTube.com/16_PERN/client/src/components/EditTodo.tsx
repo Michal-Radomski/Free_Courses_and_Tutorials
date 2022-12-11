@@ -4,6 +4,8 @@ import { ToDo } from "./ListTodos";
 
 const win: Window = window;
 
+// * Proxy is only in dev mode!, in prod mode is ignored!
+
 const EditTodo = ({ todo }: { todo: ToDo }): JSX.Element => {
   // console.log({ todo });
   const [description, setDescription] = React.useState<string>(todo.description);

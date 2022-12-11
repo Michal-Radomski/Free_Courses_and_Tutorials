@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.ts",
+  "engines": {
+    "node": "16.18.1",
+    "npm": "9.1.2"
+  },
   "scripts": {
     "server": "nodemon server.ts",
     "client": "BROWSER=NONE npm start --prefix ../client/",

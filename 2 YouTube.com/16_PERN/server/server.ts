@@ -1,4 +1,5 @@
 import http from "http";
+// import path from "path";
 
 import express, { Express, Request, Response } from "express";
 import cors from "cors";
@@ -44,3 +45,20 @@ server.listen({ port: port }, () => {
   // For testing only
   console.log("Current Time:", new Date().toLocaleTimeString());
 });
+
+//* ---------------------
+//* Deployment to Heroku -> add React build to client/build - second tutorial
+
+// app.use(express.static(path.join(__dirname, "client/build")));
+// app.use(express.static("./client/build")); => for demonstration
+
+// console.log({ __dirname });
+// console.log("path.join(__dirname, '/'):", path.join(__dirname, "/"));
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "client/build")));
+// }
+
+//* Catch all method
+// app.get("/*", (_req, res) => {
+//   res.sendFile(path.join(__dirname, "client/build/index.html"));
+// });
