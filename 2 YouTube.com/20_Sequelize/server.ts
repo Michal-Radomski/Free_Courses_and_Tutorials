@@ -4,6 +4,9 @@ import express, { Express, Request, Response } from "express";
 import bodyParser from "body-parser";
 import morgan from "morgan";
 
+// const db = require("./models/index");
+// const { sequelize } = db;
+
 // Import routes
 import indexRouter from "./indexRouter";
 
@@ -28,8 +31,9 @@ app.get("/", (req: Request, res: Response) => {
 const port = (process.env.PORT || 5000) as number;
 
 const server = http.createServer(app);
-server.listen({ port: port }, () => {
+server.listen({ port: port }, async () => {
   console.log(`Server is listening at http://localhost:${port}`);
+  // await sequelize.sync({ force: true });
   // For testing only
   console.log("Current Time:", new Date().toLocaleTimeString());
 });
