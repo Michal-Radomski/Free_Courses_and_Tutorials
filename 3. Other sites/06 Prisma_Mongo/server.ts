@@ -1,7 +1,8 @@
 import http from "http";
 
-import * as dotenv from "dotenv";
-dotenv.config();
+//* Unnecessary: dotenv
+// import * as dotenv from "dotenv";
+// dotenv.config();
 import express, { Express, Request, Response } from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
