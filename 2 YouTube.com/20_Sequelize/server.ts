@@ -4,8 +4,8 @@ import express, { Express, Request, Response } from "express";
 import bodyParser from "body-parser";
 import morgan from "morgan";
 
-// const db = require("./models/index");
-// const { sequelize } = db;
+const db = require("./models/index");
+const { sequelize } = db;
 
 // Import routes
 import indexRouter from "./indexRouter";
@@ -33,7 +33,9 @@ const port = (process.env.PORT || 5000) as number;
 const server = http.createServer(app);
 server.listen({ port: port }, async () => {
   console.log(`Server is listening at http://localhost:${port}`);
-  // await sequelize.sync({ force: true });
+  // await sequelize.sync({ force: true }); //* Drops table and data!!!
+  await sequelize.authenticate();
+  console.log("Connection to the PSQL DB has been established successfully.");
   // For testing only
   console.log("Current Time:", new Date().toLocaleTimeString());
 });
