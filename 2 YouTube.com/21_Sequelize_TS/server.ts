@@ -6,8 +6,10 @@ import express, { Express, Request, Response } from "express";
 import bodyParser from "body-parser";
 import morgan from "morgan";
 
+import db from "./models/index";
+
 // Import routes
-// import indexRouter from "./indexRouter";
+import indexRouter from "./indexRouter";
 
 // The server
 const app: Express = express();
@@ -18,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("combined"));
 
 //Route middleware
-// app.use("/api", indexRouter);
+app.use("/api", indexRouter);
 
 // Test route
 app.get("/", (req: Request, res: Response) => {
@@ -30,8 +32,11 @@ app.get("/", (req: Request, res: Response) => {
 const port = (process.env.PORT || 5000) as number;
 
 const server = http.createServer(app);
-server.listen({ port: port }, () => {
-  console.log(`Server is listening at http://localhost:${port}`);
-  // For testing only
-  console.log("Current Time:", new Date().toLocaleTimeString());
+
+db.sequelize.sync().then(() => {
+  server.listen({ port: port }, () => {
+    console.log(`Server is listening at http://localhost:${port}`);
+    // For testing only
+    console.log("Current Time:", new Date().toLocaleTimeString());
+  });
 });
