@@ -8,6 +8,31 @@ import morgan from "morgan";
 
 import db from "./models/index";
 
+//* Seeders
+// import { users } from "./seeders/users";
+// const createUsers = () => {
+//   users.map((user) => {
+//     db.User.create(user);
+//   });
+// };
+// createUsers();
+
+// import { projects } from "./seeders/projects";
+// const createProjects = () => {
+//   projects.map((project) => {
+//     db.Project.create(project);
+//   });
+// };
+// createProjects();
+
+// import { projectAssignments } from "./seeders/projectAssignments";
+// const createProjectsAssignments = () => {
+//   projectAssignments.map((projectAssignment) => {
+//     db.ProjectAssignment.create(projectAssignment);
+//   });
+// };
+// createProjectsAssignments();
+
 // Import routes
 import indexRouter from "./indexRouter";
 
