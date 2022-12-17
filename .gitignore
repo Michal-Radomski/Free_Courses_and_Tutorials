@@ -19,6 +19,8 @@ node_modules/
 # My Entries
 .vscode/
 build/
+tmp/
+temp/
 default.ts
 default.json
 .Procfile
@@ -27,3 +29,4 @@ mongo_commands.rtf
 PERN.pdf
 info.txt
 config.json
+ormconfig.json
