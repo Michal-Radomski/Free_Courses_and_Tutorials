@@ -3,7 +3,7 @@ import "reflect-metadata";
 import { validate } from "class-validator";
 
 import { User } from "./entity/User";
-// import { Post } from './entity/Post'
+import { Post } from "./entity/Post";
 
 import * as dotenv from "dotenv";
 dotenv.config();
@@ -33,10 +33,7 @@ indexRouter.post("/users", async (req: Request, res: Response): Promise<any> => 
 indexRouter.get("/users", async (req: Request, res: Response): Promise<any> => {
   console.log("req.ip:", req.ip);
   try {
-    const users = await User
-      .find
-      // { relations: ['posts'] }
-      ();
+    const users = await User.find({ relations: ["posts"] });
     return res.status(200).json(users);
   } catch (error) {
     console.log({ error });
@@ -92,6 +89,37 @@ indexRouter.get("/users/:uuid", async (req: Request, res: Response): Promise<any
   } catch (error) {
     console.log({ error });
     return res.status(404).json({ user: "User not found" });
+  }
+});
+
+// Create a Post
+indexRouter.post("/posts", async (req: Request, res: Response): Promise<any> => {
+  const { userUuid, title, body } = req.body;
+
+  try {
+    const user = await User.findOneBy({ uuid: userUuid });
+    // @ts-ignore
+    const post = new Post({ title, body, user });
+
+    await post.save();
+
+    return res.status(201).json(post);
+  } catch (error) {
+    console.log({ error });
+    return res.status(500).json({ error: "Something went wrong" });
+  }
+});
+
+// Read posts
+indexRouter.get("/posts", async (req: Request, res: Response): Promise<any> => {
+  console.log("req.ip:", req.ip);
+  try {
+    const posts = await Post.find({ relations: ["user"] });
+
+    return res.status(200).json(posts);
+  } catch (error) {
+    console.log({ error });
+    return res.status(500).json({ error: "Something went wrong" });
   }
 });
 
