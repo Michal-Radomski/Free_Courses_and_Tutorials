@@ -53,4 +53,4 @@
 
 22. TypeORM tutorial -> according to [this tutorial](https://www.youtube.com/watch?v=Paz0gnODPE0).
 
-23. Bootstrap 5 Crash Course -> according to [this tutorial](https://www.youtube.com/watch?v=Jyvffr3aCp0).
+23. Bootstrap_5 Crash Course -> according to [this tutorial](https://www.youtube.com/watch?v=Jyvffr3aCp0).
