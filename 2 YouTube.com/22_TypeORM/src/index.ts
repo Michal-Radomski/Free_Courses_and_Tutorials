@@ -5,8 +5,8 @@ AppDataSource.initialize()
   .then(async () => {
     const user = new User();
 
-    user.name = "John Doe";
-    user.email = "john@email.com";
+    user.name = "Jane Doe";
+    user.email = "jane@email.com";
     user.role = "admin";
 
     await AppDataSource.manager.save(user);

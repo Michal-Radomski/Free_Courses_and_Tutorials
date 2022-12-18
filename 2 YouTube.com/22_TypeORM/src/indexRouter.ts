@@ -10,17 +10,87 @@ dotenv.config();
 
 const indexRouter: express.Router = express.Router();
 
-indexRouter.get("/users/:Id", async (req: Request, res: Response) => {
-  const Id = req.params.Id;
-  console.log(Id);
+// Create
+indexRouter.post("/users", async (req: Request, res: Response): Promise<any> => {
+  const { name, email, role } = req.body;
 
   try {
-    // @ts-ignore
-    const user = await User.findOneOrFail({ Id });
+    const user = User.create({ name, email, role });
 
-    return res.json(user);
-  } catch (err) {
-    console.log(err);
+    const errors = await validate(user);
+    if (errors.length > 0) throw errors;
+
+    await user.save();
+
+    return res.status(201).json(user);
+  } catch (error) {
+    console.log({ error });
+    return res.status(500).json(error);
+  }
+});
+
+// Read
+indexRouter.get("/users", async (req: Request, res: Response): Promise<any> => {
+  console.log("req.ip:", req.ip);
+  try {
+    const users = await User
+      .find
+      // { relations: ['posts'] }
+      ();
+    return res.status(200).json(users);
+  } catch (error) {
+    console.log({ error });
+    return res.status(500).json({ error: "Something went wrong" });
+  }
+});
+
+// Update
+indexRouter.put("/users/:uuid", async (req: Request, res: Response): Promise<any> => {
+  const uuid = req.params.uuid;
+  // console.log({ uuid });
+  const { name, email, role } = req.body;
+
+  try {
+    const user = await User.findOneBy({ uuid });
+
+    user.name = name || user.name;
+    user.email = email || user.email;
+    user.role = role || user.role;
+
+    await user.save();
+
+    return res.status(200).json(user);
+  } catch (error) {
+    console.log({ error });
+    return res.status(500).json({ error: "Something went wrong" });
+  }
+});
+
+// Delete
+indexRouter.delete("/users/:uuid", async (req: Request, res: Response): Promise<any> => {
+  const uuid = req.params.uuid;
+
+  try {
+    const user = await User.findOneBy({ uuid });
+
+    await user.remove();
+
+    return res.status(200).json({ message: "User deleted successfully" });
+  } catch (error) {
+    console.log({ error });
+    return res.status(500).json({ error: "Something went wrong" });
+  }
+});
+
+indexRouter.get("/users/:uuid", async (req: Request, res: Response): Promise<any> => {
+  const uuid = req.params.uuid;
+
+  try {
+    const user = await User.findOneBy({ uuid });
+
+    return res.status(200).json(user);
+  } catch (error) {
+    console.log({ error });
     return res.status(404).json({ user: "User not found" });
   }
 });
