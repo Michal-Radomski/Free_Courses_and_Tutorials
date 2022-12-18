@@ -1,12 +1,11 @@
+import * as dotenv from "dotenv";
+dotenv.config();
 import express, { Request, Response } from "express";
 import "reflect-metadata";
 import { validate } from "class-validator";
 
 import { User } from "./entity/User";
 import { Post } from "./entity/Post";
-
-import * as dotenv from "dotenv";
-dotenv.config();
 
 const indexRouter: express.Router = express.Router();
 
@@ -18,7 +17,10 @@ indexRouter.post("/users", async (req: Request, res: Response): Promise<any> => 
     const user = User.create({ name, email, role });
 
     const errors = await validate(user);
-    if (errors.length > 0) throw errors;
+    if (errors.length > 0) {
+      console.log({ errors });
+      throw errors;
+    }
 
     await user.save();
 
@@ -98,7 +100,6 @@ indexRouter.post("/posts", async (req: Request, res: Response): Promise<any> => 
 
   try {
     const user = await User.findOneBy({ uuid: userUuid });
-    // @ts-ignore
     const post = new Post({ title, body, user });
 
     await post.save();
