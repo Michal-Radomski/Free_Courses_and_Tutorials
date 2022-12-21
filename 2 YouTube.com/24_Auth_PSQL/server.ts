@@ -33,6 +33,10 @@ app.set("views", path.join(__dirname, "views"));
 app.get("/favicon.ico", (_req: Request, res: Response) => {
   res.sendFile(path.join(__dirname + "/public/favicon.png"));
 });
+//* Less styles
+app.get("/*/styles.less", (_req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname + "/public/styles.less"));
+});
 
 // // Test Route
 // app.get("/test", (req: Request, res: Response) => {
