@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
+// import flash from "express-flash";
 
 import http from "http";
 import path from "path";
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan("combined"));
+// app.use(flash());
 
 // View engine
 app.set("view engine", "ejs");
