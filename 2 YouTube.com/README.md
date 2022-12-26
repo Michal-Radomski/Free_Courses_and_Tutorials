@@ -57,3 +57,6 @@
 
 24. User Authentication With Node JS and PostgreSQL -> according to
     [this tutorial](https://www.youtube.com/watch?v=vxu1RrR0vbw).
+
+25. Nodejs, Express, MySQL and Express-Handlebars -> according to
+    [this tutorial](https://www.youtube.com/watch?v=1aXZQcG2Y6I).
