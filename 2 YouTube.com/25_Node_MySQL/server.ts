@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import bodyParser from "body-parser";
+import { engine } from "express-handlebars";
 
 import http from "http";
 import path from "path";
@@ -27,7 +28,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("combined"));
 
 // View engine
-app.set("view engine", "hbs");
+app.engine(".hbs", engine({ extname: ".hbs" }));
+app.set("view engine", ".hbs");
 app.set("views", path.join(__dirname, "views"));
 
 //* Favicon
@@ -35,11 +37,11 @@ app.get("/favicon.ico", (_req: Request, res: Response) => {
   res.sendFile(path.join(__dirname + "/public/favicon.png"));
 });
 
-// Test Route
-app.get("/test", (req: Request, res: Response) => {
-  console.log("req.ip:", req.ip);
-  res.send("<h1 style='color:blue;text-align:center'>Server is running</h1>");
-});
+// // Test Route
+// app.get("/test", (req: Request, res: Response) => {
+//   console.log("req.ip:", req.ip);
+//   res.send("<h1 style='color:blue;text-align:center'>Server is running</h1>");
+// });
 
 //Route middleware
 app.use("/api", indexRouter);
