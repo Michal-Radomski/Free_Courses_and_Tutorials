@@ -1,6 +1,3 @@
-import * as dotenv from "dotenv";
-dotenv.config();
-
 import express, { Request, Response } from "express";
 
 const indexRouter: express.Router = express.Router();

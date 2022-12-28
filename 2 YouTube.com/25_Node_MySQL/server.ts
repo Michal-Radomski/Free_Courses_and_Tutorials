@@ -9,6 +9,15 @@ import path from "path";
 
 // Import routes
 import indexRouter from "./indexRouter";
+import pool from "./dbConfig";
+
+pool.getConnection((error, connection) => {
+  if (error) {
+    console.log({ error });
+    throw error;
+  }
+  console.log(`Connected as ID: ${connection.threadId}`);
+});
 
 // The server
 const app: Express = express();
@@ -24,7 +33,7 @@ app.use(
 );
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("combined"));
 
 // View engine
