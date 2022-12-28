@@ -44,7 +44,7 @@ app.get("/favicon.ico", (_req: Request, res: Response) => {
 // });
 
 //Route middleware
-app.use("/api", indexRouter);
+app.use("/", indexRouter);
 
 // Port
 const port = (process.env.PORT || 5000) as number;

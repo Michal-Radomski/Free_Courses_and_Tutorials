@@ -2,9 +2,9 @@ import express, { Request, Response } from "express";
 
 const indexRouter: express.Router = express.Router();
 
-indexRouter.get("/test", (req: Request, res: Response) => {
+indexRouter.get("/", (req: Request, res: Response) => {
   console.log("req.ip:", req.ip);
-  res.render("views/home.hbs", {});
+  res.render("home", {});
 });
 
 export default indexRouter;
