@@ -9,15 +9,16 @@ import path from "path";
 
 // Import routes
 import indexRouter from "./indexRouter";
-import pool from "./dbConfig";
 
-pool.getConnection((error, connection) => {
-  if (error) {
-    console.log({ error });
-    throw error;
-  }
-  console.log(`Connected as ID: ${connection.threadId}`);
-});
+// // Import DB settings
+// import pool from "./dbConfig";
+// pool.getConnection((error, connection) => {
+//   if (error) {
+//     console.log({ error });
+//     throw error;
+//   }
+//   console.log(`Connected as ID: ${connection.threadId}`);
+// });
 
 // The server
 const app: Express = express();
