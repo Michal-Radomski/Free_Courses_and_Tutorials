@@ -1,10 +1,9 @@
-import express, { Request, Response } from "express";
+import express from "express";
+
+import { getHomePage } from "./userController";
 
 const indexRouter: express.Router = express.Router();
 
-indexRouter.get("/", (req: Request, res: Response) => {
-  console.log("req.ip:", req.ip);
-  res.render("home", {});
-});
+indexRouter.get("/", getHomePage);
 
 export default indexRouter;
