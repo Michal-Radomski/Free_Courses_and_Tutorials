@@ -1,9 +1,11 @@
 import express from "express";
 
-import { getHomePage } from "./userController";
+import { findUser, viewUsers } from "./userController";
 
 const indexRouter: express.Router = express.Router();
 
-indexRouter.get("/", getHomePage);
+indexRouter.get("/", viewUsers);
+
+indexRouter.post("/", findUser);
 
 export default indexRouter;
