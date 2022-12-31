@@ -60,3 +60,5 @@
 
 25. Nodejs, Express, MySQL and Express-Handlebars -> according to
     [this tutorial](https://www.youtube.com/watch?v=1aXZQcG2Y6I).
+
+26. Upload and Store Images in MySQL -> according to [this tutorial](https://www.youtube.com/watch?v=hyJiNTFtQic).
