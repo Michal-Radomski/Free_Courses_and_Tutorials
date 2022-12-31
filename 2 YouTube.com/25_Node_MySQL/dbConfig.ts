@@ -2,7 +2,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import mysql from "mysql";
 
-//* Connection
+//* Connection Pool
 const pool = mysql.createPool({
   connectionLimit: 10,
   host: process.env.DB_HOST,
@@ -13,7 +13,7 @@ const pool = mysql.createPool({
 
 export default pool;
 
-//* Connection Pool
+//* Connection
 export const MySQL_Connection = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,

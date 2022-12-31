@@ -3,6 +3,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import bodyParser from "body-parser";
 import { engine } from "express-handlebars";
+import fileUpload from "express-fileupload";
 
 import http from "http";
 import path from "path";
@@ -10,20 +11,21 @@ import path from "path";
 // Import routes
 import indexRouter from "./indexRouter";
 
-// Import DB settings
-import pool from "./dbConfig";
-pool.getConnection((error, connection) => {
-  if (error) {
-    console.log({ error });
-    throw error;
-  }
-  console.log(`Connected as ID: ${connection.threadId}`);
-});
+// // Import DB settings
+// import pool from "./dbConfig";
+// pool.getConnection((error, connection) => {
+//   if (error) {
+//     console.log({ error });
+//     throw error;
+//   }
+//   console.log(`Connected as ID: ${connection.threadId}`);
+// });
 
 // The server
 const app: Express = express();
 
 // Middleware
+app.use(fileUpload({ limits: { fileSize: 50 * 1024 * 1024 } }));
 app.use(
   helmet({
     contentSecurityPolicy: false,
@@ -33,6 +35,7 @@ app.use(
   })
 );
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "upload")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("combined"));
