@@ -14,3 +14,5 @@
 5. PERN -> according to [this course](https://www.udemy.com/course/react-fullstack-with-nodeexpress-psql-and-aws) and
    [this tutorial](https://www.freecodecamp.org/news/fullstack-react-blog-app-with-express-and-psql) - without Admin's App.
    Little bugs need to be fixed.
+
+6. Bootstrap 5 -> according to [this course](https://www.udemy.com/course/bootstrap-5-crash-course-2022).
