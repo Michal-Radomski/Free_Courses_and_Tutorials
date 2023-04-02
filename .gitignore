@@ -32,3 +32,4 @@ config.json
 ormconfig.json
 fighters.sql
 Temp/
+media/
