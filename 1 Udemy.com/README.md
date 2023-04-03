@@ -16,3 +16,5 @@
    Little bugs need to be fixed.
 
 6. Bootstrap 5 -> according to [this course](https://www.udemy.com/course/bootstrap-5-crash-course-2022).
+
+7. Mobile First -> according to [this course](https://www.udemy.com/course/emmet-video-tutorials).
