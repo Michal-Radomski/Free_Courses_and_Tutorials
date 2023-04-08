@@ -18,3 +18,5 @@
 6. Bootstrap 5 -> according to [this course](https://www.udemy.com/course/bootstrap-5-crash-course-2022).
 
 7. Mobile First + Emmet -> according to [this course](https://www.udemy.com/course/emmet-video-tutorials).
+
+8. Responsive Site -> according to [this course](https://www.udemy.com/course/learn-to-code-in-html-and-css).

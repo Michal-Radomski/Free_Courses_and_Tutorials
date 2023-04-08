@@ -1,0 +1,7 @@
+body {
+  background-color: whitesmoke !important;
+  font-family: "Ubuntu Condensed", sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
