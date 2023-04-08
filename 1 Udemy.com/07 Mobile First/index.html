@@ -446,3 +446,63 @@
     <br />
   </body>
 </html>
+
+<!-- div+div>p>span+em^bq -->
+<div></div>
+<div>
+  <p><span></span><em></em></p>
+  <blockquote></blockquote>
+</div>
+
+<!-- div+div>p>span+em^^bq -->
+<div></div>
+<div>
+  <p><span></span><em></em></p>
+</div>
+<blockquote></blockquote>
+
+<!-- div>(header>ul>li*2>a)+footer>p -->
+<div>
+  <header>
+    <ul>
+      <li><a href=""></a></li>
+      <li><a href=""></a></li>
+    </ul>
+  </header>
+  <footer>
+    <p></p>
+  </footer>
+</div>
+
+<div class="nav nav-primary navright"></div>
+
+<nav id="nav"></nav>
+
+<header>
+  <nav>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ul>li.item$*5 -->
+<ul>
+  <li class="item1"></li>
+  <li class="item2"></li>
+  <li class="item3"></li>
+  <li class="item4"></li>
+  <li class="item5"></li>
+</ul>
+
+<!-- h$[title=item$]{Header $}*3 -->
+<h1 title="item1">Header 1</h1>
+<h2 title="item2">Header 2</h2>
+<h3 title="item3">Header 3</h3>
+
+<!-- a:link{home} -->
+<a href="http://">home</a>
