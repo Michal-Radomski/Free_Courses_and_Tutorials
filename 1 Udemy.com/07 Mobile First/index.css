@@ -5,3 +5,13 @@ body {
 * {
   box-sizing: border-box;
 }
+
+/* div.test {
+  background-color: #fff;
+  margin-right: 10px;
+  font-family: serif;
+  right: auto;
+  display: flex;
+  cursor: pointer;
+  position: relative;
+} */
