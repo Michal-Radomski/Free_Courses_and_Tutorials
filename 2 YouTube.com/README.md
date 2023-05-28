@@ -64,3 +64,5 @@
 26. Upload and Store Images in MySQL -> according to [this tutorial](https://www.youtube.com/watch?v=hyJiNTFtQic).
 
 27. Responsive Bootstrap 5 Layout Tutorial -> according to [this tutorial](https://www.youtube.com/watch?v=Dr2rfJTnPBI).
+
+28. Responsive Bootstrap 5 Layout Tutorial2 -> according to [this tutorial](https://www.youtube.com/watch?v=DFUT5s5SasA).
