@@ -20,3 +20,8 @@
 7. Mobile First + Emmet -> according to [this course](https://www.udemy.com/course/emmet-video-tutorials).
 
 8. Responsive Site -> according to [this course](https://www.udemy.com/course/learn-to-code-in-html-and-css).
+
+9. Rapid Website Design with Bootstrap -> according to [this course](https://www.udemy.com/course/responsive-website-design).
+
+10. Responsive Web Design Course -> according to
+    [this course](https://www.udemy.com/course/the-complete-responsive-web-design-course).
