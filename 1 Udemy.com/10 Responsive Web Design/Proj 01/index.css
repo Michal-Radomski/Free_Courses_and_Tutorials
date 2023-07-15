@@ -177,6 +177,47 @@ HERO
 }
 
 /* --------------
+ABOUT
+-----------------*/
+
+#about {
+  padding: 10px;
+  background-color: #f7f7f7;
+  margin-bottom: 20px;
+}
+
+#two-cols {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-img {
+  border: 4px solid #2196f3;
+  background-color: #2196f3;
+}
+
+.about-bio {
+  width: 65%;
+  max-width: 800px;
+  line-height: 2;
+  margin-left: 20px;
+}
+
+@media (max-width: 600px) {
+  #about,
+  #two-cols {
+    flex-direction: column;
+  }
+  .about-bio {
+    margin-top: 20px;
+    line-height: 1.5;
+    text-align: left;
+  }
+}
+
+/* --------------
 FOOTER
 -----------------*/
 
