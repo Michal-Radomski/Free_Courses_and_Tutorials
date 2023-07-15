@@ -132,3 +132,30 @@ section img {
 .btn:hover {
   background-color: #3cb0fd;
 }
+
+@media screen and (min-width: 1100px) {
+  main {
+    width: 90%;
+    max-width: 800px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto 4vh auto auto 10vh;
+    grid-gap: 15px;
+    margin: 0 auto;
+  }
+
+  #container {
+    grid-template-areas:
+      "header header header"
+      "nav nav nav"
+      "login enhance_your_career important_stats"
+      "build_apps build_games build_websites"
+      "footer footer footer";
+  }
+
+  div {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+}
