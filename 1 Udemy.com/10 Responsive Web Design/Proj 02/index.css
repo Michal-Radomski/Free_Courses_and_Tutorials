@@ -16,3 +16,44 @@ body {
   color: #34495e;
   line-height: 1.5;
 }
+
+header {
+  grid-area: header;
+}
+
+nav {
+  grid-area: nav;
+  margin: 0 auto;
+}
+
+#login {
+  grid-area: login;
+}
+
+#enhance_your_career {
+  grid-area: enhance_your_career;
+}
+
+#important_stats {
+  grid-area: important_stats;
+}
+
+#build_apps {
+  grid-area: build_apps;
+}
+
+#build_games {
+  grid-area: build_games;
+}
+
+#build_websites {
+  grid-area: build_websites;
+}
+
+header h1 {
+  font-size: 4em;
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px #22638e;
+}
