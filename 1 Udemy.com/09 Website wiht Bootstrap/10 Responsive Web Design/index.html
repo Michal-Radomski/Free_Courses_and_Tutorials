@@ -44,10 +44,15 @@
         justify-content: center;
         align-content: center;
         align-items: center;
-        min-height: 20rem;
+        min-height: 10rem;
+      }
+      .footer {
+        position: fixed;
+        bottom: 0;
       }
     </style>
   </head>
+
   <body>
     <nav class="navbar bg-primary navbar-expand-lg" data-bs-theme="dark">
       <div class="container-fluid">
@@ -94,15 +99,48 @@
       </div>
     </nav>
 
+    <br />
     <main>
       <div class="container">
         <div class="row">
-          <div class="col-12 col-md-6 col-lg-3 abc">.col-6 .col-md-4</div>
-          <div class="col-12 col-md-6 col-lg-3 abc">.col-6 .col-md-4</div>
+          <div class="col-12 col-md-6 col-lg-3 abc">
+            <img src="https://picsum.photos/400/200" alt="pic" class="img-fluid" />
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 abc">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam corrupti ipsa delectus excepturi dignissimos?
+              Quasi ex, obcaecati soluta voluptate laboriosam provident recusandae itaque dolorem debitis, ratione, incidunt
+              quidem. Inventore ipsa et perferendis assumenda vel illo aperiam pariatur corrupti quasi hic dolor recusandae
+              molestias, sint vitae laudantium! Esse sequi ad culpa hic a. Delectus nihil repellat accusantium! Enim pariatur
+              ea aliquam, vel cumque amet molestias accusantium corporis autem aliquid impedit, excepturi repellat! Voluptate
+              quos rem possimus animi, veniam enim perferendis soluta repellendus qui aliquam quam ab expedita eveniet!
+              Dolores commodi ut officia voluptas assumenda, facere natus quas ea, quaerat laborum odit?
+            </p>
+          </div>
           <div class="col-12 col-md-6 col-lg-3 abc">.col-6 .col-md-4</div>
           <div class="col-12 col-md-6 col-lg-3 abc">.col-6 .col-md-4</div>
         </div>
       </div>
     </main>
+    <br />
+
+    <div class="container-fluid footer">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top bg-primary">
+        <p class="col-md-4 mb-0 text-body-secondary">© 2023 Company, Inc</p>
+        <a
+          href="/"
+          class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+        >
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+        <ul class="nav col-md-4 justify-content-end">
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+        </ul>
+      </footer>
+    </div>
   </body>
 </html>
