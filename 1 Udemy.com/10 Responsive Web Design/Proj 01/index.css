@@ -202,7 +202,7 @@ footer ul {
   margin-bottom: 25px;
   display: flex;
   flex-direction: row;
-  list-style-type: none;
+  /* list-style-type: none; */
 }
 
 footer ul li {
