@@ -97,3 +97,38 @@ header h1 {
   margin-bottom: 10px;
   text-align: center;
 }
+
+footer {
+  grid-area: footer;
+  margin: 20px 0;
+  text-align: center;
+}
+
+input {
+  width: 85%;
+  color: darkblue;
+  background-color: aliceblue;
+  font-size: 1.25em;
+  padding: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+section img {
+  max-width: 100%;
+}
+
+.btn {
+  display: inline-block;
+  background: #3498db;
+  border-radius: 28px;
+  color: white;
+  font-size: 15px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  margin-top: 2%;
+}
+
+.btn:hover {
+  background-color: #3cb0fd;
+}
