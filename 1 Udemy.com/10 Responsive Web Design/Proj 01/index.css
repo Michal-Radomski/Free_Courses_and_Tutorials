@@ -115,6 +115,68 @@ header nav li:last-child {
 }
 
 /* --------------
+HERO
+-----------------*/
+
+#hero {
+  background: gray;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("img/hero.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+#hero h1,
+#hero h3 {
+  font-size: 28px;
+  text-shadow: 2px 2px #000;
+  margin-bottom: 40px;
+}
+
+#hero h1 {
+  font-size: 60px;
+  margin-bottom: 15px;
+}
+
+#hero a.btn {
+  color: white;
+  background-color: #131633;
+  text-decoration: none;
+  padding: 20px 46px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  opacity: 1;
+  border: 2px solid white;
+}
+
+#hero a.btn:hover {
+  background-color: #2196f3;
+}
+
+@media (max-width: 800px) {
+  #hero {
+    min-height: 600px;
+  }
+  #hero h1 {
+    font-size: 36px;
+  }
+  #hero h3 {
+    font-size: 18px;
+  }
+  #hero a.btn {
+    padding: 15px 40px;
+  }
+}
+
+/* --------------
 FOOTER
 -----------------*/
 
