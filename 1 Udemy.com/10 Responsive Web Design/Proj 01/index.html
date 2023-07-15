@@ -159,7 +159,7 @@
       </div>
 
       <!-- ******************************** -->
-      <div id="contact-form">
+      <!-- <div id="contact-form">
         <iframe
           src="https://docs.google.com/forms/d/e/1FAIpQLSe7KG6xGF_qG6Gq0OaJ_lSDN94rWM1vntOCK0LDGPDg1ss9KQ/viewform?embedded=true"
           width="100%"
@@ -169,8 +169,9 @@
           marginwidth="0"
           >Loading...</iframe
         >
-      </div>
+      </div> -->
     </main>
+
     <!-- ******************************** -->
     <footer id="social-media">
       <ul>
@@ -198,5 +199,30 @@
         &ldquo;Tell me and I forget, teach me and I may remember, involve me and I learn.&rdquo; &mdash;Benjamin Franklin
       </p>
     </footer>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('a[href^="#"]').on("click", function (e) {
+          e.preventDefault();
+
+          const target = this.hash;
+          const $target = $(target);
+          // console.log({ target });
+
+          $("html, body")
+            .stop()
+            .animate(
+              {
+                scrollTop: $target.offset().top - 100,
+              },
+              900,
+              "swing",
+              function () {
+                window.location.hash = target - 100;
+              }
+            );
+        });
+      });
+    </script>
   </body>
 </html>
