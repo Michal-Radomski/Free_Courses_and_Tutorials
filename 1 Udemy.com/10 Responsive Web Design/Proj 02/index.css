@@ -159,3 +159,74 @@ section img {
     border-bottom-right-radius: 20px;
   }
 }
+
+@media screen and (max-width: 1100px) {
+  main {
+    width: 90%;
+    max-width: 800px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 4vh auto auto auto 10vh;
+    grid-gap: 15px;
+    margin: 0 auto;
+  }
+
+  #container {
+    grid-template-areas:
+      "header header"
+      "nav nav"
+      "login enhance_your_career"
+      "important_stats build_apps"
+      "build_games build_websites"
+      "footer footer";
+  }
+
+  section {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .graphs {
+    font-size: 100px;
+    line-height: 1;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .profile {
+    width: 50%;
+    border-radius: 50%;
+    margin-bottom: 5px;
+    border: 6px solid #4f97d5;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  header h1 {
+    font-size: 2.5em;
+  }
+
+  section {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .profile {
+    width: 20%;
+  }
+
+  .graphs {
+    font-size: 90px;
+    margin: 3% 0 0;
+  }
+
+  div {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+}
