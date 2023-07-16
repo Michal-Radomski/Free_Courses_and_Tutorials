@@ -267,8 +267,7 @@ footer a:hover {
   border-bottom: 2px solid #9867c5;
 }
 
-/* Tablets and Under */
-
+/* //@ Tablets and Under */
 @media (max-width: 768px) {
   .grid,
   .grid-3 {
@@ -276,21 +275,18 @@ footer a:hover {
   }
 
   /* Align all text to the center. This will move all text, including form centrally */
-
   .showcase {
     height: auto;
     text-align: center;
   }
 
   /* This resets the width of the image container and adds margin space to the left */
-
   .image {
     width: 600px;
     margin-left: 80px;
   }
 
   /* Changes the service sections from side-by-side orientation to each taking its own line. Aligns text to the center */
-
   .stats .flex {
     flex-direction: column;
   }
@@ -300,14 +296,12 @@ footer a:hover {
   }
 
   /* Makes sure each stat section does not exceed the width of parent */
-
   .stat {
     width: 100%;
     padding-right: 80px;
   }
 
   /* (re)Moves the circle to the center of the card */
-
   .circle {
     background-color: transparent;
     border: 3px solid purple;
@@ -322,27 +316,24 @@ footer a:hover {
   }
 }
 
-/* Mobile devices */
+/* //@ Mobile devices */
 @media (max-width: 500px) {
   .navbar {
     height: 100px;
   }
 
   /* Changes the alignment. The logo title stays at the top, the nav links will be below it */
-
   .navbar .flex {
     flex-direction: column;
   }
 
   /* When hovered on, retain white color and change border to black */
-
   .navbar a:hover {
     color: white;
     border-bottom: 2px solid black;
   }
 
   /* Set light purple background on nav links, make it a bit round and add some spacing */
-
   .navbar ul {
     background: #9867c5;
     border-radius: 5px;
@@ -350,20 +341,17 @@ footer a:hover {
   }
 
   /* Align text to center */
-
   .showcase {
     height: auto;
     text-align: center;
   }
 
   /* Reduce font size */
-
   .little-info {
     font-size: 13px;
   }
 
   /* Reduce image width */
-
   .image {
     width: 350px;
     margin-left: 70px;
@@ -374,7 +362,6 @@ footer a:hover {
   }
 
   /* Move circle once again */
-
   .circle {
     background-color: transparent;
     border: 3px solid purple;
