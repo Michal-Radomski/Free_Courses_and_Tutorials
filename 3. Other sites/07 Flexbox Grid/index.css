@@ -25,7 +25,7 @@ h1 {
   font-weight: 600;
   margin: 10px 0;
   line-height: 1.2;
-  color: black;
+  /* color: black; */
 }
 
 h2 {
@@ -93,4 +93,36 @@ p {
 .navbar a:hover {
   color: #9867c5;
   border-bottom: 3px solid #9867c5;
+}
+
+.showcase {
+  height: 300px;
+  background-color: purple;
+}
+
+/* Adds margin below the text */
+.showcase p {
+  margin-bottom: 30px;
+}
+
+/* Adds a shadow below the image */
+.showcase img {
+  box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.2);
+}
+
+/* Adds some padding on the form content */
+.showcase-form {
+  padding-left: 7px;
+}
+
+.grid {
+  overflow: visible;
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+
+.grid-item-1,
+.grid-item-2 {
+  position: relative;
+  top: 50px;
 }
