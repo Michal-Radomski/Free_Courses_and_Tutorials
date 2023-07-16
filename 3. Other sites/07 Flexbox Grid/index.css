@@ -26,6 +26,7 @@ h1 {
   font-weight: 600;
   margin: 10px 0;
   line-height: 1.2;
+  color: black;
 }
 
 h2 {
@@ -52,4 +53,23 @@ li {
 p {
   font-size: 20px;
   margin: 10px 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  overflow: visible;
+}
+
+.navbar {
+  background-color: purple;
+  height: 70px;
+  padding: 0 30px;
+}
+
+.navbar h1 {
+  font-size: 30px;
+  font-weight: 300;
+  margin: 10px 0;
+  line-height: 1.2;
 }
