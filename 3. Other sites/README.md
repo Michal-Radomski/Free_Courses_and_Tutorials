@@ -15,3 +15,6 @@
 
 6. Prisma_Mongo tutorial -> according to
    [this tutorial](https://www.section.io/engineering-education/how-to-setup-prisma-client-server-that-uses-mongodb).
+
+7. CSS Flexbox and Grid Tutorial -> according to
+   [this tutorial](https://www.freecodecamp.org/news/css-flexbox-and-grid-tutorial).
