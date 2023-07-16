@@ -201,3 +201,7 @@ p {
   text-align: center;
   width: 800px;
 }
+
+.stat svg {
+  color: purple;
+}
