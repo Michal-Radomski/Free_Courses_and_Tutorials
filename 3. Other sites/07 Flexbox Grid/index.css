@@ -182,3 +182,22 @@ p {
   margin: 0, 20px;
   text-align: justify;
 }
+
+/* Display horizontally, put a little space around them */
+.flex {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Add some padding around the container. Align text centrally */
+.stats {
+  padding: 45px 50px;
+  text-align: center;
+}
+
+/* Set margin and width */
+.stat {
+  margin: 0 30px;
+  text-align: center;
+  width: 800px;
+}
