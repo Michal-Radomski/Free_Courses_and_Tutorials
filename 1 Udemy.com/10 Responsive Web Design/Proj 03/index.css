@@ -8,8 +8,94 @@
 html {
   font-size: 100%;
 }
+
 body {
   box-sizing: border-box;
-  font-family: "Open Sans", sans-serif;
-  background-color: whitesmoke;
+  font-family: Arial, sans-serif;
+  background-color: cadetblue;
+  background: linear-gradient(90deg, cadetblue, #5085a0);
+  margin: 20px;
+}
+
+#divwrapper,
+fieldset {
+  background-color: aliceblue;
+  max-width: 900px;
+  min-height: 100px;
+  border-radius: 10px;
+  padding: 2%;
+  margin: 0 auto 10px;
+}
+
+#formwrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+#leftColumn {
+  width: 50%;
+  padding: 1%;
+}
+
+#leftColumn fieldset p {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+#leftColumn input {
+  width: 90%;
+  padding: 5px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+#rightColumn {
+  width: 50%;
+  padding: 1%;
+}
+
+#rightColumn fieldset p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+footer {
+  text-align: center;
+}
+
+.btn {
+  background: #3498db;
+  background-image: linear-gradient(#3498db, #2980b9);
+  border-radius: 28px;
+  color: #fff;
+  font-size: 20px;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  background-image: linear-gradient(#3cb0fd, #3498db);
+}
+
+@media (max-width: 900px) {
+  #formwrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  #leftColumn {
+    width: 100%;
+    padding: 0;
+    min-height: 100px;
+  }
+
+  #rightColumn {
+    width: 100%;
+    padding: 0;
+    min-height: 100px;
+  }
 }
