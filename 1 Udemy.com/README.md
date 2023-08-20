@@ -25,3 +25,6 @@
 
 10. Responsive Web Design Course -> according to
     [this course](https://www.udemy.com/course/the-complete-responsive-web-design-course).
+
+11. SVG -> according to
+    [this course](https://www.udemy.com/course/svg-basics-for-beginners-concepts-explained-with-examples).
