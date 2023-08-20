@@ -1,0 +1,23 @@
+<!--//* Is encoding unnecessary? -->
+<svg
+  encoding="UTF-8"
+  version="1.1"
+  width="200"
+  height="200"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="0 0 200 200"
+>
+  <style>
+    .heavy {
+      font: bold 30px sans-serif;
+      fill: maroon;
+    }
+  </style>
+  <line x1="0" y1="80" x2="150" y2="10" stroke="green" stroke-width="10" />
+
+  <circle cx="100" cy="100" r="80" fill="cyan" stroke="blue" stroke-width="5" opacity="0.7" />
+  <ellipse cx="100" cy="100" rx="100" ry="50" fill="dimgray" stroke-width="5" opacity="0.7" stroke="black" />
+
+  <text x="80" y="100" class="heavy">SVG</text>
+</svg>
