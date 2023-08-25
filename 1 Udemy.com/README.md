@@ -28,3 +28,5 @@
 
 11. SVG -> according to
     [this course](https://www.udemy.com/course/svg-basics-for-beginners-concepts-explained-with-examples).
+
+12. Color Theory -> according to [this course](https://www.udemy.com/course/color-theory-hitt-nichols).
