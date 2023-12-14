@@ -1,9 +1,10 @@
 //*  https://github.com/robertguss/webpack-5-fundamentals-course
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  mode: "production",
+  mode: "development",
   entry: "./src/index.js",
   devServer: {
     contentBase: "./dist",
@@ -16,14 +17,27 @@ module.exports = {
         loader: "babel-loader",
       },
       {
-        test: /\.scss$/i,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV === "development",
+            },
+          },
+          "css-loader",
+          "postcss-loader",
+          "sass-loader",
+        ],
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: "Development",
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
     }),
   ],
   output: {
