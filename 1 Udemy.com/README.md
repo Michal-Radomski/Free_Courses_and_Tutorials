@@ -32,3 +32,5 @@
 12. Color Theory -> according to [this course](https://www.udemy.com/course/color-theory-hitt-nichols).
 
 13. UI Fundamentals -> according to [this course](https://www.udemy.com/course/fundamentals-of-user-interface-design).
+
+14. Webpack 5 -> according to [this course](https://www.udemy.com/course/webpack-5-fundamentals).

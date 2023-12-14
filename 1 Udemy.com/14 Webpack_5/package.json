@@ -1,0 +1,17 @@
+{
+  "name": "14-webpack_5",
+  "version": "1.0.0",
+  "description": "webpack 5 course",
+  "main": "index.js",
+  "private": "true",
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
