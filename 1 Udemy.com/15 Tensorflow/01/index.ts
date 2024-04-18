@@ -34,3 +34,21 @@ import * as tf from "@tensorflow/tfjs-node";
   model.add(tf.layers.dense({ units: 4 }));
   (model.predict(tf.ones([8, 16])) as tf.Tensor<tf.Rank>).print();
 }
+
+{
+  // Define input, which has a size of 5 (not including batch dimension).
+  const input = tf.input({ shape: [5] });
+
+  // First dense layer uses relu activation.
+  const denseLayer1 = tf.layers.dense({ units: 10, activation: "relu" });
+  // Second dense layer uses softmax activation.
+  const denseLayer2 = tf.layers.dense({ units: 4, activation: "softmax" });
+
+  // Obtain the output symbolic tensor by applying the layers on the input.
+  const output = denseLayer2.apply(denseLayer1.apply(input)) as tf.SymbolicTensor;
+
+  // Create the model based on the inputs.
+  const model = tf.model({ inputs: input, outputs: output });
+
+  (model.predict(tf.ones([2, 5])) as tf.Tensor<tf.Rank>).print();
+}
