@@ -68,3 +68,22 @@ import * as tf from "@tensorflow/tfjs-node";
   // const model = tf.model({ inputs: input, outputs: output });
   // (model.predict(tf.ones([2, 5])) as tf.Tensor<tf.Rank>).print();
 }
+
+{
+  const model = tf.sequential();
+  // Add dense layer using model.add()
+  model.add(tf.layers.dense({ units: 1, inputShape: [1] }));
+
+  model.compile({
+    optimizer: "sgd",
+    loss: "meanSquaredError",
+    metrics: ["accuracy"],
+  });
+
+  const data = tf.tensor2d([1, 2, 3, 4, 5, 6, 7, 8], [8, 1]);
+  const labels = tf.tensor2d([-1, -2, 3, -4, -5, -6, -7, -8], [8, 1]);
+
+  model.fit(data, labels);
+  const output = model.predict(tf.tensor2d([13], [1, 1])) as tf.Tensor<tf.Rank>;
+  output.print();
+}
