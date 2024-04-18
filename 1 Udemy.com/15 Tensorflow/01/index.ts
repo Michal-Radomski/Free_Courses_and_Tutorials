@@ -9,3 +9,4 @@ const shape = [2, 2];
 const dataType = "int32";
 const tensorData = tf.tensor(rank, shape, dataType);
 tensorData.print();
+console.log("tensorData.toString()):", tensorData.toString());
