@@ -19,3 +19,10 @@ tf.tidy(() => {
 });
 
 console.log("tf.memory():", tf.memory());
+
+// // Creating the tensor
+// const tr = tf.tensor([1, 2, 3, 4, 5, 6, 7]);
+// // Disposing the tensor
+// tr.dispose();
+// // Trying to print it now
+// tr.print();
