@@ -83,7 +83,9 @@ import * as tf from "@tensorflow/tfjs-node";
   const data = tf.tensor2d([1, 2, 3, 4, 5, 6, 7, 8], [8, 1]);
   const labels = tf.tensor2d([-1, -2, 3, -4, -5, -6, -7, -8], [8, 1]);
 
-  model.fit(data, labels);
-  const output = model.predict(tf.tensor2d([13], [1, 1])) as tf.Tensor<tf.Rank>;
-  output.print();
+  (async function () {
+    await model.fit(data, labels, { epochs: 1000 });
+    const output = (await model.predict(tf.tensor2d([13], [1, 1]))) as tf.Tensor<tf.Rank>;
+    await output.print();
+  })();
 }
