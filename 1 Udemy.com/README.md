@@ -36,3 +36,5 @@
 14. Webpack 5 -> according to [this course](https://www.udemy.com/course/webpack-5-fundamentals).
 
 15. Tensorflow.JS -> according to [this course](https://www.udemy.com/course/tensorflowjs-crash-course-2020).
+
+16. Kubernetes -> according to [this course](https://www.udemy.com/course/kubernetes-getting-started).
