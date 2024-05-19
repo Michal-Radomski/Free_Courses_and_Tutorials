@@ -38,3 +38,6 @@
 15. Tensorflow.JS -> according to [this course](https://www.udemy.com/course/tensorflowjs-crash-course-2020).
 
 16. Kubernetes -> according to [this course](https://www.udemy.com/course/kubernetes-getting-started).
+
+17. Material UI -> according to [this course](https://www.udemy.com/course/materialui-navbar) and
+    [this course](https://www.udemy.com/course/responsive-header)
