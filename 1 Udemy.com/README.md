@@ -40,4 +40,4 @@
 16. Kubernetes -> according to [this course](https://www.udemy.com/course/kubernetes-getting-started).
 
 17. Material UI -> according to [this course](https://www.udemy.com/course/materialui-navbar) and
-    [this course](https://www.udemy.com/course/responsive-header)
+    [this course](https://www.udemy.com/course/responsive-header).
