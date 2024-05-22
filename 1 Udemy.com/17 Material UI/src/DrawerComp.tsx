@@ -21,7 +21,7 @@ const DrawerComp = (): JSX.Element => {
         </List>
       </Drawer>
       <IconButton sx={{ color: "white", marginLeft: "auto" }} onClick={() => setOpenDrawer(!openDrawer)}>
-        <MenuIcon color="action" />
+        <MenuIcon color="inherit" />
       </IconButton>
     </React.Fragment>
   );

@@ -1,14 +1,14 @@
 import React from "react";
-import { AppBar, Button, Tab, Tabs, Toolbar, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { AppBar, Button, Tab, Tabs, Theme, Toolbar, Typography, useMediaQuery, useTheme } from "@mui/material";
 import AddBusinessRoundedIcon from "@mui/icons-material/AddBusinessRounded";
 
 import DrawerComp from "./DrawerComp";
 
 const Header = (): JSX.Element => {
-  const theme = useTheme();
-  console.log("theme:", theme);
-  const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-  console.log({ isMatch });
+  const theme: Theme = useTheme();
+  // console.log("theme:", theme);
+  const isMatch: boolean = useMediaQuery(theme.breakpoints.down("md"));
+  // console.log({ isMatch });
 
   const [value, setValue] = React.useState<number>(0);
 
@@ -29,7 +29,7 @@ const Header = (): JSX.Element => {
                 indicatorColor="secondary"
                 textColor="inherit"
                 value={value}
-                onChange={(e, value) => setValue(value)}
+                onChange={(_e, value) => setValue(value)}
               >
                 <Tab label="Products" />
                 <Tab label="Services" />
