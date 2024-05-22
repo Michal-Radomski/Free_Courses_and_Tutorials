@@ -2,9 +2,7 @@ import React from "react";
 import { Drawer, IconButton, List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
-const pages = ["Products", "Services", "ABoutUs", "ContactUs"];
-
-const DrawerComp = (): JSX.Element => {
+const DrawerComp = ({ pages }: { pages: string[] }): JSX.Element => {
   const [openDrawer, setOpenDrawer] = React.useState<boolean>(false);
 
   return (

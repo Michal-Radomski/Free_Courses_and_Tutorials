@@ -12,6 +12,8 @@ const Header = (): JSX.Element => {
 
   const [value, setValue] = React.useState<number>(0);
 
+  const pages: string[] = ["Products", "Services", "ABoutUs", "ContactUs", "NewPage"];
+
   return (
     <React.Fragment>
       <AppBar sx={{ background: "#063970" }}>
@@ -20,7 +22,7 @@ const Header = (): JSX.Element => {
           {isMatch ? (
             <React.Fragment>
               <Typography sx={{ fontSize: "2rem", paddingLeft: "10%" }}>Shoppee</Typography>
-              <DrawerComp />
+              <DrawerComp pages={pages} />
             </React.Fragment>
           ) : (
             <React.Fragment>
@@ -31,15 +33,14 @@ const Header = (): JSX.Element => {
                 value={value}
                 onChange={(_e, value) => setValue(value)}
               >
-                <Tab label="Products" />
-                <Tab label="Services" />
-                <Tab label="About Us" />
-                <Tab label="Contact" />
+                {pages.map((page, index) => (
+                  <Tab label={page} key={index} />
+                ))}
               </Tabs>
               <Button sx={{ marginLeft: "auto" }} variant="contained">
                 Login
               </Button>
-              <Button sx={{ marginLeft: "10px" }} variant="contained">
+              <Button sx={{ marginLeft: "10px" }} variant="contained" color="error">
                 SignUp
               </Button>
             </React.Fragment>
