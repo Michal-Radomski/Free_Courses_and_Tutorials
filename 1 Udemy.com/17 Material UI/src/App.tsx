@@ -1,14 +1,14 @@
 import React from "react";
 
 import "./App.scss";
-// import Navbar from "./components/Navbar";
-import Header from "./Header";
+// import Header from "./Header";
+import Navbar from "./components/Navbar";
 
 const App = (): JSX.Element => {
   return (
     <React.Fragment>
-      {/* <Navbar /> */}
-      <Header />
+      {/* <Header /> */}
+      <Navbar />
     </React.Fragment>
   );
 };
