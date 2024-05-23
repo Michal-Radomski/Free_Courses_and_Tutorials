@@ -7,10 +7,17 @@ const DrawerComp = ({ pages }: { pages: string[] }): JSX.Element => {
 
   return (
     <React.Fragment>
-      <Drawer anchor="left" open={openDrawer} onClose={() => setOpenDrawer(false)}>
+      <Drawer
+        anchor="left"
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        PaperProps={{
+          sx: { backgroundColor: "lightgray" },
+        }}
+      >
         <List>
           {pages.map((page, index) => (
-            <ListItemButton key={index}>
+            <ListItemButton key={index} divider={true} onClick={() => setOpenDrawer(false)}>
               <ListItemIcon>
                 <ListItemText>{page}</ListItemText>
               </ListItemIcon>
