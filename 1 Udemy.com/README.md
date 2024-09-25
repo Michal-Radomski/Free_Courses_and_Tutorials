@@ -41,3 +41,6 @@
 
 17. Material UI -> according to [this course](https://www.udemy.com/course/materialui-navbar) and
     [this course](https://www.udemy.com/course/responsive-header).
+
+18. Api testing with Cypress -> according to
+    [this course](https://www.udemy.com/course/api-testing-with-javascript-and-cypress-10).
