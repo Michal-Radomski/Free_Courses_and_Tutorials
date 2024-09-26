@@ -1,18 +1,17 @@
 /// <reference types="cypress" />
 
-context("Network Requests", () => {
-  const baseUrl = "https://jsonplaceholder.cypress.io";
+context("Network Requests", (): void => {
+  const baseUrl: string = "https://jsonplaceholder.cypress.io";
 
-  it("comments returns 200 and 500 body length", () => {
+  it("comments returns 200 and 500 body length", (): void => {
     // https://on.cypress.io/request
     cy.request(`${baseUrl}/comments`).should((response) => {
       expect(response.status).to.eq(200);
-
       expect(response.body).to.have.property("length").and.be.oneOf([500, 501]);
     });
   });
 
-  it("Can create new user on /posts", () => {
+  it("Can create new user on /posts", (): void => {
     cy.request("POST", `${baseUrl}/posts`, {
       userId: 11,
       title: "Cypress Test Runner",
@@ -22,14 +21,12 @@ context("Network Requests", () => {
       expect(response).property("body").to.contain({
         title: "Cypress Test Runner",
       });
-
       expect(response.body).property("id").to.be.a("number").and.to.be.gt(100);
-
       expect(response.body).property("userId").to.be.a("number");
     });
   });
 
-  it("cy.request() - save response in the shared test context", () => {
+  it("cy.request() - save response in the shared test context", (): void => {
     // https://on.cypress.io/variables-and-aliases
     cy.request("https://jsonplaceholder.cypress.io/users?_limit=1")
       .its("body")
@@ -100,7 +97,7 @@ context("Network Requests", () => {
   //   cy.get(".network-put-comment").should("contain", message);
   // });
 
-  it("GET /comments with query parameters", () => {
+  it("GET /comments with query parameters", (): void => {
     cy.request({
       url: `${baseUrl}/comments`,
       qs: {

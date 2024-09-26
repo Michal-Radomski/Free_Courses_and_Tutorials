@@ -1,9 +1,9 @@
 /// <reference types="cypress" />
 
-describe("Network Requests", () => {
-  const baseUrl = "https://jsonplaceholder.typicode.com";
+describe("Network Requests", (): void => {
+  const baseUrl: string = "https://jsonplaceholder.typicode.com";
 
-  it("GET one todo returns one todo", () => {
+  it("GET one todo returns one todo", (): void => {
     // https://on.cypress.io/request
     cy.request(`${baseUrl}/todos/1`).should((response) => {
       expect(response.status).to.eq(200);
@@ -12,16 +12,15 @@ describe("Network Requests", () => {
     });
   });
 
-  it("GET comments returns 200 and 500 body length", () => {
+  it("GET comments returns 200 and 500 body length", (): void => {
     // https://on.cypress.io/request
     cy.request(`${baseUrl}/comments`).should((response) => {
       expect(response.status).to.eq(200);
-
       expect(response.body).to.have.property("length").and.be.oneOf([500, 501]);
     });
   });
 
-  it("GET a comment on postId 1 and id=2 returns valid email", () => {
+  it("GET a comment on postId 1 and id=2 returns valid email", (): void => {
     // https://on.cypress.io/request
     cy.request(`${baseUrl}/comments?postId=1&id=2`).should((response) => {
       expect(response.status).to.eq(200);
@@ -29,7 +28,7 @@ describe("Network Requests", () => {
     });
   });
 
-  it("GET /comments with cy.request({qs:})", () => {
+  it("GET /comments with cy.request({qs:})", (): void => {
     cy.request({
       url: `${baseUrl}/comments`,
       qs: {
@@ -47,7 +46,7 @@ describe("Network Requests", () => {
       });
   });
 
-  it("Can create new post on /posts", () => {
+  it("Can create new post on /posts", (): void => {
     // resource will not be really updated on the server but it will be faked as if
     cy.request("POST", `${baseUrl}/posts`, {
       userId: 11,
@@ -64,7 +63,7 @@ describe("Network Requests", () => {
     });
   });
 
-  it("Can create new user on /posts v2", () => {
+  it("Can create new user on /posts v2", (): void => {
     // resource will not be really updated on the server but it will be faked as if
     cy.request("POST", `${baseUrl}/posts`, {
       userId: 11,
@@ -86,7 +85,7 @@ describe("Network Requests", () => {
     });
   });
 
-  it("Can update posts", () => {
+  it("Can update posts", (): void => {
     // a PUT is used to update an existing entity
     cy.request("PUT", `${baseUrl}/posts/1`, {
       id: 2,
