@@ -1,24 +1,25 @@
 /// <reference types="cypress" />
 
-context("Network Requests", () => {
-  beforeEach(() => {
+//* https://example.cypress.io/commands/network-requests
+//* context === describe
+context("Network Requests", (): void => {
+  beforeEach((): void => {
     cy.visit("https://example.cypress.io/commands/network-requests");
   });
 
   // Manage HTTP requests in your app
-  it("cy.request() - make an XHR request", () => {
+  it("cy.request() - make an XHR request", (): void => {
     // https://on.cypress.io/request
     cy.request("https://jsonplaceholder.cypress.io/comments").should((response) => {
       expect(response.status).to.eq(200);
-      // the server sometimes gets an extra comment posted from another machine
-      // which gets returned as 1 extra object
+
       expect(response.body).to.have.property("length").and.be.oneOf([500, 501]);
       expect(response).to.have.property("headers");
       expect(response).to.have.property("duration");
     });
   });
 
-  it("cy.request() - verify response using BDD syntax", () => {
+  it("cy.request() - verify response using BDD syntax", (): void => {
     cy.request("https://jsonplaceholder.cypress.io/comments").then((response) => {
       // https://on.cypress.io/assertions
       expect(response).property("status").to.equal(200);
@@ -27,8 +28,7 @@ context("Network Requests", () => {
     });
   });
 
-  it("cy.request() with query parameters", () => {
-    // will execute request
+  it("cy.request() with query parameters", (): void => {
     // https://jsonplaceholder.cypress.io/comments?postId=1&id=3
     cy.request({
       url: "https://jsonplaceholder.cypress.io/comments",
@@ -47,8 +47,7 @@ context("Network Requests", () => {
       });
   });
 
-  it("cy.request() - pass result to the second request", () => {
-    // first, let's find out the userId of the first user we have
+  it("cy.request() - pass result to the second request", (): void => {
     cy.request("https://jsonplaceholder.cypress.io/users?_limit=1")
       .its("body") // yields the response object
       .its("0") // yields the first element of the returned list
@@ -66,14 +65,12 @@ context("Network Requests", () => {
         expect(response).property("body").to.contain({
           title: "Cypress Test Runner",
         });
-
         expect(response.body).property("id").to.be.a("number").and.to.be.gt(100);
-
         expect(response.body).property("userId").to.be.a("number");
       });
   });
 
-  it("cy.request() - save response in the shared test context", () => {
+  it("cy.request() - save response in the shared test context", (): void => {
     // https://on.cypress.io/variables-and-aliases
     cy.request("https://jsonplaceholder.cypress.io/users?_limit=1")
       .its("body")
@@ -88,21 +85,19 @@ context("Network Requests", () => {
           .its("body")
           .as("post"); // save the new post from the response
       })
-      .then(function () {
+      .then(function (): void {
         expect(this.post, "post has the right user id").property("userId").to.equal(this.user.id);
       });
   });
 
-  it("cy.intercept() - route responses to matching requests", () => {
+  it("cy.intercept() - route responses to matching requests", (): void => {
     // https://on.cypress.io/intercept
 
-    let message = "whoa, this comment does not exist";
+    const message = "whoa, this comment does not exist";
 
     // Listen to GET to comments/1
     cy.intercept("GET", "**/comments/*").as("getComment");
 
-    // we have code that gets a comment when
-    // the button is clicked in scripts.js
     cy.get(".network-btn").click();
 
     // https://on.cypress.io/wait
@@ -111,8 +106,6 @@ context("Network Requests", () => {
     // Listen to POST to comments
     cy.intercept("POST", "**/comments").as("postComment");
 
-    // we have code that posts a comment when
-    // the button is clicked in scripts.js
     cy.get(".network-post").click();
     cy.wait("@postComment").should(({ request, response }) => {
       expect(request.body).to.include("email");
@@ -138,7 +131,6 @@ context("Network Requests", () => {
 
     cy.wait("@putComment");
 
-    // our 404 statusCode logic in scripts.js executed
     cy.get(".network-put-comment").should("contain", message);
   });
 });

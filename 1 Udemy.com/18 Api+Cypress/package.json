@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "npx cypress open --browser firefox",
-    "test2": "npx cypress run --browser firefox"
+    "test": "npx cypress open --browser electron",
+    "test2": "npx cypress run --browser electron"
   },
   "keywords": [],
   "author": "",

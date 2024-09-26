@@ -74,15 +74,16 @@ describe("Network Requests", () => {
 
     cy.get("@post").then(console.log);
 
-    // cy.get("@post").then((response) => {
-    //   console.log(response);
-    //   // expect the response status to be 201
-    //   expect(response).property("status").to.equal(201); // new entity created
-    //   // expect the response body to contain the title = "Cypress Test"
-    //   expect(response.body).to.contain({
-    //     title: "Cypress POST",
-    //   });
-    // });
+    cy.get("@post").then((response) => {
+      console.log(response);
+      // expect the response status to be 201
+      expect(response).property("status").to.equal(201); // new entity created
+      // expect the response body to contain the title = "Cypress Test"
+      expect((response as any).body).to.contain({
+        title: "Cypress POST",
+      });
+      cy.log("response:", response);
+    });
   });
 
   it("Can update posts", () => {
