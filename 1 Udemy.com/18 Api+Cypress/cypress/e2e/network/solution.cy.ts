@@ -78,7 +78,7 @@ describe("Network Requests", (): void => {
       // expect the response status to be 201
       expect(response).property("status").to.equal(201); // new entity created
       // expect the response body to contain the title = "Cypress Test"
-      expect((response as any).body).to.contain({
+      expect((response as unknown as Cypress.Response<any>).body).to.contain({
         title: "Cypress POST",
       });
       cy.log("response:", response);
