@@ -1,7 +1,9 @@
 /// <reference types="cypress" />
 
 //* https://example.cypress.io/commands/network-requests
-//* context === describe
+//* context similar to describe
+// While context serves a similar function to describe, context use emphasizes the specific scenarios being tested.
+// Using context helps clarify the specific conditions under which the tests are run, enhancing readability and maintainability.
 context("Network Requests", (): void => {
   beforeEach((): void => {
     cy.visit("https://example.cypress.io/commands/network-requests");
