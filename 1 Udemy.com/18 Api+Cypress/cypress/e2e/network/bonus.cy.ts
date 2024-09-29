@@ -9,7 +9,7 @@ context("Network Requests", (): void => {
 
   it("comments returns 200 and 500 body length", (): void => {
     // https://on.cypress.io/request
-    cy.request(`${baseUrl}/comments`).should((response) => {
+    cy.request(`${baseUrl}/comments`).should((response: Cypress.Response<any>) => {
       expect(response.status).to.eq(200);
       expect(response.body).to.have.property("length").and.be.oneOf([500, 501]);
     });
@@ -20,7 +20,7 @@ context("Network Requests", (): void => {
       userId: 11,
       title: "Cypress Test Runner",
       body: "new body",
-    }).then((response) => {
+    }).then((response: Cypress.Response<any>) => {
       expect(response).property("status").to.equal(201); // new entity created
       expect(response).property("body").to.contain({
         title: "Cypress Test Runner",
@@ -50,7 +50,7 @@ context("Network Requests", (): void => {
       });
   });
 
-  it("cy.intercept() - route responses to matching requests", () => {
+  it("cy.intercept() - route responses to matching requests", (): void => {
     // https://on.cypress.io/intercept
 
     const message = "whoa, this comment does not exist";

@@ -10,7 +10,7 @@ context("Network Requests", (): void => {
   // Manage HTTP requests in your app
   it("cy.request() - make an XHR request", (): void => {
     // https://on.cypress.io/request
-    cy.request("https://jsonplaceholder.cypress.io/comments").should((response) => {
+    cy.request("https://jsonplaceholder.cypress.io/comments").should((response: Cypress.Response<any>) => {
       expect(response.status).to.eq(200);
 
       expect(response.body).to.have.property("length").and.be.oneOf([500, 501]);
@@ -20,7 +20,7 @@ context("Network Requests", (): void => {
   });
 
   it("cy.request() - verify response using BDD syntax", (): void => {
-    cy.request("https://jsonplaceholder.cypress.io/comments").then((response) => {
+    cy.request("https://jsonplaceholder.cypress.io/comments").then((response: Cypress.Response<any>) => {
       // https://on.cypress.io/assertions
       expect(response).property("status").to.equal(200);
       expect(response).property("body").to.have.property("length").and.be.oneOf([500, 501]);

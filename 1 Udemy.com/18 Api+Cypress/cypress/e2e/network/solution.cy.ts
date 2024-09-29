@@ -5,7 +5,7 @@ describe("Network Requests", (): void => {
 
   it("GET one todo returns one todo", (): void => {
     // https://on.cypress.io/request
-    cy.request(`${baseUrl}/todos/1`).should((response) => {
+    cy.request(`${baseUrl}/todos/1`).should((response: Cypress.Response<any>) => {
       expect(response.status).to.eq(200);
       expect(response.body).to.have.property("userId").and.equal(1);
       //should we check anything else?
@@ -14,7 +14,7 @@ describe("Network Requests", (): void => {
 
   it("GET comments returns 200 and 500 body length", (): void => {
     // https://on.cypress.io/request
-    cy.request(`${baseUrl}/comments`).should((response) => {
+    cy.request(`${baseUrl}/comments`).should((response: Cypress.Response<any>) => {
       expect(response.status).to.eq(200);
       expect(response.body).to.have.property("length").and.be.oneOf([500, 501]);
     });
@@ -22,7 +22,7 @@ describe("Network Requests", (): void => {
 
   it("GET a comment on postId 1 and id=2 returns valid email", (): void => {
     // https://on.cypress.io/request
-    cy.request(`${baseUrl}/comments?postId=1&id=2`).should((response) => {
+    cy.request(`${baseUrl}/comments?postId=1&id=2`).should((response: Cypress.Response<any>) => {
       expect(response.status).to.eq(200);
       expect(response.body[0]).to.have.property("email").and.equal("Jayne_Kuhic@sydney.com");
     });
@@ -73,8 +73,8 @@ describe("Network Requests", (): void => {
 
     cy.get("@post").then(console.log);
 
-    cy.get("@post").then((response) => {
-      console.log(response);
+    cy.get("@post").then((response: JQuery<HTMLElement>) => {
+      // console.log("response:", response);
       // expect the response status to be 201
       expect(response).property("status").to.equal(201); // new entity created
       // expect the response body to contain the title = "Cypress Test"
