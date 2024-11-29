@@ -1,0 +1,79 @@
+<!-- Example 1 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<book>
+  <name>A Song of Ice and Fire</name>
+  <author>George R. R. Martin</author>
+  <language>English</language>
+  <genre>Epic fantasy</genre>
+</book>
+
+<!-- Example 2 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<students>
+  <student>
+    <name>Rick Grimes</name>
+    <age>35</age>
+    <subject>Maths</subject>
+    <gender>Male</gender>
+  </student>
+  <student>
+    <name>Daryl Dixon</name>
+    <age>33</age>
+    <subject>Science</subject>
+    <gender>Male</gender>
+  </student>
+  <student>
+    <name>Maggie</name>
+    <age>36</age>
+    <subject>Arts</subject>
+    <gender>Female</gender>
+  </student>
+</students>
+
+<!-- Example 3 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<emails>
+  <email>
+    <to>Sender_1</to>
+    <from>Receiver_1</from>
+    <heading>Hello</heading>
+    <body>
+      Hello brother, how are you!
+    </body>
+  </email>
+  <email>
+    <to>Peter</to>
+    <from>Jack</from>
+    <heading>Birthday wish</heading>
+    <body>
+      Happy birthday Tom!
+    </body>
+  </email>
+</emails>
+
+<!-- Example 4 -->
+<!-- //* You can use PascalCase for XML root elements and camelCase for child elements -->
+<?xml version="1.0" encoding="UTF-8"?>
+<StudentData>
+  <student>
+    <firstName>Rick</firstName>
+    <lastName>Grimes</lastName>
+    <age>35</age>
+    <subject>Maths</subject>
+    <gender>Male</gender>
+  </student>
+  <student>
+    <firstName>Daryl</firstName>
+    <lastName>Dixon</lastName>
+    <age>33</age>
+    <subject>Science</subject>
+    <gender>Male</gender>
+  </student>
+  <student>
+    <firstName>Maggie</firstName>
+    <lastName></lastName>Maggie
+    <age>36</age>
+    <subject>Arts</subject>
+    <gender>Female</gender>
+  </student>
+</StudentData>
