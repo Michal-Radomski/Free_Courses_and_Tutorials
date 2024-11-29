@@ -1,0 +1,46 @@
+Markup languages are systems for annotating a document in a way that is syntactically distinguishable from the text. They provide a means to structure, format, and define relationships between different parts of a document. Here are some notable markup languages beyond HTML:
+
+### Common Markup Languages
+
+1. **XML (Extensible Markup Language)**: 
+   - A flexible markup language that allows users to define their own tags. It is primarily used for storing and transporting data. XML is designed to be both human-readable and machine-readable, making it versatile for various applications, including web services and configuration files.
+
+2. **Markdown**: 
+   - A lightweight markup language that is easy to read and write. It is often used for formatting plain text documents, such as README files on GitHub, blog posts, and comments on websites. Markdown allows users to create formatted text using simple syntax, such as `#` for headings and `*` for bullet points.
+
+3. **LaTeX**: 
+   - A high-quality typesetting system commonly used for producing scientific and mathematical documents due to its powerful handling of formulas and bibliographies. LaTeX uses markup commands to define the structure of documents, making it popular in academia.
+
+4. **XHTML (Extensible Hypertext Markup Language)**: 
+   - A stricter version of HTML that adheres to XML syntax rules. XHTML was developed to improve the interoperability of web pages across different browsers and devices by enforcing well-formedness.
+
+5. **SGML (Standard Generalized Markup Language)**: 
+   - A precursor to XML and HTML, SGML is a standard for defining markup languages. It allows the creation of customized markup languages tailored to specific needs, making it suitable for complex document types.
+
+6. **MathML (Mathematical Markup Language)**: 
+   - An XML-based markup language designed to display mathematical notations and structures on the web. MathML enables the inclusion of complex equations in web pages.
+
+7. **SVG (Scalable Vector Graphics)**: 
+   - An XML-based format for describing two-dimensional vector graphics. SVG allows for the creation of interactive graphics that can be scaled without loss of quality.
+
+8. **KML (Keyhole Markup Language)**: 
+   - An XML-based language used for representing geographic data in applications like Google Earth. KML allows users to display geographic data in an Earth browser.
+
+9. **WML (Wireless Markup Language)**: 
+   - A markup language used for designing pages that can be displayed on mobile devices. WML was part of the WAP (Wireless Application Protocol) standard.
+
+10. **DocBook**: 
+    - A semantic markup language used primarily for technical documentation. DocBook provides a comprehensive set of elements for structuring documents such as books, articles, and manuals.
+
+### Conclusion
+These markup languages serve various purposes across different domains, from web development and scientific publishing to geographic information systems and mobile applications. Each language has its unique syntax and features tailored to specific use cases, making them essential tools in modern computing and content creation.
+
+Citations:
+[1] https://www.designmatch.io/vocabulary/what-is-markup-language
+[2] https://en.wikipedia.org/wiki/List_of_document_markup_languages
+[3] https://www.semrush.com/blog/markup-language/
+[4] https://www.geeksforgeeks.org/explain-different-markup-languages-other-than-html/
+[5] https://en.wikipedia.org/wiki/Markup_language
+[6] https://www.britannica.com/technology/markup-language
+[7] https://en.wikipedia.org/wiki/XML_schema_languages
+[8] https://discuss.codecademy.com/t/what-is-a-markup-language/759717
