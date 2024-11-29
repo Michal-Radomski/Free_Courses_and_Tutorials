@@ -1,0 +1,10 @@
+<library xmlns="http://example.com/library" xmlns:bk="http://example.com/books" xmlns:auth="http://example.com/authors">
+  <bk:book>
+    <bk:title>XML Basics</bk:title>
+    <auth:author>John Doe</auth:author>
+  </bk:book>
+  <bk:book>
+    <bk:title>Advanced XML</bk:title>
+    <auth:author>Jane Smith</auth:author>
+  </bk:book>
+</library>
