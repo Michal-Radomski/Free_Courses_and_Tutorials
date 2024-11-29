@@ -1,3 +1,5 @@
+<!-- //* XSLT color: #EB8CEB -->
+
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog>
     <cd>
@@ -27,7 +29,7 @@
             <body>
                 <h2>My CD Collection</h2>
                 <table border="1">
-                    <tr bgcolor="#9acd32">
+                    <tr bgcolor="#EB8CEB">
                         <th>Title</th>
                         <th>Artist</th>
                         <th>Country</th>
