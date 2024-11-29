@@ -44,3 +44,5 @@
 
 18. Api testing with Cypress -> according to
     [this course](https://www.udemy.com/course/api-testing-with-javascript-and-cypress-10).
+
+19. XML -> according to [this course](https://www.udemy.com/course/xml-step-by-step-for-beginners).

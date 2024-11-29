@@ -1,2 +1,5 @@
 *.sql linguist-detectable=true
 *.sql linguist-language=sql
+
+*.xml linguist-detectable=true
+*.xml linguist-language=XML
