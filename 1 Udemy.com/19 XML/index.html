@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <p id="demo"></p>
+
+    <!-- //* XML Parser -->
+    <script>
+      const text =
+        "<bookstore><book>" +
+        "<title>Everyday Italian</title>" +
+        "<author>Giada De Laurentiis</author>" +
+        "<year>2005</year>" +
+        "</book></bookstore>";
+
+      const parser = new DOMParser();
+      console.log("parser:", parser);
+
+      const xmlDoc = parser.parseFromString(text, "text/xml");
+      document.getElementById("demo").innerHTML = xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+    </script>
+
+    <!-- //* HTML parser -->
+    <script>
+      const parser2 = new DOMParser();
+      const htmlString = `
+    <div>
+        <h1>Hello, World!</h1>
+        <p>This is a sample paragraph.</p>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </div>
+`;
+
+      const doc = parser2.parseFromString(htmlString, "text/html");
+      const h1 = doc.querySelector("h1");
+      console.log("h1?.textContent:", h1?.textContent); // Output: "Hello, World!"
+
+      const listItems = doc.querySelectorAll("li");
+      listItems.forEach((item, index) => {
+        console.log("index, item.textContent:", index, item.textContent); // Output: "Item 1", "Item 2", "Item 3"
+      });
+
+      const newElement = doc.createElement("p");
+      newElement.textContent = "This is a new paragraph added to the document.";
+      doc.body.appendChild(newElement);
+
+      console.log("doc.body.innerHTML:", doc.body.innerHTML);
+    </script>
+  </body>
+</html>
