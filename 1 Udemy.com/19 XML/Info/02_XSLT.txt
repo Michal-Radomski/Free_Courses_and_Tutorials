@@ -1,0 +1,88 @@
+XSLT, or **Extensible Stylesheet Language Transformations**, is a powerful XML-based language used for transforming XML documents into other formats, such as HTML, plain text, or even other XML documents. It allows developers to define rules for how the content of an XML document should be transformed and presented.
+
+### Key Features of XSLT
+- **Transformation**: XSLT is primarily used for transforming XML data into different formats, making it useful for web applications and data interchange.
+- **Declarative Language**: XSLT operates on a declarative model, meaning it describes what the output should look like rather than how to produce it.
+- **Integration with XPath**: XSLT works closely with XPath, which is used to navigate through the XML structure and select nodes for transformation.
+
+### Example of XSLT
+
+Here’s a simple example demonstrating how to use XSLT to transform an XML document representing a CD catalog into an HTML table.
+
+#### XML Document (catalog.xml)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+    <cd>
+        <title>Empire Burlesque</title>
+        <artist>Bob Dylan</artist>
+        <country>USA</country>
+        <price>10.90</price>
+    </cd>
+    <cd>
+        <title>Hide your heart</title>
+        <artist>Bonnie Tyler</artist>
+        <country>UK</country>
+        <price>9.90</price>
+    </cd>
+    <cd>
+        <title>Greatest Hits</title>
+        <artist>Dolly Parton</artist>
+        <country>USA</country>
+        <price>9.90</price>
+    </cd>
+</catalog>
+```
+
+#### XSLT Stylesheet (transform.xsl)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match="/">
+        <html>
+            <body>
+                <h2>My CD Collection</h2>
+                <table border="1">
+                    <tr bgcolor="#9acd32">
+                        <th>Title</th>
+                        <th>Artist</th>
+                        <th>Country</th>
+                        <th>Price</th>
+                    </tr>
+                    <xsl:for-each select="catalog/cd">
+                        <tr>
+                            <td><xsl:value-of select="title"/></td>
+                            <td><xsl:value-of select="artist"/></td>
+                            <td><xsl:value-of select="country"/></td>
+                            <td><xsl:value-of select="price"/></td>
+                        </tr>
+                    </xsl:for-each>
+                </table>
+            </body>
+        </html>
+    </xsl:template>
+</xsl:stylesheet>
+```
+
+### Explanation:
+- **Input XML**: The `catalog.xml` file contains a list of CDs with their titles, artists, countries, and prices.
+- **XSLT Stylesheet**: The `transform.xsl` file defines how to transform the XML data into an HTML table:
+  - The `<xsl:template match="/">` element matches the root of the XML document.
+  - Inside this template, HTML elements are created to structure the output.
+  - `<xsl:for-each>` iterates over each `<cd>` element in the catalog, creating a new row in the HTML table for each CD.
+  - `<xsl:value-of>` extracts and displays the values of the specified child elements.
+
+### Conclusion
+XSLT is a versatile tool for converting XML data into various formats, making it essential for web development and data processing tasks. Its ability to define transformation rules declaratively allows for flexible and powerful data manipulation.
+
+Citations:
+[1] https://www.techtarget.com/whatis/definition/XSL-Extensible-Stylesheet-Language
+[2] https://www.javatpoint.com/xslt-tutorial
+[3] https://learn.microsoft.com/ru-ru/previous-versions/windows/desktop/ms759096(v=vs.85)
+[4] https://developer.mozilla.org/en-US/docs/Web/XSLT
+[5] https://en.wikipedia.org/wiki/XSL_Transformation
+[6] https://www.w3schools.com/xml/xsl_intro.asp
+[7] https://help.nintex.com/en-US/k2blackpearl/userguide/4.6.11/XSLT_Definitions.html
+[8] https://www.tutorialspoint.com/xslt/xslt_overview.htm

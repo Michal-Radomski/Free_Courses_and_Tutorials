@@ -1,0 +1,61 @@
+XPath, or XML Path Language, is a query language used for selecting nodes from an XML document. It provides a way to navigate through the hierarchical structure of XML documents, allowing users to retrieve specific elements, attributes, and values based on various criteria.
+
+### Key Features of XPath
+- **Path Expressions**: XPath uses path expressions to navigate through elements and attributes in an XML document. These expressions resemble file system paths, making them intuitive to use.
+- **Node Types**: XPath distinguishes between various types of nodes, including element nodes, attribute nodes, text nodes, comment nodes, and more.
+- **Functions and Operators**: XPath includes a library of standard functions for manipulating strings, numbers, and dates, as well as operators for comparisons and logical operations.
+
+### Example of XPath
+
+Consider the following XML document representing a bookstore:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+    <book category="cooking">
+        <title lang="en">Everyday Italian</title>
+        <author>Giada De Laurentiis</author>
+        <year>2005</year>
+        <price>30.00</price>
+    </book>
+    <book category="children">
+        <title lang="en">Harry Potter</title>
+        <author>J.K. Rowling</author>
+        <year>2005</year>
+        <price>29.99</price>
+    </book>
+    <book category="web">
+        <title lang="en">XQuery Kick Start</title>
+        <author>James McGovern</author>
+        <year>2003</year>
+        <price>49.99</price>
+    </book>
+</bookstore>
+```
+
+### XPath Expressions
+
+Here are some example XPath expressions that can be used with the above XML:
+
+| XPath Expression                       | Description                                                      |
+|----------------------------------------|------------------------------------------------------------------|
+| `/bookstore/book`                      | Selects all `<book>` elements that are children of `<bookstore>`.|
+| `/bookstore/book[last()]`              | Selects the last `<book>` element in the `<bookstore>`.         |
+| `//title[@lang='en']`                 | Selects all `<title>` elements with a `lang` attribute equal to "en". |
+| `/bookstore/book[price > 30.00]`      | Selects all `<book>` elements with a `<price>` greater than 30.00. |
+| `//author`                             | Selects all `<author>` elements in the document.                |
+| `/bookstore/book[@category='web']`    | Selects all `<book>` elements with a `category` attribute equal to "web". |
+
+### Conclusion
+
+XPath is a powerful tool for querying and navigating XML documents. Its ability to specify paths and conditions makes it essential for working with XML data in various applications, including XSLT transformations and data extraction tasks.
+
+Citations:
+[1] https://docs.appseconnect.com/transformation/understanding-xml-and-xpath/
+[2] https://www.ionos.com/digitalguide/websites/web-development/xpath-tutorial/
+[3] https://www.w3schools.com/xml/xml_xpath.asp
+[4] https://en.wikipedia.org/wiki/Xpath
+[5] https://bugbug.io/blog/testing-frameworks/the-ultimate-xpath-cheat-sheet/
+[6] https://developer.mozilla.org/en-US/docs/Web/XPath
+[7] https://www.geeksforgeeks.org/introduction-to-xpath/
+[8] https://www.liquid-technologies.com/xml-schema-tutorial/xsd-elements-attributes
