@@ -1,0 +1,75 @@
+## Differences Between XML, SVG, and HTML
+
+XML, SVG, and HTML are all markup languages used in web development, but they serve different purposes and have distinct characteristics. Below is a detailed comparison of these three technologies.
+
+### **1. XML (Extensible Markup Language)**
+
+- **Purpose**: XML is designed primarily for data exchange and storage. It allows users to define their own tags, making it highly flexible for representing structured information.
+- **Structure**: XML documents must be well-formed, meaning they adhere strictly to syntax rules. Tags are case-sensitive, and every opening tag must have a corresponding closing tag.
+- **Usage**: Commonly used for data interchange between systems (e.g., web services), XML encodes data in a format that is both machine-readable and human-readable. It does not dictate how data should be displayed.
+- **Example**:
+  ```xml
+  <?xml version="1.0"?>
+  <note>
+      <to>Tove</to>
+      <from>Jani</from>
+      <heading>Reminder</heading>
+      <body>Don't forget me this weekend!</body>
+  </note>
+  ```
+
+### **2. HTML (HyperText Markup Language)**
+
+- **Purpose**: HTML is primarily used for creating and displaying content on the web. It structures web pages and defines how elements are presented in a browser.
+- **Structure**: HTML has predefined tags (e.g., `<div>`, `<p>`, `<a>`), which are not case-sensitive. While some tags can be self-closing, most require both opening and closing tags.
+- **Usage**: HTML is focused on presentation, allowing developers to create user interfaces for websites and applications. It does not support custom tags like XML.
+- **Example**:
+  ```html
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>My Web Page</title>
+  </head>
+  <body>
+      <h1>Hello, World!</h1>
+      <p>This is my first web page.</p>
+  </body>
+  </html>
+  ```
+
+### **3. SVG (Scalable Vector Graphics)**
+
+- **Purpose**: SVG is an XML-based format specifically for defining vector graphics on the web. It allows for the creation of interactive graphics that can scale without losing quality.
+- **Structure**: As a subset of XML, SVG inherits its rules (e.g., case sensitivity, well-formedness). SVG elements can be styled with CSS and manipulated with JavaScript.
+- **Usage**: Ideal for logos, icons, and complex graphics that need to remain crisp at any size. SVG graphics are part of the DOM, allowing for interactivity and animation.
+- **Example**:
+  ```html
+  <svg width="100" height="100">
+      <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+  </svg>
+  ```
+
+### **Comparison Summary**
+
+| Feature              | XML                             | HTML                              | SVG                                  |
+|----------------------|---------------------------------|-----------------------------------|--------------------------------------|
+| **Primary Use**      | Data exchange                   | Content presentation               | Vector graphics                       |
+| **Tag Definition**   | Custom-defined                  | Predefined                        | Inherits from XML                    |
+| **Case Sensitivity** | Yes                             | No                               | Yes                                  |
+| **Well-formedness**  | Required                        | Not strictly required             | Required                             |
+| **Interactivity**     | Limited                         | High with JavaScript              | High with CSS and JavaScript         |
+| **Scalability**      | Not applicable                  | Not applicable                    | Scalable without quality loss        |
+
+### Conclusion
+
+In summary, while XML is focused on data representation and exchange, HTML is dedicated to displaying content on the web, and SVG provides a means to create scalable vector graphics. Each serves a unique role in web development, making them essential tools for different tasks within the ecosystem.
+
+Citations:
+[1] https://www.w3schools.com/html/html5_svg.asp
+[2] https://aws.amazon.com/compare/the-difference-between-html-and-xml/
+[3] https://www.geeksforgeeks.org/difference-between-svg-and-html-5-canvas/
+[4] https://www.geeksforgeeks.org/html-vs-xml/
+[5] https://www.w3.org/TR/SVG/intro.html
+[6] https://www.reddit.com/r/AskProgramming/comments/cy2xar/eli5_what_is_xml_and_how_is_it_related_to_html/
+[7] https://stackoverflow.com/questions/26796093/difference-between-xml-and-html
+[8] https://www.princexml.com/forum/topic/2978/svg-rendering-differences-with-i-html-and-i-xml
