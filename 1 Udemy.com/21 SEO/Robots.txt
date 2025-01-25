@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /private/
+Allow: /public/
+Crawl-delay: 10
+Sitemap: https://www.example.com/sitemap.xml
