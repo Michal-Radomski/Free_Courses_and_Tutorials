@@ -48,3 +48,5 @@
 19. XML -> according to [this course](https://www.udemy.com/course/xml-step-by-step-for-beginners).
 
 20. Web Design -> according to [this course](https://www.udemy.com/course/web-design-secrets).
+
+21. SEO -> according to [this course](https://www.udemy.com/course/seotutorial).
