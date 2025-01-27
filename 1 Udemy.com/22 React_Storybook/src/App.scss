@@ -23,3 +23,13 @@ body {
   margin-right: auto;
   overflow-y: hidden;
 }
+
+button.custom-button {
+  border: 2px solid red;
+  padding: 10px;
+  background-color: #ccc;
+  &:hover {
+    border: 2px solid darkred;
+    background-color: aqua;
+  }
+}
