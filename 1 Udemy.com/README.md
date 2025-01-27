@@ -50,3 +50,5 @@
 20. Web Design -> according to [this course](https://www.udemy.com/course/web-design-secrets).
 
 21. SEO -> according to [this course](https://www.udemy.com/course/seotutorial).
+
+22. React and Storybook -> according to [this course](https://www.udemy.com/course/your-custom-react-component).
