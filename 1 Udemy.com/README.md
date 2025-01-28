@@ -52,3 +52,5 @@
 21. SEO -> according to [this course](https://www.udemy.com/course/seotutorial).
 
 22. React and Storybook -> according to [this course](https://www.udemy.com/course/your-custom-react-component).
+
+23. Blender and Three.js -> according to [this course](https://www.udemy.com/course/practices-for-blender-and-threejs).
