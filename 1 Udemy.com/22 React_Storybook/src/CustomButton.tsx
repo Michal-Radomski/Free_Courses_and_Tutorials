@@ -1,5 +1,8 @@
 import React from "react";
 
+// Todo: refactor styles!
+import "./App.scss";
+
 export interface CustomButtonProps {
   color?: string;
 }

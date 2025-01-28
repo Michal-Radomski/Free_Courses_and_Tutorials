@@ -1,5 +1,6 @@
 import React from "react";
 
+// Todo: refactor styles!
 import "./App.scss";
 import CustomButton from "./CustomButton";
 
