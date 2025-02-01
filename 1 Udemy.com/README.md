@@ -53,4 +53,4 @@
 
 22. React and Storybook -> according to [this course](https://www.udemy.com/course/your-custom-react-component).
 
-23. Blender -> according to [this course](https://www.udemy.com/course/blender-crash-course) + other tutorials.
+23. Blender -> according to [this course](https://www.udemy.com/course/blender-crash-course) + Other 3D libraries tutorials.
