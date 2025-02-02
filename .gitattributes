@@ -13,3 +13,6 @@
 *.hbs linguist-detectable=false
 *.ts linguist-detectable=false
 *.less linguist-detectable=false
+
+*.glsl linguist-detectable=true
+*.glsl linguist-language=GLSL
