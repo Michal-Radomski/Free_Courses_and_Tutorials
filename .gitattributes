@@ -1,18 +1,8 @@
-# *.sql linguist-detectable=true
-# *.sql linguist-language=sql
+*.sql linguist-detectable=true
+*.sql linguist-language=sql
 
-# *.xml linguist-detectable=true
-# *.xml linguist-language=XML
+*.xml linguist-detectable=true
+*.xml linguist-language=XML
 
-
-*.js linguist-detectable=false
-*.html linguist-detectable=false
-*.css linguist-detectable=false
-*.scss linguist-detectable=false
-*.ejs linguist-detectable=false
-*.hbs linguist-detectable=false
-*.ts linguist-detectable=false
+# For test only!
 *.less linguist-detectable=false
-
-*.glsl linguist-detectable=true
-*.glsl linguist-language=GLSL
