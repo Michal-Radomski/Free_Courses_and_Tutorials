@@ -84,3 +84,65 @@ https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Getting_star
 
 Answer from Perplexity:
 https://www.perplexity.ai/search/what-is-difference-webgl-progr-mOCTTjqORfeA0Zxgf3fcHw?utm_source=copy_output
+
+WebGL and OpenGL are both graphics APIs used for rendering 2D and 3D graphics, but they serve different purposes and have
+distinct characteristics. Here are the key differences:
+
+## 1. **Purpose and Use Cases**
+
+- **WebGL**: Designed specifically for web applications, WebGL allows developers to render graphics directly in web browsers
+  without the need for plugins. It is widely used for interactive web-based graphics, games, and data visualization.
+- **OpenGL**: A more general-purpose graphics API that is primarily used for desktop applications, including video games, CAD
+  software, and simulations. OpenGL is suitable for high-performance graphics rendering on various operating systems.
+
+## 2. **Programming Language**
+
+- **WebGL**: Utilizes JavaScript as its programming language, making it more accessible to web developers familiar with web
+  technologies.
+- **OpenGL**: Typically used with C or C++, which allows for lower-level control over graphics rendering but requires a
+  deeper understanding of programming concepts.
+
+## 3. **API Features**
+
+- **WebGL**: A subset of OpenGL ES (Embedded Systems), WebGL has a limited set of features to ensure compatibility and
+  security within web browsers. It does not support all advanced OpenGL features.
+- **OpenGL**: Offers a broader range of functions and capabilities, having been developed over a longer period. It supports
+  advanced graphics techniques and has a more extensive feature set.
+
+## 4. **Memory Management**
+
+- **WebGL**: Memory management is handled automatically by the browser, reducing the chances of memory-related errors and
+  making it easier for developers to manage resources.
+- **OpenGL**: Requires manual memory management by the programmer, providing more control but also increasing the risk of
+  errors.
+
+## 5. **Security Restrictions**
+
+- **WebGL**: Operates within the security sandbox of the web browser, imposing restrictions to prevent malicious activities.
+  This includes limited access to the GPU and strict cross-origin policies.
+- **OpenGL**: As a native API, OpenGL does not have such restrictions, allowing more flexibility but potentially increasing
+  security risks if not managed properly.
+
+## 6. **Deployment**
+
+- **WebGL**: Does not require installation; it runs natively in modern web browsers. Users only need a compatible browser to
+  access WebGL applications.
+- **OpenGL**: Typically requires installation of drivers or software on the operating system, making deployment more complex
+  compared to WebGL.
+
+## Summary
+
+In summary, WebGL is tailored for web environments with a focus on ease of use and accessibility through JavaScript, while
+OpenGL provides powerful capabilities for desktop applications with more control over graphics rendering at the cost of
+complexity and a steeper learning curve[1][2][4][6].
+
+Citations: [1] https://stackshare.io/stackups/opengl-vs-webgl [2] https://aircada.com/blog/webgl-vs-opengl [3]
+https://stackoverflow.com/questions/8462421/differences-between-webgl-and-opengl [4]
+https://www.tutorialspoint.com/difference-between-webgl-and-opengl [5] https://www.youtube.com/watch?v=L6uBJvoBhPA [6]
+https://skillapp.co/blog/exploring-the-battle-of-webgl-vs-opengl-understanding-the-key-differences/ [7]
+https://www.sololearn.com/en/Discuss/1240237/opengl-vs-webgl
+
+---
+
+Answer from Perplexity:
+https://www.perplexity.ai/search/what-is-difference-webgl-progr-mOCTTjqORfeA0Zxgf3fcHw?utm_source=copy_output
