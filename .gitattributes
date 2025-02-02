@@ -10,3 +10,5 @@
 *.css linguist-detectable=false
 *.scss linguist-detectable=false
 *.ejs linguist-detectable=false
+*.hbs linguist-detectable=false
+*.ts linguist-detectable=false
