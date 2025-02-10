@@ -1,6 +1,8 @@
-function main() {
-  const canvas = document.getElementById("gl-canvas");
-  const gl = canvas.getContext("webgl");
+import "./style.scss";
+
+function main(): void {
+  const canvas = document.getElementById("gl-canvas") as HTMLCanvasElement;
+  const gl = canvas.getContext("webgl") as WebGLRenderingContext;
   // console.log("gl:", gl);
 
   if (!gl) {
@@ -14,10 +16,10 @@ function main() {
   gl.clear(gl.COLOR_BUFFER_BIT);
 
   // Define the vertices for a triangle
-  const vertices = new Float32Array([0.0, 1.0, -1.0, -1.0, 1.0, -1.0]);
+  const vertices: Float32Array<ArrayBuffer> = new Float32Array([0.0, 1.0, -1.0, -1.0, 1.0, -1.0]);
 
   // Create a buffer and put the vertices in it
-  const vertexBuffer = gl.createBuffer();
+  const vertexBuffer: WebGLBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
   gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
 
@@ -30,7 +32,7 @@ function main() {
       }
   `;
 
-  const vertexShader = gl.createShader(gl.VERTEX_SHADER);
+  const vertexShader = gl.createShader(gl.VERTEX_SHADER) as WebGLShader;
   gl.shaderSource(vertexShader, vertexShaderSource);
   gl.compileShader(vertexShader);
 
@@ -42,12 +44,12 @@ function main() {
       }
   `;
 
-  const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
+  const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER) as WebGLShader;
   gl.shaderSource(fragmentShader, fragmentShaderSource);
   gl.compileShader(fragmentShader);
 
   // Create a shader program and link shaders
-  const shaderProgram = gl.createProgram();
+  const shaderProgram: WebGLProgram = gl.createProgram();
   gl.attachShader(shaderProgram, vertexShader);
   gl.attachShader(shaderProgram, fragmentShader);
   gl.linkProgram(shaderProgram);
@@ -58,7 +60,7 @@ function main() {
   // Bind the buffer and set attributes
   gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
 
-  const coord = gl.getAttribLocation(shaderProgram, "coordinates");
+  const coord: number = gl.getAttribLocation(shaderProgram, "coordinates");
   gl.vertexAttribPointer(coord, 2, gl.FLOAT, false, 0, 0);
 
   // Enable the attribute
