@@ -54,3 +54,8 @@
 22. React and Storybook -> according to [this course](https://www.udemy.com/course/your-custom-react-component).
 
 23. Blender -> according to [this course](https://www.udemy.com/course/blender-crash-course) + Other 3D libraries tutorials.
+
+24. Framer Motion -> according to [this course](https://www.udemy.com/course/framer-motion-mastery).
+
+25. Solar System with React Three Fiber -> according to
+    [this course](https://www.udemy.com/course/create-a-solar-system-with-react-three-fiber).
