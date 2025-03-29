@@ -14,7 +14,7 @@ const parentVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.5,
+      staggerChildren: 0.5, //* Delay
       staggerDirection: 1,
     },
   },
@@ -29,7 +29,7 @@ const AnimatedGallery = (): React.JSX.Element => {
   const [showImages, setShowImages] = React.useState<boolean>(false);
 
   const handleClick = (): void => {
-    setShowImages((prev) => !prev);
+    setShowImages((prev: boolean) => !prev);
   };
 
   return (

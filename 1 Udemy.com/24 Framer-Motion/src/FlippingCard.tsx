@@ -5,7 +5,7 @@ const FlippingCard = (): React.JSX.Element => {
   const [isFlipped, setIsFlipped] = React.useState<boolean>(false);
 
   const handleFlip = (): void => {
-    setIsFlipped((prevState) => !prevState);
+    setIsFlipped((prevState: boolean) => !prevState);
   };
 
   return (

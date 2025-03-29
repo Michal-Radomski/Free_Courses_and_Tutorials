@@ -6,7 +6,7 @@ const parentVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.8,
+      staggerChildren: 0.8, //* Delay
     },
   },
 };
