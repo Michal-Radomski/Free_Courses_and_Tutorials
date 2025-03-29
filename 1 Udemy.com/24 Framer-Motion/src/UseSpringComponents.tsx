@@ -4,7 +4,7 @@ import { motion, MotionValue, PanInfo, useSpring } from "framer-motion";
 const DraggableBox = (): React.JSX.Element => {
   const x: MotionValue<number> = useSpring(0);
   const y: MotionValue<number> = useSpring(0);
-  console.log({ x, y });
+  // console.log({ x, y });
 
   return (
     <React.Fragment>
@@ -21,6 +21,7 @@ const DraggableBox = (): React.JSX.Element => {
           }}
         />
         <p className="text-black">
+          {/* //* Doesn't work! */}
           Position: ({x.get().toFixed(2)}, {y.get().toFixed(2)})
         </p>
       </div>
