@@ -18,6 +18,17 @@ const Component1 = (): React.JSX.Element => {
       </motion.h1>
 
       <motion.div animate={{ x: 100, rotate: 360, translateY: "10rem", skew: 20 }} className="box" />
+
+      <motion.div
+        animate={{ x: 600 }}
+        className="box"
+        // whileHover={{ scale: 1.5, rotate: 10 }}
+        transition={{ type: "spring", stiffness: 300 }}
+        whileTap={{ scale: 0.8, backgroundColor: "crimson" }}
+        // drag={true}
+        drag={"x"}
+        dragConstraints={{ top: -40, left: -40, right: 40, bottom: 0 }}
+      />
     </React.Fragment>
   );
 };
