@@ -1,5 +1,5 @@
-import { motion, MotionValue, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
 import React from "react";
+import { motion, MotionValue, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
 
 const AnimationComponent = (): React.JSX.Element => {
   const { scrollY }: { scrollY: MotionValue<number> } = useScroll();
@@ -166,8 +166,8 @@ const UseScrollComponents = (): React.JSX.Element => {
   return (
     <React.Fragment>
       <AnimationComponent />
-      <ScrollAnimation />
       <Basic />
+      <ScrollAnimation />
     </React.Fragment>
   );
 };
