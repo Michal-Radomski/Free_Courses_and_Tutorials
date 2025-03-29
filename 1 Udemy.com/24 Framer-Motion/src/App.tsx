@@ -7,6 +7,7 @@ import Component2 from "./Component2";
 import PulsingButton from "./PulsingButton";
 import VariantsExample from "./VariantsExample";
 import FlippingCard from "./FlippingCard";
+import AnimatedCard from "./AnimatedCard";
 
 const App = (): React.JSX.Element => {
   return (
@@ -17,6 +18,7 @@ const App = (): React.JSX.Element => {
       <PulsingButton />
       <VariantsExample />
       <FlippingCard />
+      <AnimatedCard />
     </React.Fragment>
   );
 };
