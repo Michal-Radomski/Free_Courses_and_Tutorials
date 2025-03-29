@@ -5,6 +5,7 @@ import {
   AnimationPlaybackControls,
   motion,
   MotionValue,
+  useAnimationFrame,
   useMotionValue,
   useTime,
   useTransform,
@@ -284,9 +285,96 @@ const UseTime = (): React.JSX.Element => {
   );
 };
 
+//* Styles
+//Todo: fix
+function StyleSheet(): React.JSX.Element {
+  return (
+    <style>{`
+          
+      .container1 {
+          perspective: 800px;
+          width: 200px;
+          height: 200px;
+          border:1px solid red;
+      }
+
+      .cube {
+          width: 200px;
+          height: 200px;
+          position: relative;
+          transform-style: preserve-3d;
+          background: blue;
+      }
+
+      .side {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: red;
+          opacity: 0.6;
+      }
+
+      .front {
+          transform: rotateY(0deg) translateZ(100px);
+          background-color: var(--hue-1-transparent);
+      }
+      .right {
+          transform: rotateY(90deg) translateZ(100px);
+          background-color: var(--hue-2-transparent);
+      }
+      .back {
+          transform: rotateY(180deg) translateZ(100px);
+          background-color: var(--hue-3-transparent);
+      }
+      .left {
+          transform: rotateY(-90deg) translateZ(100px);
+          background-color: var(--hue-4-transparent);
+      }
+      .top {
+          transform: rotateX(90deg) translateZ(100px);
+          background-color: var(--hue-5-transparent);
+      }
+      .bottom {
+          transform: rotateX(-90deg) translateZ(100px);
+          background-color: var(--hue-6-transparent);
+      }
+
+  `}</style>
+  );
+}
+
+const UseAnimationFrame = (): React.JSX.Element => {
+  const ref = React.useRef<HTMLDivElement>(null);
+
+  useAnimationFrame((t: number) => {
+    if (!ref.current) return;
+
+    const rotate: number = Math.sin(t / 10000) * 200;
+    const y: number = (1 + Math.sin(t / 1000)) * -50;
+    ref.current.style.transform = `translateY(${y}px) rotateX(${rotate}deg) rotateY(${rotate}deg)`;
+  });
+
+  return (
+    <React.Fragment>
+      <div className="container1">
+        <div className="cube" ref={ref}>
+          <div className="side front" />
+          <div className="side left" />
+          <div className="side right" />
+          <div className="side top" />
+          <div className="side bottom" />
+          <div className="side back" />
+        </div>
+        <StyleSheet />
+      </div>
+    </React.Fragment>
+  );
+};
+
 const DocsExamples = (): React.JSX.Element => {
   return (
     <React.Fragment>
+      <UseAnimationFrame />
       <UseTime />
       <EnterAnimation />
       <PathDrawing />
