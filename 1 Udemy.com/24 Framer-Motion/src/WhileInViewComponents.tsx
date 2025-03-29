@@ -51,9 +51,51 @@ const AnimatedBoxes = (): React.JSX.Element => {
   );
 };
 
+const TimelineAnimation = (): React.JSX.Element => {
+  const itemVariants = {
+    hidden: { opacity: 0, scale: 0.5, rotate: 180 },
+    visible: { opacity: 1, scale: 1, rotate: 0 },
+  };
+
+  return (
+    <React.Fragment>
+      <motion.div className="flex items-center" initial="hidden" whileInView="visible" transition={{ staggerChildren: 0.5 }}>
+        {[1, 2, 3].map((item: number) => (
+          <motion.div key={item} variants={itemVariants} className="bg-purple-500 ml-[2rem] p-4 text-white my-2 rounded-lg">
+            Item {item}
+          </motion.div>
+        ))}
+      </motion.div>
+    </React.Fragment>
+  );
+};
+
+const InteractiveCards = (): React.JSX.Element => {
+  return (
+    <React.Fragment>
+      <div className="grid grid-cols-2 gap-4">
+        {[1, 2, 3, 4].map((item: number) => (
+          <motion.div
+            key={item}
+            className="bg-blue-500 p-6 text-white text-center rounded-lg"
+            initial={{ scale: 0.8 }}
+            whileInView={{ scale: 1 }}
+            whileHover={{ scale: 1.1, backgroundColor: "#3b82f6" }}
+            transition={{ duration: 0.3 }}
+          >
+            <h3 className="text-2xl">Card {item}</h3>
+          </motion.div>
+        ))}
+      </div>
+    </React.Fragment>
+  );
+};
+
 const WhileInViewComponents = (): React.JSX.Element => {
   return (
     <React.Fragment>
+      <TimelineAnimation />
+      <InteractiveCards />
       <AnimatedBoxes />
       <AnimatedCard />
     </React.Fragment>
