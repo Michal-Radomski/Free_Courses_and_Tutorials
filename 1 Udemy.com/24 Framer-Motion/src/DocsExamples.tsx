@@ -3,7 +3,7 @@ import {
   animate,
   AnimatePresence,
   AnimationPlaybackControls,
-  motion,
+  // motion,
   MotionValue,
   useAnimationFrame,
   useMotionValue,
@@ -12,7 +12,7 @@ import {
   useTransform,
   useVelocity,
 } from "framer-motion";
-// import { motion } from "motion/react";
+import { motion } from "motion/react";
 
 //* Styles
 const image: React.CSSProperties = {
