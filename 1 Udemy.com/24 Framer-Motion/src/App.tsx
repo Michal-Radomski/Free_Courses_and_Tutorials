@@ -5,6 +5,7 @@ import "./tailwind.css";
 import Component1 from "./Component1";
 import Component2 from "./Component2";
 import PulsingButton from "./PulsingButton";
+import VariantsExample from "./VariantsExample";
 
 const App = (): React.JSX.Element => {
   return (
@@ -13,6 +14,7 @@ const App = (): React.JSX.Element => {
       <Component1 />
       <Component2 />
       <PulsingButton />
+      <VariantsExample />
     </React.Fragment>
   );
 };
