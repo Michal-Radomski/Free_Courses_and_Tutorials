@@ -9,6 +9,7 @@ const Component1 = (): React.JSX.Element => {
         animate={{ x: 50, opacity: 1, scale: 1, rotate: 360 }} // Animation after mounting
         transition={{
           duration: 2, // Duration of animation in seconds
+          delay: 1,
           ease: [0.5, 0.71, 1, 1.5], // Easing function for smooth transition
         }}
         whileHover={{ scale: 1.2 }} // Animation on hover
