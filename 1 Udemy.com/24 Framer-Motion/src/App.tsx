@@ -6,6 +6,7 @@ import Component1 from "./Component1";
 import Component2 from "./Component2";
 import PulsingButton from "./PulsingButton";
 import VariantsExample from "./VariantsExample";
+import FlippingCard from "./FlippingCard";
 
 const App = (): React.JSX.Element => {
   return (
@@ -15,6 +16,7 @@ const App = (): React.JSX.Element => {
       <Component2 />
       <PulsingButton />
       <VariantsExample />
+      <FlippingCard />
     </React.Fragment>
   );
 };
