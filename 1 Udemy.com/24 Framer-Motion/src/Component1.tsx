@@ -16,7 +16,7 @@ const Component1 = (): React.JSX.Element => {
         Animated Heading with Framer Motion
       </motion.h1>
 
-      <motion.div animate={{ x: 100, rotate: 360 }} className="box" />
+      <motion.div animate={{ x: 100, rotate: 360, translateY: "10rem", skew: 20 }} className="box" />
     </React.Fragment>
   );
 };
