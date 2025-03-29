@@ -12,10 +12,14 @@ import ImageGallery from "./ImageGallery";
 import StaggerAnimation from "./StaggerAnimation";
 import AnimatedGallery from "./AnimatedGallery";
 import MotionValueComponent from "./MotionValueComponent";
+import RangeSlider from "./RangeSlider";
+import ColorChanger from "./ColorChanger";
 
 const App = (): React.JSX.Element => {
   return (
     <React.Fragment>
+      <ColorChanger />
+      <RangeSlider />
       <MotionValueComponent />
       <AnimatedGallery />
       <StaggerAnimation />
