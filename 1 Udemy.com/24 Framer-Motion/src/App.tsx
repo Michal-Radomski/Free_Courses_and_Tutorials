@@ -11,10 +11,12 @@ import AnimatedCard from "./AnimatedCard";
 import ImageGallery from "./ImageGallery";
 import StaggerAnimation from "./StaggerAnimation";
 import AnimatedGallery from "./AnimatedGallery";
+import MotionValueComponent from "./MotionValueComponent";
 
 const App = (): React.JSX.Element => {
   return (
     <React.Fragment>
+      <MotionValueComponent />
       <AnimatedGallery />
       <StaggerAnimation />
       {/* <h1 className="text-3xl font-bold underline">Hello world!</h1> */}
