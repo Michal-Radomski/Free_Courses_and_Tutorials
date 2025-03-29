@@ -1,5 +1,13 @@
 import React from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import {
+  animate,
+  AnimatePresence,
+  AnimationPlaybackControls,
+  motion,
+  MotionValue,
+  useMotionValue,
+  useTransform,
+} from "framer-motion";
 // import { motion } from "motion/react";
 
 //* Styles
@@ -140,11 +148,30 @@ const ExitAnimation = (): React.JSX.Element => {
   );
 };
 
+//* Styles
+const text = {
+  fontSize: 64,
+  color: "#4ff0b7",
+};
+
+const HTMLContent = (): React.JSX.Element => {
+  const count: MotionValue<number> = useMotionValue(0);
+  const rounded: MotionValue<number> = useTransform(() => Math.round(count.get()));
+
+  React.useEffect(() => {
+    const controls: AnimationPlaybackControls = animate(count, 100, { duration: 5 });
+    return () => controls.stop();
+  }, [count]);
+
+  return <motion.pre style={text}>{rounded}</motion.pre>;
+};
+
 const DocsExamples = (): React.JSX.Element => {
   return (
     <React.Fragment>
       <PathDrawing />
       <ExitAnimation />
+      <HTMLContent />
     </React.Fragment>
   );
 };
