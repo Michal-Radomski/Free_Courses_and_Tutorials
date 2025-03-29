@@ -7,8 +7,10 @@ import {
   MotionValue,
   useAnimationFrame,
   useMotionValue,
+  useScroll,
   useTime,
   useTransform,
+  useVelocity,
 } from "framer-motion";
 // import { motion } from "motion/react";
 
@@ -371,9 +373,40 @@ const UseAnimationFrame = (): React.JSX.Element => {
   );
 };
 
+const ScrollVelocityExample = (): React.JSX.Element => {
+  // Get the scrollY motion value
+  const { scrollY }: { scrollY: MotionValue<number> } = useScroll();
+
+  // Calculate the velocity of the scroll
+  const scrollVelocity: MotionValue<number> = useVelocity(scrollY);
+
+  // Transform the velocity into a position value for the element
+  const moveX: MotionValue<number> = useTransform(scrollVelocity, [-1000, 1000], [-50, 50]);
+
+  return (
+    <React.Fragment>
+      <div style={{ height: "200vh", overflowY: "scroll" }}>
+        <motion.div
+          style={{
+            x: moveX,
+            width: "100px",
+            height: "100px",
+            backgroundColor: "red",
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        />
+      </div>
+    </React.Fragment>
+  );
+};
+
 const DocsExamples = (): React.JSX.Element => {
   return (
     <React.Fragment>
+      <ScrollVelocityExample />
       <UseAnimationFrame />
       <UseTime />
       <EnterAnimation />
