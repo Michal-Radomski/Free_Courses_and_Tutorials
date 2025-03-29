@@ -14,10 +14,13 @@ import AnimatedGallery from "./AnimatedGallery";
 import MotionValueComponent from "./MotionValueComponent";
 import RangeSlider from "./RangeSlider";
 import ColorChanger from "./ColorChanger";
+import DynamicRotation, { DynamicRotation2 } from "./DynamicRotation";
 
 const App = (): React.JSX.Element => {
   return (
     <React.Fragment>
+      <DynamicRotation />
+      <DynamicRotation2 />
       <ColorChanger />
       <RangeSlider />
       <MotionValueComponent />
