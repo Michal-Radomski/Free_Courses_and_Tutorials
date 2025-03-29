@@ -17,11 +17,13 @@ import ColorChanger from "./ColorChanger";
 import DynamicRotation, { DynamicRotation2 } from "./DynamicRotation";
 import UseSpringComponents from "./UseSpringComponents";
 import DraggableBox from "./DraggableBox";
+import WhileInViewComponents from "./WhileInViewComponents";
 
 //^ Problem with hooks? Attempting to mix Motion versions 12.6.1 with 12.6.2 may not work as expected!!!
 const App = (): React.JSX.Element => {
   return (
     <React.Fragment>
+      <WhileInViewComponents />
       <DraggableBox />
       <UseSpringComponents />
       <DynamicRotation />
