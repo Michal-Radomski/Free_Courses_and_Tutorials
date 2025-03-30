@@ -4,8 +4,7 @@ import { useFrame } from "@react-three/fiber";
 import { BufferGeometry, Material, NormalBufferAttributes, Object3DEventMap, Points } from "three";
 
 const AnimatedStars = (): React.JSX.Element => {
-  const starsRef =
-    React.useRef<Points<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>(null);
+  const starsRef = React.useRef<Points<BufferGeometry<NormalBufferAttributes>, Material, Object3DEventMap>>(null);
 
   useFrame(() => {
     starsRef.current!.rotation.x += 0.0001;

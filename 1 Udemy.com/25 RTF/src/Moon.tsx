@@ -1,10 +1,11 @@
+//* Not Used!
 import React from "react";
 import { useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { BufferGeometry, Clock, Material, Mesh, NormalBufferAttributes, Object3DEventMap, Texture } from "three";
 
 const Moon = (): React.JSX.Element => {
-  const moonRef = React.useRef<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>(null);
+  const moonRef = React.useRef<Mesh<BufferGeometry<NormalBufferAttributes>, Material, Object3DEventMap>>(null);
 
   const [moonTexture]: Texture[] = useTexture(["/assets/moon_map.jpg"]);
 
@@ -19,7 +20,7 @@ const Moon = (): React.JSX.Element => {
   return (
     <React.Fragment>
       <mesh castShadow={true} ref={moonRef} position={[4, 0, 0]}>
-        {/* Radius , X-axis , Y-axis */}
+        {/* //* Radius , X-axis , Y-axis */}
         <sphereGeometry args={[0.5, 32, 32]} />
         <meshPhongMaterial map={moonTexture} />
       </mesh>

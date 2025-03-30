@@ -1,3 +1,4 @@
+//* Not Used!
 import React from "react";
 import { useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
@@ -6,7 +7,7 @@ import { BufferGeometry, Material, Mesh, NormalBufferAttributes, Object3DEventMa
 import Moon from "./Moon";
 
 const Earth = ({ displacementScale }: { displacementScale: number }): React.JSX.Element => {
-  const earthRef = React.useRef<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>(null);
+  const earthRef = React.useRef<Mesh<BufferGeometry<NormalBufferAttributes>, Material, Object3DEventMap>>(null);
 
   const [earthTexture, earthNormalMap, earthSpecularMap, earthDisplacementMap]: Texture[] = useTexture([
     "/assets/earth_day.jpg",
@@ -23,7 +24,7 @@ const Earth = ({ displacementScale }: { displacementScale: number }): React.JSX.
     <React.Fragment>
       <group>
         <mesh receiveShadow ref={earthRef}>
-          {/* Radius , X-axis , Y-axis */}
+          {/* //* Radius , X-axis , Y-axis */}
           <sphereGeometry args={[1, 32, 32]} />
           <meshPhongMaterial
             map={earthTexture}
