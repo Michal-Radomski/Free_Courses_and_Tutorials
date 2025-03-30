@@ -5,19 +5,11 @@ import * as THREE from "three";
 
 const ISS: React.MemoExoticComponent<() => React.JSX.Element> = React.memo(() => {
   const issRef =
-    React.useRef<
-      THREE.Mesh<
-        THREE.BufferGeometry<THREE.NormalBufferAttributes>,
-        THREE.Material | THREE.Material[],
-        THREE.Object3DEventMap
-      >
-    >(null);
+    React.useRef<THREE.Mesh<THREE.BufferGeometry<THREE.NormalBufferAttributes>, THREE.Material, THREE.Object3DEventMap>>(
+      null
+    );
   const clockRef = React.useRef<THREE.Clock>(new THREE.Clock()); // Create a reference to the clock
 
-  //* Is it correct?
-  // const memoizedISS = React.useMemo(() => {
-  //   return useGLTF("/ISSModel/ISS_stationary.gltf");
-  // }, []);
   const ISS = useGLTF("/ISSModel/ISS_stationary.gltf");
 
   const xAxis = 2;
@@ -35,7 +27,6 @@ const ISS: React.MemoExoticComponent<() => React.JSX.Element> = React.memo(() =>
   return (
     <React.Fragment>
       <mesh>
-        {/* <primitive ref={issRef} object={memoizedISS.scene} position={[xAxis, 0, 0]} scale={0.005} /> */}
         <primitive ref={issRef} object={ISS.scene} position={[xAxis, 0, 0]} scale={0.005} />
       </mesh>
     </React.Fragment>

@@ -5,6 +5,7 @@ import { Perf } from "r3f-perf";
 
 import AnimatedStars from "./AnimatedStars";
 import CameraPositionLogging from "./helpers/CameraPositionLogging";
+// import Earth from "./Earth";
 import Earth from "./scenes/earth/Earth";
 import Sun from "./scenes/sun/Sun";
 
@@ -24,7 +25,7 @@ const MainContainer = (): React.JSX.Element => {
       {/* <directionalLight castShadow={true} ref={directionalLightRef} position={[0, 0, 10]} intensity={0.1} color={0xff0000} />
       <directionalLight castShadow={true} ref={directionalLightRefTwo} position={[0, 0, -10]} intensity={0.1} /> */}
 
-      <ambientLight intensity={0.9} />
+      <ambientLight intensity={0.5} />
 
       <Sun />
       <Earth displacementScale={0.15} />

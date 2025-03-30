@@ -12,7 +12,7 @@ const Earth: React.MemoExoticComponent<({ displacementScale }: { displacementSca
     const earthRef = React.useRef<THREE.Group<THREE.Object3DEventMap>>(null);
     const clockRef = React.useRef<THREE.Clock>(new THREE.Clock()); // Create a reference to the clock
 
-    const { camera }: { camera: THREE.Camera } = useThree();
+    const { camera }: { camera: THREE.PerspectiveCamera } = useThree();
 
     const [hovered, hover] = React.useState<boolean>(false);
     const [followingEarth, setFollowingEarth] = React.useState<boolean>(false);
@@ -57,7 +57,7 @@ const Earth: React.MemoExoticComponent<({ displacementScale }: { displacementSca
           earthPositionRef.y + 2,
           earthPositionRef.z + 5
         );
-        //Tween for camera position
+        // Tween for camera position
         new TWEEN.Tween(cameraPosition)
           .to(cameraTargetPosition, 1000)
           .easing(TWEEN.Easing.Quadratic.Out)
@@ -66,7 +66,7 @@ const Earth: React.MemoExoticComponent<({ displacementScale }: { displacementSca
           })
           .start();
 
-        //Tween for camera targeting
+        // Tween for camera targeting
         new TWEEN.Tween(cameraTarget)
           .to(earthPositionRef, 1000)
           .easing(TWEEN.Easing.Quadratic.Out)
@@ -77,7 +77,7 @@ const Earth: React.MemoExoticComponent<({ displacementScale }: { displacementSca
       } else {
         const originalCameraPosition = new THREE.Vector3(16.14, 8.32, 19.81);
         const originalCameraTarget = new THREE.Vector3(0, 0, 0);
-        //Tween to original position
+        // Tween to original position
         new TWEEN.Tween(cameraPosition)
           .to(originalCameraPosition, 1000)
           .easing(TWEEN.Easing.Quadratic.Out)
@@ -85,7 +85,7 @@ const Earth: React.MemoExoticComponent<({ displacementScale }: { displacementSca
             setCameraPosition(cameraPosition);
           })
           .start();
-        //Tween to original target
+        // Tween to original target
         new TWEEN.Tween(cameraTarget)
           .to(originalCameraTarget, 1000)
           .easing(TWEEN.Easing.Quadratic.Out)
@@ -96,8 +96,7 @@ const Earth: React.MemoExoticComponent<({ displacementScale }: { displacementSca
       }
       camera.lookAt(cameraTarget);
       camera.position.copy(cameraPosition);
-      // camera.updateProjectionMatrix();
-      // camera.updateMatrix()
+      camera.updateProjectionMatrix();
     }, [camera, cameraPosition, cameraTarget, followingEarth]);
 
     useFrame(() => {
