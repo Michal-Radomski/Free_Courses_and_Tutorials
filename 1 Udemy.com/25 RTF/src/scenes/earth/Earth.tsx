@@ -18,6 +18,8 @@ const Earth: React.MemoExoticComponent<({ displacementScale }: { displacementSca
     const [followingEarth, setFollowingEarth] = React.useState<boolean>(false);
     const [cameraPosition, setCameraPosition] = React.useState<THREE.Vector3>(new THREE.Vector3(16.14, 8.32, 19.81));
     const [cameraTarget, setCameraTarget] = React.useState<THREE.Vector3>(new THREE.Vector3(0, 0, 0));
+    // console.log({ followingEarth });
+    // console.log({ cameraTarget });
 
     const [earthTexture, earthNormalMap, earthSpecularMap, earthDisplacementMap, earthEmissiveMap]: THREE.Texture[] =
       useTexture([
@@ -28,7 +30,7 @@ const Earth: React.MemoExoticComponent<({ displacementScale }: { displacementSca
         "/assets/earth_night.jpg",
       ]);
 
-    const updateEarthPosition = React.useCallback(() => {
+    const updateEarthPosition: () => void = React.useCallback(() => {
       // Calculate the Earth's position based on its angle from the Sun
       const angle: number = clockRef.current.getElapsedTime() * 0.5;
       const distance = 14;
@@ -39,17 +41,17 @@ const Earth: React.MemoExoticComponent<({ displacementScale }: { displacementSca
     }, []);
 
     const toggleFollowingEarth = (): void => {
-      setFollowingEarth((prevFollowingEarth) => !prevFollowingEarth);
+      setFollowingEarth((prevFollowingEarth: boolean) => !prevFollowingEarth);
     };
 
     React.useEffect(() => {
       document.body.style.cursor = hovered ? "pointer" : "auto";
     }, [hovered]);
 
-    const tweenLogic = React.useCallback(() => {
+    const tweenLogic: () => void = React.useCallback(() => {
       TWEEN.update();
 
-      const earthPositionRef = earthRef.current!.position;
+      const earthPositionRef = earthRef.current!.position as THREE.Vector3;
 
       if (followingEarth) {
         const cameraTargetPosition = new THREE.Vector3(
@@ -75,8 +77,8 @@ const Earth: React.MemoExoticComponent<({ displacementScale }: { displacementSca
           })
           .start();
       } else {
-        const originalCameraPosition = new THREE.Vector3(16.14, 8.32, 19.81);
-        const originalCameraTarget = new THREE.Vector3(0, 0, 0);
+        const originalCameraPosition: THREE.Vector3 = new THREE.Vector3(16.14, 8.32, 19.81);
+        const originalCameraTarget: THREE.Vector3 = new THREE.Vector3(0, 0, 0);
         // Tween to original position
         new TWEEN.Tween(cameraPosition)
           .to(originalCameraPosition, 1000)
@@ -108,14 +110,14 @@ const Earth: React.MemoExoticComponent<({ displacementScale }: { displacementSca
       <React.Fragment>
         <group ref={earthRef}>
           <mesh
-            castShadow
-            receiveShadow
+            castShadow={true}
+            receiveShadow={true}
             onClick={toggleFollowingEarth}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
           >
             {/* Radius , X-axis , Y-axis */}
-            <sphereGeometry args={[1, 32, 32]} />
+            <sphereGeometry args={[1, 64, 64]} />
             <meshPhongMaterial
               map={earthTexture}
               normalMap={earthNormalMap}

@@ -5,9 +5,13 @@ import * as THREE from "three";
 
 const ISS: React.MemoExoticComponent<() => React.JSX.Element> = React.memo(() => {
   const issRef =
-    React.useRef<THREE.Mesh<THREE.BufferGeometry<THREE.NormalBufferAttributes>, THREE.Material, THREE.Object3DEventMap>>(
-      null
-    );
+    React.useRef<
+      THREE.Mesh<
+        THREE.BufferGeometry<THREE.NormalBufferAttributes>,
+        THREE.Material | THREE.Material[],
+        THREE.Object3DEventMap
+      >
+    >(null);
   const clockRef = React.useRef<THREE.Clock>(new THREE.Clock()); // Create a reference to the clock
 
   const ISS = useGLTF("/ISSModel/ISS_stationary.gltf");

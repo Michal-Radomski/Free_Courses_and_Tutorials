@@ -23,7 +23,7 @@ const Earth = ({ displacementScale }: { displacementScale: number }): React.JSX.
   return (
     <React.Fragment>
       <group>
-        <mesh receiveShadow ref={earthRef}>
+        <mesh receiveShadow={true} ref={earthRef}>
           {/* //* Radius , X-axis , Y-axis */}
           <sphereGeometry args={[1, 32, 32]} />
           <meshPhongMaterial

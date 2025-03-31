@@ -27,7 +27,7 @@ const Moon: React.MemoExoticComponent<() => React.JSX.Element> = React.memo(() =
 
   return (
     <React.Fragment>
-      <mesh castShadow receiveShadow ref={moonRef} position={[xAxis, 0, 0]}>
+      <mesh castShadow={true} receiveShadow={true} ref={moonRef} position={[xAxis, 0, 0]}>
         {/* Radius , X-axis , Y-axis */}
         <sphereGeometry args={[0.5, 32, 32]} />
         <meshPhongMaterial map={moonTexture} emissiveMap={moonTexture} emissive={0xffffff} emissiveIntensity={0.05} />
