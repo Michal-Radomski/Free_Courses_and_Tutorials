@@ -3,7 +3,7 @@ import { useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { BufferGeometry, Material, Mesh, NormalBufferAttributes, Object3DEventMap, Texture } from "three";
 
-const Sun: React.MemoExoticComponent<() => React.JSX.Element> = React.memo(() => {
+const Sun: React.MemoExoticComponent<() => React.JSX.Element> = React.memo((): React.JSX.Element => {
   const sunRef = React.useRef<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>(null);
 
   const [sunTexture]: Texture[] = useTexture(["/assets/sun_map.jpg"]);

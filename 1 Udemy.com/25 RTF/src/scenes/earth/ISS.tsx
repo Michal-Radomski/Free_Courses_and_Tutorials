@@ -3,7 +3,7 @@ import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-const ISS: React.MemoExoticComponent<() => React.JSX.Element> = React.memo(() => {
+const ISS: React.MemoExoticComponent<() => React.JSX.Element> = React.memo((): React.JSX.Element => {
   const issRef =
     React.useRef<
       THREE.Mesh<

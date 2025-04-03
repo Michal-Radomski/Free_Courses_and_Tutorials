@@ -3,7 +3,7 @@ import { useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-const Moon: React.MemoExoticComponent<() => React.JSX.Element> = React.memo(() => {
+const Moon: React.MemoExoticComponent<() => React.JSX.Element> = React.memo((): React.JSX.Element => {
   const moonRef =
     React.useRef<THREE.Mesh<THREE.BufferGeometry<THREE.NormalBufferAttributes>, THREE.Material, THREE.Object3DEventMap>>(
       null

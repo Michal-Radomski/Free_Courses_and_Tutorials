@@ -8,7 +8,7 @@ import Moon from "./Moon";
 import ISS from "./ISS";
 
 const Earth: React.MemoExoticComponent<({ displacementScale }: { displacementScale: number }) => React.JSX.Element> =
-  React.memo(({ displacementScale }: { displacementScale: number }) => {
+  React.memo(({ displacementScale }: { displacementScale: number }): React.JSX.Element => {
     const earthRef = React.useRef<THREE.Group<THREE.Object3DEventMap>>(null);
     const clockRef = React.useRef<THREE.Clock>(new THREE.Clock()); // Create a reference to the clock
 
