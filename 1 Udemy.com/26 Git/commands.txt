@@ -1,0 +1,5 @@
+git config --global --edit
+
+git config --system --edit
+
+git config --local --edit
