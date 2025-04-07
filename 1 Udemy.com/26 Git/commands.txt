@@ -3,3 +3,9 @@ git config --global --edit
 git config --system --edit
 
 git config --local --edit
+
+git config --global core.editor "nano"
+
+git init
+
+git remote add origin <url>
