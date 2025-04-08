@@ -1,4 +1,4 @@
-git config --global --edit
+git config --global --edit (includes aliases)
 
 git config --system --edit
 
@@ -49,3 +49,4 @@ git tag <light tag name>
 git show <tag name>
 
 git tag -a <annotated tag name>
+git push origin --tags
