@@ -23,3 +23,13 @@ git log --after=06/0/2025
 git log --since=06/0/2025
 
 git commit --amend
+
+git branch
+git branch <branch name> 
+
+git branch --all
+git switch <branch name>
+
+git checkout -b <brach name>
+
+git reset --hard
