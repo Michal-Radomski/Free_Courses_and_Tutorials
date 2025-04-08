@@ -21,6 +21,7 @@ git log --patch
 git log --graph
 git log --after=06/0/2025
 git log --since=06/0/2025
+git log --oneline
 
 git commit --amend
 
@@ -33,3 +34,18 @@ git switch <branch name>
 git checkout -b <brach name>
 
 git reset --hard
+
+git fetch (new branch from remote repo to local repo)
+git push origin <branch name>
+git pull
+
+git merge <branch name> (merges to the current branch)
+
+git merge --continue (after conflicts)
+git merge --abort
+
+git tag -l
+git tag <light tag name>
+git show <tag name>
+
+git tag -a <annotated tag name>
