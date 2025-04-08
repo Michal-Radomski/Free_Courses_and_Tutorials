@@ -9,3 +9,5 @@ git config --global core.editor "nano"
 git init
 
 git remote add origin <url>
+
+git diff
