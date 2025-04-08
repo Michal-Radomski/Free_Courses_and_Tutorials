@@ -11,3 +11,13 @@ git init
 git remote add origin <url>
 
 git diff
+
+git add -A  (use "git restore --staged <file>..." to unstage)
+git commit -m "message"
+
+git log
+git log --stat
+git log --patch
+git log --graph
+git log --after=06/0/2025
+git log --since=06/0/2025
