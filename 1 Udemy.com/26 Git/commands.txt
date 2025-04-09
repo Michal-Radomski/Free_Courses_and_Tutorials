@@ -33,8 +33,10 @@ git switch <branch name>
 
 git checkout -b <brach name>
 
-git reset <commit hash> (soft reset)
-git reset --hard
+git reset <commit hash> (mixed reset)
+git reset --mixed <commit hash> (mixed reset)
+git reset --soft <commit hash> (soft reset)
+git reset --hard <commit hash>
 
 git fetch (new branch from remote repo to local repo)
 git push origin <branch name>
@@ -59,3 +61,10 @@ git stash save <stash name>
 git stash list
 git stash apply <stash name>
 git stash pop <stash number>
+
+git submodule add <submodule repo url>
+
+git clone <repo url> (cloning the main repo)
+git submodule init
+git submodule update
+git clone --recurse-submodules <main repo url> (= three last commands)
