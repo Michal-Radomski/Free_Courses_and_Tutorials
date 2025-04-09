@@ -33,6 +33,7 @@ git switch <branch name>
 
 git checkout -b <brach name>
 
+git reset <commit hash> (soft reset)
 git reset --hard
 
 git fetch (new branch from remote repo to local repo)
@@ -53,3 +54,8 @@ git push origin --tags
 
 git rebase <branch name> (rebases current branch to the 'branch name')
 git rebase -i HEAD~2 (squashing 2 commits into one commit)
+
+git stash save <stash name>
+git stash list
+git stash apply <stash name>
+git stash pop <stash number>
