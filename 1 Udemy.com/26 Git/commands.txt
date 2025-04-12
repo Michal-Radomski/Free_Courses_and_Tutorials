@@ -68,3 +68,5 @@ git clone <repo url> (cloning the main repo)
 git submodule init
 git submodule update
 git clone --recurse-submodules <main repo url> (= three last commands)
+
+git fetch origin --prune
