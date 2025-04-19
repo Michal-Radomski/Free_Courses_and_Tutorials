@@ -1,0 +1,2 @@
+npm view uuid
+npm show uuid
