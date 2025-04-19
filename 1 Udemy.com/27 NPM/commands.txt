@@ -19,3 +19,13 @@ Semantic Versioning: version: 1.1.1 Major Version/Minor Version/Patch Number
 "latest" - latest stable version
 "*" - very very latest version (version rc, alpha /non-stable/)
 npm i <package>@<version>
+
+npm audit - Vulnerability Detection
+npm audit fix - Automated Fixes
+npm audit fix --force
+
+npm uninstall <package name>
+
+npx --version
+npx uuid
+npm exec uuid
