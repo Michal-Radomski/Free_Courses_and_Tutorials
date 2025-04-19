@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "nodemon index.ts"
+    "start": "clear && nodemon index.ts",
+    "uuid": "uuid",
+    "build": "esbuild index.ts --bundle --outdir=dist"
   },
   "keywords": [],
   "author": "Michal Radomski <michalra@op.pl>",
@@ -12,5 +14,8 @@
   "type": "commonjs",
   "dependencies": {
     "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.2"
   }
 }
