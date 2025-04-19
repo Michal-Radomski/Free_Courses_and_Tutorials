@@ -37,4 +37,6 @@ npm i --omit=dev (without devDeps)
 
 npm prune --production
 
+npm outdated
 npm update
+npm update --save
