@@ -29,3 +29,12 @@ npm uninstall <package name>
 npx --version
 npx uuid
 npm exec uuid
+
+npm i --legacy-peer-deps
+npm i --force
+npm clean-install (npm ci)
+npm i --omit=dev (without devDeps)
+
+npm prune --production
+
+npm update
