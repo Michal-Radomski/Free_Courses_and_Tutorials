@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
+  "private": true,
   "scripts": {
     "start": "clear && nodemon main.ts",
     "uuid": "uuid",
     "build": "esbuild main.ts --bundle --platform=node --outdir=dist",
-    "build2": "esbuild main.ts --bundle --platform=node --outfile=dist/index.js"
+    "build2": "esbuild main.ts --bundle --platform=node --outfile=dist/index.js",
+    "postinstall": "this post install script"
   },
   "keywords": [],
   "author": "Michal Radomski <michalra@op.pl>",

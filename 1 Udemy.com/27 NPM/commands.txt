@@ -3,9 +3,11 @@ npm view uuid
 npm install --save uuid (npm i uuid)
 npm install --save-dev esbuild (npm i uuid -D)
 npm install -g <package name>
+npm install --global <package name>
+npm install --location=global <package name>
 
 npm show uuid
-npm list
+npm list (npm ls)
 npm list -g
 npm list --depth=1
 npm root -g
@@ -41,3 +43,19 @@ npm prune --production
 npm outdated
 npm update
 npm update --save
+
+npm get registry
+
+npm cache add <package-spec>
+npm cache clean [<key>]
+npm cache ls [<name>@<version>]
+npm cache verify
+
+npm ping
+npm version
+
+npm i react /don't typo!!!/
+
+npm doctor
+
+npx npkill (https://www.npmjs.com/package/npkill)
