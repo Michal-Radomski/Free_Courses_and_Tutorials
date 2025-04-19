@@ -1,2 +1,21 @@
 npm view uuid
+
+npm install --save uuid (npm i uuid)
+npm install --save-dev esbuild (npm i uuid -D)
+npm install -g <package name>
+
 npm show uuid
+npm list
+npm list -g
+npm list --depth=1
+npm root -g
+
+tsc --version
+
+Semantic Versioning: version: 1.1.1 Major Version/Minor Version/Patch Number
+"^" - latest stable minor version (default)
+">8.0.0" - min v 9.0.0
+"~" - latest patch version
+"latest" - latest stable version
+"*" - very very latest version (version rc, alpha /non-stable/)
+npm i <package>@<version>
