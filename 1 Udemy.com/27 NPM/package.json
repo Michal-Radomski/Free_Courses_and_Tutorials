@@ -4,16 +4,17 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "clear && nodemon index.ts",
+    "start": "clear && nodemon main.ts",
     "uuid": "uuid",
-    "build": "esbuild index.ts --bundle --platform=node --outdir=dist",
-    "build2": "esbuild index.ts --bundle --platform=node --outfile=dist/index.js"
+    "build": "esbuild main.ts --bundle --platform=node --outdir=dist",
+    "build2": "esbuild main.ts --bundle --platform=node --outfile=dist/index.js"
   },
   "keywords": [],
   "author": "Michal Radomski <michalra@op.pl>",
   "license": "MIT",
   "type": "commonjs",
   "dependencies": {
+    "@types/node": "^22.14.1",
     "uuid": "^11.1.0"
   },
   "devDependencies": {

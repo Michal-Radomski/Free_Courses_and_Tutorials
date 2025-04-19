@@ -34,6 +34,7 @@ npm i --legacy-peer-deps
 npm i --force
 npm clean-install (npm ci)
 npm i --omit=dev (without devDeps)
+npm i @types/node
 
 npm prune --production
 
