@@ -60,3 +60,5 @@
 25. Solar System with React Three Fiber -> according to
     [this course](https://www.udemy.com/course/create-a-solar-system-with-react-three-fiber).
 26. Git -> according to [this course](https://www.udemy.com/course/learn-git-and-github-over-the-weekend).
+
+27. NPM -> according to [this course](https://www.udemy.com/course/npm-node-package-manager-course).
