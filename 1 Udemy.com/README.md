@@ -64,3 +64,5 @@
 27. NPM -> according to [this course](https://www.udemy.com/course/npm-node-package-manager-course).
 
 28. NFT -> according to [this course](https://www.udemy.com/course/nft-course-2021-create-sell-or-invest-in-nfts-today).
+
+29. Blockchain -> according to [this course](https://www.udemy.com/course/understanding-blockchain-technology).
